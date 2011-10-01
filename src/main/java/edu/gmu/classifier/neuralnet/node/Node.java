@@ -29,6 +29,11 @@ public interface Node
 	public double getNet( );
 	
 	/**
+	 * @return the number of input nodes.
+	 */
+	public int getInputCount( );
+	
+	/**
 	 * @param i the input index
 	 * @return the weight associated with the ith input
 	 */
