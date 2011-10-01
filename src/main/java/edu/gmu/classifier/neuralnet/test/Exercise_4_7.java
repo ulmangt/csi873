@@ -1,5 +1,7 @@
 package edu.gmu.classifier.neuralnet.test;
 
+import java.util.Arrays;
+
 import edu.gmu.classifier.neuralnet.factory.NetFactory;
 import edu.gmu.classifier.neuralnet.net.Net;
 import edu.gmu.classifier.neuralnet.node.NodeFunctions;
@@ -12,6 +14,6 @@ public class Exercise_4_7
 	
 		net.apply( NodeFunctions.setWeights( 0.1 ) );
 	
-		System.out.println( "done" );
+		System.out.println( Arrays.toString( net.classify( 0.0, 0.0 ) ) );
 	}
 }
