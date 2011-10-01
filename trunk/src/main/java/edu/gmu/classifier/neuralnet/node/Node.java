@@ -1,5 +1,9 @@
 package edu.gmu.classifier.neuralnet.node;
 
+/**
+ * A single Node in a Net consisting of any number of weighted inputs and a single output.
+ * @author ulman
+ */
 public interface Node
 {
 	/**
