@@ -5,6 +5,7 @@ import java.util.List;
 
 import edu.gmu.classifier.neuralnet.node.Node;
 import edu.gmu.classifier.neuralnet.node.NodeFunction;
+import edu.gmu.classifier.neuralnet.node.NodeFunctions;
 
 public abstract class AbstractNet implements Net
 {
@@ -30,7 +31,7 @@ public abstract class AbstractNet implements Net
 			}
 		}
 		
-		apply( NodeFunction.ZeroWeights );
+		apply( NodeFunctions.setWeights( 0.0 ) );
 	}
 	
 	public abstract Node createNode( List<Node> inputNodes );
