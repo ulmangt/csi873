@@ -7,6 +7,10 @@ import edu.gmu.classifier.neuralnet.node.SigmoidNode;
 
 public class SigmoidNet extends AbstractNet
 {
+	public SigmoidNet( int... nodeCount )
+	{
+		super( nodeCount );
+	}
 
 	@Override
 	public Node createNode( List<Node> inputNodes )

@@ -1,5 +1,8 @@
 package edu.gmu.classifier.neuralnet.factory;
 
+import edu.gmu.classifier.neuralnet.net.Net;
+import edu.gmu.classifier.neuralnet.net.SigmoidNet;
+
 public class NetFactory
 {
 	private NetFactory( )
@@ -11,8 +14,8 @@ public class NetFactory
 	 * Creates a 
 	 * @param nodeCount
 	 */
-	public static void newNet( int... nodeCount )
+	public static Net newNet( int... nodeCount )
 	{
-		
+		return new SigmoidNet( nodeCount );
 	}
 }
