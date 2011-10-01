@@ -32,7 +32,7 @@ public interface Net
 	 * @param input an input array of size getNodeCount( 0 )
 	 * @return an output array of size getNodeCount( getLayerCount( ) )
 	 */
-	public double[] classify( double[] input );
+	public double[] classify( double... input );
 	
 	/**
 	 * Applies the provided function to all nodes in the network.
