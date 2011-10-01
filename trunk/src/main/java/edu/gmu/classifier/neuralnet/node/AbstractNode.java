@@ -59,6 +59,11 @@ public abstract class AbstractNode implements Node
 		return net;
 	}
 
+	public int getInputCount( )
+	{
+		return inputs.length;
+	}
+
 	public double getWeight( int i )
 	{
 		return weights[i];
