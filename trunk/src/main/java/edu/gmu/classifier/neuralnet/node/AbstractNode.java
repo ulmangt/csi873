@@ -15,6 +15,7 @@ public abstract class AbstractNode implements Node
 	
 	public AbstractNode( Node[] inputs )
 	{
+		this.inputs = inputs;
 		this.weights = new double[ inputs.length ];
 	}
 	
@@ -77,5 +78,24 @@ public abstract class AbstractNode implements Node
 	public Node getInput( int i )
 	{
 		return inputs[i];
+	}
+	
+	@Override
+	public String toString( )
+	{
+		StringBuilder b = new StringBuilder( );
+		
+		b.append( "[ " );
+		
+		
+		for ( int i = 0 ; i < getInputCount( ) ; i++ )
+		{
+			b.append( String.format( "%.3f", getWeight( i ) ) );
+			b.append( " " );
+		}
+		
+		b.append( "]" );
+		
+		return b.toString( );
 	}
 }
