@@ -51,7 +51,7 @@ public abstract class AbstractNet implements Net
 		return layerList.get( layer ).get( node );
 	}
 
-	public double[] classify( double[] input )
+	public double[] classify( double... input )
 	{
 		List<Node> inputNodes = layerList.get( 0 );
 		for ( int i = 0 ; i < inputNodes.size( ) ; i++ )

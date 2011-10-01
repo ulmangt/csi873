@@ -2,7 +2,7 @@ package edu.gmu.classifier.neuralnet.node;
 
 public class NodeFunctions
 {
-	public static NodeFunction setWeights( double weight )
+	public static NodeFunction setWeights( final double weight )
 	{
 		return new NodeFunction( )
 		{
@@ -10,7 +10,7 @@ public class NodeFunctions
 			{
 				for ( int i = 0 ; i < node.getInputCount( ) ; i++ )
 				{
-					node.setWeight( i, 0.0 );
+					node.setWeight( i, weight );
 				}
 			}
 		};
