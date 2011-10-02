@@ -9,7 +9,7 @@ public interface Node
 	/**
 	 * Sets the output based on the weights and child outputs.
 	 */
-	public void setOutput( );
+	public void calculateOutput( );
 	
 	/**
 	 * Sets the output to a fixed value (used for input nodes).
@@ -22,6 +22,21 @@ public interface Node
 	 *         (after passing throught the squashing function)
 	 */
 	public double getOutput( );
+	
+	/**
+	 * Calculate error for interior node.
+	 */
+	public void calculateError( );
+	
+	/**
+	 * Calculate error for output node using the truth value provided
+	 * @param truth
+	 */
+	public void calculateError( double truth );
+	
+	public double getError( );
+	
+	public void setError( double error );
 	
 	/**
 	 * @return the weighted linear combination of the input nodes

@@ -24,4 +24,15 @@ public class SigmoidNode extends AbstractNode
 	{
 		return 1.0 / ( 1.0 + exp( -net ) );
 	}
+
+	public void calculateError( )
+	{
+		
+	}
+
+	// assumes output is up to date
+	public void calculateError( double truth )
+	{
+		this.error = this.output * ( 1 - this.output ) * ( truth - this.output );
+	}
 }
