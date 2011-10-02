@@ -39,6 +39,9 @@ public abstract class AbstractNode implements Node
 	@Override
 	public void calculateOutput( )
 	{
+		if ( inputLinks.isEmpty( ) )
+			return;
+		
 		double sum = 0.0;
 		
 		for ( Link link : inputLinks )
