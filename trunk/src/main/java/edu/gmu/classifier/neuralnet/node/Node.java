@@ -1,5 +1,7 @@
 package edu.gmu.classifier.neuralnet.node;
 
+import java.util.List;
+
 /**
  * A single Node in a Net consisting of any number of weighted inputs and a single output.
  * @author ulman
@@ -43,26 +45,11 @@ public interface Node
 	 */
 	public double getNet( );
 	
-	/**
-	 * @return the number of input nodes.
-	 */
-	public int getInputCount( );
+	public List<Link> getInputLinks( );
 	
-	/**
-	 * @param i the input index
-	 * @return the weight associated with the ith input
-	 */
-	public double getWeight( int i );
+	public List<Link> getOutputLinks( );
 	
-	/**
-	 * @param i the input index
-	 * @param weight the new weight associated with the ith input
-	 */
-	public void setWeight( int i, double weight );
+	public void addInputLink( Link link );
 	
-	/**
-	 * @param i the input index
-	 * @return the ith input node
-	 */
-	public Node getInput( int i );
+	public void addOutputLink( Link link );
 }

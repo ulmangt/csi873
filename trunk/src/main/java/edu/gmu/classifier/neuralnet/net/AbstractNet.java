@@ -3,6 +3,7 @@ package edu.gmu.classifier.neuralnet.net;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gmu.classifier.neuralnet.node.Link;
 import edu.gmu.classifier.neuralnet.node.Node;
 import edu.gmu.classifier.neuralnet.node.NodeFunction;
 import edu.gmu.classifier.neuralnet.node.NodeFunctions;
@@ -26,15 +27,30 @@ public abstract class AbstractNet implements Net
 			
 			for ( int nodeIndex = 0 ; nodeIndex < count ; nodeIndex++ )
 			{
-				List<Node> inputNodes = layerIndex == 0 ? new ArrayList<Node>( 0 ) : layerList.get( layerIndex-1 );
-				nodeList.add( createNode( inputNodes ) );
+				nodeList.add( createNode( ) );
+			}
+		}
+		
+		for ( int layerIndex = 1 ; layerIndex < layerCount ; layerIndex++ )
+		{
+			List<Node> currentList = layerList.get( layerIndex );
+			List<Node> previousList = layerList.get( layerIndex-1 );
+		
+			for ( Node currentNode : currentList )
+			{
+				for ( Node previousNode : previousList )
+				{
+					Link link = new Link( previousNode, currentNode );
+					previousNode.addOutputLink( link );
+					currentNode.addInputLink( link );
+				}
 			}
 		}
 		
 		apply( NodeFunctions.setWeights( 0.0 ) );
 	}
 	
-	public abstract Node createNode( List<Node> inputNodes );
+	public abstract Node createNode( );
 	
 	public int getLayerCount( )
 	{
@@ -65,7 +81,7 @@ public abstract class AbstractNet implements Net
 			List<Node> layerNodes = layerList.get( i );
 			for ( Node node : layerNodes )
 			{
-				node.setOutput( );
+				node.calculateOutput( );
 			}
 		}
 		
