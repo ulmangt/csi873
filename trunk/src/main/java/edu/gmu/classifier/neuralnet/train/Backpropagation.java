@@ -64,7 +64,7 @@ public class Backpropagation
 			
 				// calculate error terms for each hidden layer moving
 				// backwards from the output layer
-				for ( int layer = net.getLayerCount( )-1 ; layer > 0 ; layer++ )
+				for ( int layer = net.getLayerCount( )-1 ; layer > 0 ; layer-- )
 				{
 					List<Node> layerNodes = net.getLayer( layer );
 					for ( int i = 0 ; i < layerNodes.size( ) ; i++ )
