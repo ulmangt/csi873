@@ -10,7 +10,7 @@ import edu.gmu.classifier.neuralnet.node.NodeFunction;
  * @author ulman
  */
 public interface Net
-{
+{	
 	/**
 	 * @return the number of layers in the network (not including the input layer)
 	 */

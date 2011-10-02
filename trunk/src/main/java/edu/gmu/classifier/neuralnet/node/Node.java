@@ -8,6 +8,9 @@ import java.util.List;
  */
 public interface Node
 {
+	public String getName( );
+	public void setName( String name );
+	
 	/**
 	 * Sets the output based on the weights and child outputs.
 	 */

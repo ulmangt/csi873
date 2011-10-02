@@ -27,7 +27,9 @@ public abstract class AbstractNet implements Net
 			
 			for ( int nodeIndex = 0 ; nodeIndex < count ; nodeIndex++ )
 			{
-				nodeList.add( createNode( ) );
+				Node node = createNode( );
+				node.setName( layerIndex + "-" + (nodeIndex+1) );
+				nodeList.add( node );
 			}
 		}
 		
@@ -55,6 +57,7 @@ public abstract class AbstractNet implements Net
 			List<Node> currentList = layerList.get( layerIndex );
 			
 			Node thresholdNode = createNode( );
+			thresholdNode.setName( (layerIndex-1) + "-" + "0" );
 			thresholdNode.setOutput( 1.0 );
 			
 			for ( Node node : currentList )
