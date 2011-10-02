@@ -1,5 +1,7 @@
 package edu.gmu.classifier.neuralnet.net;
 
+import java.util.List;
+
 import edu.gmu.classifier.neuralnet.node.Node;
 import edu.gmu.classifier.neuralnet.node.NodeFunction;
 
@@ -27,12 +29,18 @@ public interface Net
 	 */
 	public Node getNode( int layer, int node );
 	
+	public List<Node> getLayer( int layer );
+	
+	public List<Node> getInputLayer( );
+	
+	public List<Node> getOutputLayer( );
+	
 	/**
 	 * Applies the provided array of inputs to the net and produces an output array.
 	 * @param input an input array of size getNodeCount( 0 )
 	 * @return an output array of size getNodeCount( getLayerCount( ) )
 	 */
-	public double[] classify( double... input );
+	public double[] calculateOutput( double... input );
 	
 	/**
 	 * Applies the provided function to all nodes in the network.

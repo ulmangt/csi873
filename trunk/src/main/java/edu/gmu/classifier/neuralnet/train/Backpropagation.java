@@ -3,18 +3,19 @@ package edu.gmu.classifier.neuralnet.train;
 import java.util.List;
 
 import edu.gmu.classifier.neuralnet.net.Net;
+import edu.gmu.classifier.neuralnet.node.Node;
 
 public class Backpropagation
 {
 	public static class TrainingExample
 	{
 		protected double[] inputs;
-		protected double output;
+		protected double[] outputs;
 		
-		public TrainingExample( double[] inputs, double output )
+		public TrainingExample( double[] inputs, double[] outputs )
 		{
 			this.inputs = inputs;
-			this.output = output;
+			this.outputs = outputs;
 		}
 		
 		public double[] getInputs( )
@@ -27,14 +28,14 @@ public class Backpropagation
 			this.inputs = inputs;
 		}
 		
-		public double getOutput( )
+		public double[] getOutputs( )
 		{
-			return output;
+			return outputs;
 		}
 		
-		public void setOutput( double output )
+		public void setOutputs( double[] outputs )
 		{
-			this.output = output;
+			this.outputs = outputs;
 		}
 	}
 	
@@ -44,10 +45,31 @@ public class Backpropagation
 		{
 			for ( TrainingExample data : dataList )
 			{
-				// store outputs
-				net.classify( data.inputs );
+				// calculate and store node outputs
+				net.calculateOutput( data.getInputs( ) );
 				
+				// calculate error terms for output layer
+				double[] truth = data.getOutputs( );
+				List<Node> outputNodes = net.getOutputLayer( );
+				for ( int i = 0 ; i < outputNodes.size( ) ; i++ )
+				{
+					Node node = outputNodes.get( i );
+					node.calculateError( truth[i] );
+				}
+			
+				// calculate error terms for each hidden layer moving
+				// backwards from the output layer
+				for ( int layer = net.getLayerCount( )-1 ; layer > 0 ; layer++ )
+				{
+					List<Node> layerNodes = net.getLayer( layer );
+					for ( int i = 0 ; i < layerNodes.size( ) ; i++ )
+					{
+						Node node = layerNodes.get( i );
+						node.calculateError( );
+					}
+				}
 				
+				// update weights for all nodes
 			}
 		}
 	}

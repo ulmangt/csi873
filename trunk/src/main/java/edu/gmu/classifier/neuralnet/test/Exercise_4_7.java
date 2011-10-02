@@ -14,6 +14,6 @@ public class Exercise_4_7
 	
 		net.apply( NodeFunctions.setWeights( 0.1 ) );
 	
-		System.out.println( Arrays.toString( net.classify( 0.0, 0.0 ) ) );
+		System.out.println( Arrays.toString( net.calculateOutput( 0.0, 0.0 ) ) );
 	}
 }
