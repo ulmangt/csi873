@@ -45,6 +45,11 @@ public interface Node
 	 */
 	public double getNet( );
 	
+	/**
+	 * Update the weights of the input links
+	 */
+	public void updateInputWeights( double learningRate );
+	
 	public List<Link> getInputLinks( );
 	
 	public List<Link> getOutputLinks( );
