@@ -31,6 +31,7 @@ public abstract class AbstractNet implements Net
 			}
 		}
 		
+		// connect each node in the current layer to each node in the previous layer
 		for ( int layerIndex = 1 ; layerIndex < layerCount ; layerIndex++ )
 		{
 			List<Node> currentList = layerList.get( layerIndex );
@@ -45,6 +46,26 @@ public abstract class AbstractNet implements Net
 					currentNode.addInputLink( link );
 				}
 			}
+		}
+		
+		// add threshold nodes to each layer which are not connected to any previous
+		// layers, set their output to 1 (which should never be changed)
+		for ( int layerIndex = 1 ; layerIndex < layerCount ; layerIndex++ )
+		{
+			List<Node> currentList = layerList.get( layerIndex );
+			
+			Node thresholdNode = createNode( );
+			thresholdNode.setOutput( 1.0 );
+			
+			for ( Node node : currentList )
+			{
+				Link link = new Link( thresholdNode, node );
+				thresholdNode.addOutputLink( link );
+				node.addInputLink( link );
+			}
+			
+			List<Node> previousList = layerList.get( layerIndex-1 );
+			previousList.add( thresholdNode );
 		}
 		
 		apply( NodeFunctions.setWeights( 0.0 ) );
