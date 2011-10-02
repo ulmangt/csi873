@@ -42,4 +42,10 @@ public class Link
 	{
 		return this.outputNode;
 	}
+	
+	@Override
+	public String toString( )
+	{
+		return inputNode + ":" + outputNode;
+	}
 }

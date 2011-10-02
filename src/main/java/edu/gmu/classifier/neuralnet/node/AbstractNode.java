@@ -5,6 +5,7 @@ import java.util.List;
 
 public abstract class AbstractNode implements Node
 {
+	protected String name;
 	protected double error;
 	protected double output;
 	protected double net;
@@ -24,6 +25,18 @@ public abstract class AbstractNode implements Node
 	
 	public abstract double outputFunction( double net );
 	
+	@Override
+	public String getName( )
+	{
+		return name;
+	}
+	
+	@Override
+	public void setName( String name )
+	{
+		this.name = name;
+	}
+	 	
 	@Override
 	public void setError( double error )
 	{
@@ -95,6 +108,7 @@ public abstract class AbstractNode implements Node
 		this.outputLinks.add( link );
 	}
 	
+	/*
 	@Override
 	public String toString( )
 	{
@@ -112,5 +126,12 @@ public abstract class AbstractNode implements Node
 		b.append( "]" );
 		
 		return b.toString( );
+	}
+	*/
+	
+	@Override
+	public String toString( )
+	{
+		return getName( );
 	}
 }
