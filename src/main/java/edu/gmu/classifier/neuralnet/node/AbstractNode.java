@@ -2,6 +2,7 @@ package edu.gmu.classifier.neuralnet.node;
 
 public abstract class AbstractNode implements Node
 {
+	protected double error;
 	protected double output;
 	protected double net;
 	protected Node[] inputs; 
@@ -32,7 +33,17 @@ public abstract class AbstractNode implements Node
 	
 	public abstract double outputFunction( double net );
 	
-	public void setOutput( )
+	public void setError( double error )
+	{
+		this.error = error;
+	}
+	
+	public double getError( )
+	{
+		return error;
+	}
+	
+	public void calculateOutput( )
 	{
 		double sum = 0.0;
 		
