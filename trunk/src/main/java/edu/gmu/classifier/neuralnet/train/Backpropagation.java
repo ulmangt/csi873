@@ -4,9 +4,10 @@ import java.util.List;
 
 import edu.gmu.classifier.neuralnet.net.Net;
 import edu.gmu.classifier.neuralnet.node.Node;
+import edu.gmu.classifier.neuralnet.node.NodeFunctions;
 
 public class Backpropagation
-{
+{	
 	public static class TrainingExample
 	{
 		protected double[] inputs;
@@ -39,8 +40,12 @@ public class Backpropagation
 		}
 	}
 	
-	public void train( Net net, List<TrainingExample> dataList )
+	int counter = 0;
+	
+	public void train( Net net, List<TrainingExample> dataList, double learningRate )
 	{
+		counter = 0;
+		
 		while ( !stop( net ) )
 		{
 			for ( TrainingExample data : dataList )
@@ -70,12 +75,13 @@ public class Backpropagation
 				}
 				
 				// update weights for all nodes
+				net.apply( NodeFunctions.updateWeights( learningRate ) );
 			}
 		}
 	}
 	
 	public boolean stop( Net net )
 	{
-		return false;
+		return counter++ > 100;
 	}
 }
