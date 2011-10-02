@@ -1,94 +1,95 @@
 package edu.gmu.classifier.neuralnet.node;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public abstract class AbstractNode implements Node
 {
 	protected double error;
 	protected double output;
 	protected double net;
-	protected Node[] inputs; 
-	protected double[] weights;
+	protected List<Link> inputLinks;
+	protected List<Link> outputLinks;
+	
+	public AbstractNode( List<Link> inputLinks, List<Link> outputLinks )
+	{
+		this.inputLinks = inputLinks;
+		this.outputLinks = outputLinks;
+	}
 	
 	public AbstractNode( )
 	{
-		this.inputs = new Node[0];
-		this.weights = new double[0];
-	}
-	
-	public AbstractNode( Node[] inputs )
-	{
-		this.inputs = inputs;
-		this.weights = new double[ inputs.length ];
-	}
-	
-	public AbstractNode( Node[] inputs, double[] weights )
-	{
-		if ( inputs.length != weights.length )
-		{
-			throw new RuntimeException( "Input and weight arrays must be the same length." );
-		}
-		
-		this.inputs = inputs;
-		this.weights = weights;
+		this( new LinkedList<Link>( ), new LinkedList<Link>( ) );
 	}
 	
 	public abstract double outputFunction( double net );
 	
+	@Override
 	public void setError( double error )
 	{
 		this.error = error;
 	}
 	
+	@Override
 	public double getError( )
 	{
 		return error;
 	}
 	
+	@Override
 	public void calculateOutput( )
 	{
 		double sum = 0.0;
 		
-		for ( int i = 0 ; i < inputs.length ; i++ )
+		for ( Link link : inputLinks )
 		{
-			sum += inputs[i].getOutput( ) * weights[i];
+			sum += link.getWeight( ) * link.getInputNode( ).getOutput( );
 		}
 		
 		net = sum;
 		output = outputFunction( net );
 	}
 
+	@Override
 	public void setOutput( double value )
 	{
 		output = value;
 	}
 
+	@Override
 	public double getOutput( )
 	{
 		return output;
 	}
 
+	@Override
 	public double getNet( )
 	{
 		return net;
 	}
-
-	public int getInputCount( )
+	
+	@Override
+	public List<Link> getInputLinks( )
 	{
-		return inputs.length;
+		return this.inputLinks;
 	}
-
-	public double getWeight( int i )
+	
+	@Override
+	public List<Link> getOutputLinks( )
 	{
-		return weights[i];
+		return this.outputLinks;
 	}
-
-	public void setWeight( int i, double weight )
+	
+	@Override
+	public void addInputLink( Link link )
 	{
-		weights[i] = weight;
+		this.inputLinks.add( link );
 	}
-
-	public Node getInput( int i )
+	
+	@Override
+	public void addOutputLink( Link link )
 	{
-		return inputs[i];
+		this.outputLinks.add( link );
 	}
 	
 	@Override
@@ -99,9 +100,9 @@ public abstract class AbstractNode implements Node
 		b.append( "[ " );
 		
 		
-		for ( int i = 0 ; i < getInputCount( ) ; i++ )
+		for ( Link link : inputLinks )
 		{
-			b.append( String.format( "%.3f", getWeight( i ) ) );
+			b.append( String.format( "%.3f", link.getWeight( ) ) );
 			b.append( " " );
 		}
 		

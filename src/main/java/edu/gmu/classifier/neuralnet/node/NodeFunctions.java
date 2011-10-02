@@ -8,9 +8,9 @@ public class NodeFunctions
 		{
 			public void run( Node node )
 			{
-				for ( int i = 0 ; i < node.getInputCount( ) ; i++ )
+				for ( Link link : node.getInputLinks( ) )
 				{
-					node.setWeight( i, weight );
+					link.setWeight( weight );
 				}
 			}
 		};
