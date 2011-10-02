@@ -16,13 +16,13 @@ public class NodeFunctions
 		};
 	};
 	
-	public static NodeFunction updateWeights( final double learningRate )
+	public static NodeFunction updateWeights( final double learningRate, final double momentum )
 	{
 		return new NodeFunction( )
 		{
 			public void run( Node node )
 			{
-				node.updateInputWeights( learningRate );
+				node.updateInputWeights( learningRate, momentum );
 			}
 		};
 	};
