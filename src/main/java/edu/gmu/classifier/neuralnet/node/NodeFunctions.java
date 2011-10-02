@@ -15,4 +15,15 @@ public class NodeFunctions
 			}
 		};
 	};
+	
+	public static NodeFunction updateWeights( final double learningRate )
+	{
+		return new NodeFunction( )
+		{
+			public void run( Node node )
+			{
+				node.updateInputWeights( learningRate );
+			}
+		};
+	};
 }
