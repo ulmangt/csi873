@@ -105,8 +105,12 @@ public abstract class AbstractNet implements Net
 
 	public double[] calculateOutput( double... input )
 	{
-		List<Node> inputNodes = layerList.get( 0 );
-		for ( int i = 0 ; i < inputNodes.size( ) ; i++ )
+		List<Node> inputNodes = getInputLayer( );
+		
+		// the last node in the list is the threshold node which is not provided an input
+		assert( input.length == inputNodes.size( )-1 );
+		
+		for ( int i = 0 ; i < inputNodes.size( )-1 ; i++ )
 		{
 			Node node = inputNodes.get( i );
 			node.setOutput( input[i] );
@@ -121,8 +125,8 @@ public abstract class AbstractNet implements Net
 			}
 		}
 		
-		int outputNodeCount = getNodeCount( getLayerCount( ) );
-		List<Node> outputNodes = layerList.get( getLayerCount( ) );
+		List<Node> outputNodes = getOutputLayer( );
+		int outputNodeCount = outputNodes.size( );
 		double[] output = new double[ outputNodeCount ];
 		for ( int i = 0 ; i < outputNodeCount ; i++ )
 		{
