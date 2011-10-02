@@ -44,17 +44,16 @@ public class SigmoidNode extends AbstractNode
 	}
 	
 	@Override
-	public void updateInputWeights( double learningRate )
+	public void updateInputWeights( double learningRate, double momentum )
 	{
 		for ( Link inputLink : getInputLinks( ) )
 		{
-			double weight = inputLink.getWeight( );
 			double x = inputLink.getInputNode( ).getOutput( );
 			double error = getError( );
 			
 			double delta_weight = learningRate * error * x;
 		
-			inputLink.setWeight( weight + delta_weight );
+			inputLink.deltaWeight( delta_weight, momentum );
 		}
 	}
 }

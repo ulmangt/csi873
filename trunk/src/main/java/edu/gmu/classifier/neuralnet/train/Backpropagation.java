@@ -42,7 +42,7 @@ public class Backpropagation
 	
 	int counter = 0;
 	
-	public void train( Net net, List<TrainingExample> dataList, double learningRate )
+	public void train( Net net, List<TrainingExample> dataList, double learningRate, double momentum )
 	{
 		counter = 0;
 		
@@ -75,7 +75,7 @@ public class Backpropagation
 				}
 				
 				// update weights for all nodes
-				net.apply( NodeFunctions.updateWeights( learningRate ) );
+				net.apply( NodeFunctions.updateWeights( learningRate, momentum ) );
 			}
 		}
 	}

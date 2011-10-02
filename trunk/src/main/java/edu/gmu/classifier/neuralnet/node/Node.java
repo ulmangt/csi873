@@ -48,7 +48,7 @@ public interface Node
 	/**
 	 * Update the weights of the input links
 	 */
-	public void updateInputWeights( double learningRate );
+	public void updateInputWeights( double learningRate, double momentum );
 	
 	public List<Link> getInputLinks( );
 	
