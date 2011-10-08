@@ -6,7 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gmu.classifier.neuralnet.factory.NetFactory;
 import edu.gmu.classifier.neuralnet.io.DataLoader;
+import edu.gmu.classifier.neuralnet.net.Net;
+import edu.gmu.classifier.neuralnet.node.NodeFunctions;
+import edu.gmu.classifier.neuralnet.train.Backpropagation;
 import edu.gmu.classifier.neuralnet.train.Backpropagation.TrainingExample;
 
 public class Midterm
@@ -44,5 +48,13 @@ public class Midterm
 		{
 			trainingDataList.addAll( DataLoader.loadFile( new File( dataDirectory, fileName ) ) );
 		}
+		
+		Net net = NetFactory.newNet( 64, 3, 10 );
+		
+		net.apply( NodeFunctions.setWeights( 0.0 ) );
+		
+		Backpropagation b = new Backpropagation( );
+		
+		b.train( net, trainingDataList, 0.3, 0.9 );
 	}
 }
