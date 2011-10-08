@@ -19,9 +19,14 @@ public class DataLoader
 	public static String filePatternString = "[\\S]*([\\d])\\.txt";
 	public static Pattern filePattern = Pattern.compile( filePatternString );
 	
+	
 	public static List<TrainingExample> loadFile( String filePath ) throws IOException
 	{
-		File file = new File( filePath );
+		return loadFile( new File( filePath ) );
+	}
+	
+	public static List<TrainingExample> loadFile( File file ) throws IOException
+	{
 		String fileName = file.getName( );
 		int trueDigit = getTrueDigitFromFileName( fileName );
 		

@@ -28,7 +28,7 @@ public class Midterm
 			@Override
 			public boolean accept( File dir, String name )
 			{
-				return name.startsWith( "training" );
+				return name.startsWith( "train" );
 			}
 		});
 		
@@ -37,12 +37,12 @@ public class Midterm
 		
 		for ( String fileName : testDataFiles )
 		{
-			testDataList.addAll( DataLoader.loadFile( fileName ) );
+			testDataList.addAll( DataLoader.loadFile( new File( dataDirectory, fileName ) ) );
 		}
 		
 		for ( String fileName : trainingDataFiles )
 		{
-			trainingDataList.addAll( DataLoader.loadFile( fileName ) );
+			trainingDataList.addAll( DataLoader.loadFile( new File( dataDirectory, fileName ) ) );
 		}
 	}
 }
