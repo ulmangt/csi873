@@ -1,5 +1,6 @@
 package edu.gmu.classifier.neuralnet.train;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -96,8 +97,7 @@ public class Backpropagation
 				// update weights for all nodes
 				net.apply( NodeFunctions.updateWeights( learningRate, momentum ) );
 				
-				// print out weights
-				//System.out.printf( "Iteration %d Training Example %s %s%n", counter, Arrays.toString( data.getInputs( ) ), Arrays.toString( data.getOutputs( ) ) );
+				// store weights
 				net.apply( new NodeFunction( )
 				{
 					@Override
@@ -106,12 +106,13 @@ public class Backpropagation
 						for ( Link link : node.getInputLinks( ) )
 						{
 							weightMap.put( link, link.getWeight( ) );
-							//System.out.printf( "%s (%.5f)%n", link, link.getWeight( ) );
 						}
 					}
 				});
 			}
 		}
+		
+		printWeights( net );
 		
 		// create jfreechart dataset for plotting purposes
 		DefaultXYDataset dataset = new DefaultXYDataset( );
@@ -133,6 +134,27 @@ public class Backpropagation
 		frame.setSize( 400, 400 );
 		frame.add( chartPanel );
 		frame.setVisible( true );
+	}
+	
+	protected void printWeights( int iteration, final Net net, TrainingExample data )
+	{
+		System.out.printf( "Iteration %d Training Example %s %s%n", iteration, Arrays.toString( data.getInputs( ) ), Arrays.toString( data.getOutputs( ) ) );
+		printWeights( net );
+	}
+	
+	protected void printWeights( final Net net )
+	{
+		net.apply( new NodeFunction( )
+		{
+			@Override
+			public void run( Node node )
+			{
+				for ( Link link : node.getInputLinks( ) )
+				{
+					System.out.printf( "%s (%.5f)%n", link, link.getWeight( ) );
+				}
+			}
+		});
 	}
 	
 	public boolean stop( Net net )
