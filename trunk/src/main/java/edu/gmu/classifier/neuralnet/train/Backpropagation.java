@@ -1,5 +1,6 @@
 package edu.gmu.classifier.neuralnet.train;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -54,21 +55,23 @@ public class Backpropagation
 		}
 	}
 	
-	Map<Link,List<Double>> weights;
-	
 	int counter = 0;
 	
-	public void train( Net net, List<TrainingExample> dataList, double learningRate, double momentum )
+	public void train( Net net, List<TrainingExample> trainData, List<TrainingExample> testData, double learningRate, double momentum )
 	{
 		// populate map to save weights
 		
-		final ArrayListMultimap<Link,Double> weightMap = ArrayListMultimap.create( );
+		//final ArrayListMultimap<Link,Double> weightMap = ArrayListMultimap.create( );
+		final ArrayList<Double> testErrorList = new ArrayList<Double>( );
+		final ArrayList<Double> trainErrorList = new ArrayList<Double>( );
 		
 		counter = 0;
 		
 		while ( !stop( net ) )
 		{
-			for ( TrainingExample data : dataList )
+			System.out.println( counter );
+			
+			for ( TrainingExample data : trainData )
 			{
 				// calculate and store node outputs
 				net.calculateOutput( data.getInputs( ) );
@@ -96,24 +99,33 @@ public class Backpropagation
 				
 				// update weights for all nodes
 				net.apply( NodeFunctions.updateWeights( learningRate, momentum ) );
-				
-				// store weights
-				net.apply( new NodeFunction( )
-				{
-					@Override
-					public void run( Node node )
-					{
-						for ( Link link : node.getInputLinks( ) )
-						{
-							weightMap.put( link, link.getWeight( ) );
-						}
-					}
-				});
 			}
+			
+			/*
+			// store weights
+			net.apply( new NodeFunction( )
+			{
+				@Override
+				public void run( Node node )
+				{
+					for ( Link link : node.getInputLinks( ) )
+					{
+						weightMap.put( link, link.getWeight( ) );
+					}
+				}
+			});
+			*/
+			
+			double testError = calculateError( net, testData );
+			double trainError = calculateError( net, trainData );
+			
+			testErrorList.add( testError );
+			trainErrorList.add( trainError );
 		}
 		
 		printWeights( net );
 		
+		/*
 		// create jfreechart dataset for plotting purposes
 		DefaultXYDataset dataset = new DefaultXYDataset( );
 		for( Link link : weightMap.keySet( ) )
@@ -134,6 +146,44 @@ public class Backpropagation
 		frame.setSize( 400, 400 );
 		frame.add( chartPanel );
 		frame.setVisible( true );
+		*/
+	}
+	
+	protected double calculateError( Net net, List<TrainingExample> testData )
+	{
+		int totalCount = testData.size( );
+		int correctCount = 0;
+		
+		for ( TrainingExample data : testData )
+		{
+			double[] output = net.calculateOutput( data.getInputs( ) );
+		
+			if ( getLargestIndex( output ) == getLargestIndex( data.getOutputs( ) ) )
+			{
+				correctCount++;
+			}
+		}
+		
+		return (double) correctCount / (double) totalCount;
+	}
+	
+	protected int getLargestIndex( double[] array )
+	{
+		double max = Double.NEGATIVE_INFINITY;
+		int index = 0;
+		
+		for ( int i = 0 ; i < array.length ; i++ )
+		{
+			double data = array[i];
+			
+			if ( data > max )
+			{
+				max = data;
+				index = i;
+			}
+		}
+		
+		return index;
 	}
 	
 	protected void printWeights( int iteration, final Net net, TrainingExample data )
