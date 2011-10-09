@@ -27,7 +27,7 @@ public class Exercise_4_7
 		training.add( new TrainingExample( new double[] { 1, 0 }, new double[] { 1 } ) );
 		training.add( new TrainingExample( new double[] { 0, 1 }, new double[] { 0 } ) );
 		
-		b.train( net, training, 0.3, 0.9 );
+		b.train( net, training, new ArrayList<TrainingExample>( ), 0.3, 0.9 );
 		
 		System.out.println( Arrays.toString( net.calculateOutput( 1.0, 0.0 ) ) );
 		System.out.println( Arrays.toString( net.calculateOutput( 0.0, 1.0 ) ) );
