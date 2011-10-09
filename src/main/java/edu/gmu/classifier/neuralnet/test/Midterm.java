@@ -6,10 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.gmu.classifier.neuralnet.factory.NetFactory;
 import edu.gmu.classifier.neuralnet.io.DataLoader;
-import edu.gmu.classifier.neuralnet.net.Net;
-import edu.gmu.classifier.neuralnet.node.NodeFunctions;
 import edu.gmu.classifier.neuralnet.train.Backpropagation;
 import edu.gmu.classifier.neuralnet.train.Backpropagation.TrainingExample;
 
@@ -49,12 +46,48 @@ public class Midterm
 			trainingDataList.addAll( DataLoader.loadFile( new File( dataDirectory, fileName ) ) );
 		}
 		
-		Net net = NetFactory.newNet( 64, 5, 10 );
-		
-		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
-		
 		Backpropagation b = new Backpropagation( );
 		
+		/* 32% error
+		Net net = NetFactory.newNet( 64, 40, 10 );
+		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
 		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
+		*/
+		
+		/* 40% error (!!!) -- no hidden layers actually does better than a few hidden layers
+		Net net = NetFactory.newNet( 64, 10 );
+		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
+		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
+		*/
+		
+		/* 32% error
+		Net net = NetFactory.newNet( 64, 20, 10 );
+		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
+		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
+		*/
+		
+		/* 35% error
+		Net net = NetFactory.newNet( 64, 10, 10 );
+		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
+		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
+		*/
+		
+		/* 50% error
+		Net net = NetFactory.newNet( 64, 5, 10 );
+		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
+		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
+		*/
+		
+		/* 52% error
+		Net net = NetFactory.newNet( 64, 4, 10 );
+		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
+		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
+		*/
+		
+		/* 65% error
+		Net net = NetFactory.newNet( 64, 3, 10 );
+		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
+		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
+		*/
 	}
 }
