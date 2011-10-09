@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gmu.classifier.neuralnet.factory.NetFactory;
 import edu.gmu.classifier.neuralnet.io.DataLoader;
+import edu.gmu.classifier.neuralnet.net.Net;
+import edu.gmu.classifier.neuralnet.node.NodeFunctions;
 import edu.gmu.classifier.neuralnet.train.Backpropagation;
 import edu.gmu.classifier.neuralnet.train.Backpropagation.TrainingExample;
 
@@ -60,11 +63,9 @@ public class Midterm
 		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
 		*/
 		
-		/* 32% error
 		Net net = NetFactory.newNet( 64, 20, 10 );
 		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
 		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
-		*/
 		
 		/* 35% error
 		Net net = NetFactory.newNet( 64, 10, 10 );
