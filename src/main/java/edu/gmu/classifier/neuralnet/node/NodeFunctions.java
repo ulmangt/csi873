@@ -16,6 +16,20 @@ public class NodeFunctions
 		};
 	};
 	
+	public static NodeFunction setRandomWeights( final double minWeight, final double maxWeight )
+	{
+		return new NodeFunction( )
+		{
+			public void run( Node node )
+			{
+				for ( Link link : node.getInputLinks( ) )
+				{
+					link.setWeight( Math.random( ) * ( maxWeight - minWeight ) + minWeight );
+				}
+			}
+		};
+	};
+	
 	public static NodeFunction updateWeights( final double learningRate, final double momentum )
 	{
 		return new NodeFunction( )

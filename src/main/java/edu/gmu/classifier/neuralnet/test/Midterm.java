@@ -49,12 +49,12 @@ public class Midterm
 			trainingDataList.addAll( DataLoader.loadFile( new File( dataDirectory, fileName ) ) );
 		}
 		
-		Net net = NetFactory.newNet( 64, 3, 10 );
+		Net net = NetFactory.newNet( 64, 5, 10 );
 		
-		net.apply( NodeFunctions.setWeights( 0.0 ) );
+		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
 		
 		Backpropagation b = new Backpropagation( );
 		
-		b.train( net, trainingDataList, 0.3, 0.9 );
+		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
 	}
 }
