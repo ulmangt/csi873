@@ -7,6 +7,10 @@ import edu.gmu.classifier.neuralnet.node.NodeFunction;
 
 /**
  * A collection of Nodes combined to create a neural network learner.
+ * Assumes nodes are organized into layers such that nodes in layer n
+ * provide outputs only to layer n+1 and receive inputs only from layer
+ * n-1. Although this is not strictly a requirement, this assumption
+ * simplifies the backpropagation algorithm.
  * @author ulman
  */
 public interface Net
@@ -29,10 +33,26 @@ public interface Net
 	 */
 	public Node getNode( int layer, int node );
 	
+	/**
+	 * @param layer
+	 * @return all the nodes in the specified layer
+	 */
 	public List<Node> getLayer( int layer );
 	
+	/**
+	 * Returns all the nodes in the input layer. Should be equivalent
+	 * to calling getLayer( 0 ).
+	 * 
+	 * @return all the nodes in the input layer
+	 */
 	public List<Node> getInputLayer( );
 	
+	/**
+	 * Returns all the nodes in the output layer. Should be equivalent
+	 * to calling getLayer( getLayerCount( ) ).
+	 * 
+	 * @return all the nodes in the input layer
+	 */
 	public List<Node> getOutputLayer( );
 	
 	/**
