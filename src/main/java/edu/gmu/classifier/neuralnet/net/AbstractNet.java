@@ -166,6 +166,7 @@ public abstract class AbstractNet implements Net
 			node.setOutput( input[i] );
 		}
 		
+		// calculate the output values for each layer in order
 		for ( int i = 1 ; i <= getLayerCount( ) ; i++ )
 		{
 			List<Node> layerNodes = layerList.get( i );
@@ -175,6 +176,7 @@ public abstract class AbstractNet implements Net
 			}
 		}
 		
+		// get the calculated output values from the output layer and return them
 		List<Node> outputNodes = getOutputLayer( );
 		int outputNodeCount = outputNodes.size( );
 		double[] output = new double[ outputNodeCount ];
@@ -186,6 +188,9 @@ public abstract class AbstractNet implements Net
 		return output;
 	}
 
+	/**
+	 * Apply a function to each node in the network.
+	 */
 	public void apply( NodeFunction function )
 	{
 		for ( List<Node> innerList : layerList )

@@ -3,6 +3,14 @@ package edu.gmu.classifier.neuralnet.node;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A basic implementation of the Node interface which does not
+ * define the output/activation function for the node or how
+ * to calculate the node's error.
+ * 
+ * @author ulman
+ *
+ */
 public abstract class AbstractNode implements Node
 {
 	protected String name;
@@ -12,6 +20,11 @@ public abstract class AbstractNode implements Node
 	protected List<Link> inputLinks;
 	protected List<Link> outputLinks;
 	
+	/**
+	 * Construct a node based on a set of input and output links.
+	 * @param inputLinks
+	 * @param outputLinks
+	 */
 	public AbstractNode( List<Link> inputLinks, List<Link> outputLinks )
 	{
 		this.inputLinks = inputLinks;
@@ -23,7 +36,34 @@ public abstract class AbstractNode implements Node
 		this( new LinkedList<Link>( ), new LinkedList<Link>( ) );
 	}
 	
+	/**
+	 * Given the weighted sum of the node's input values, calculates
+	 * an output value based upon the node's activation function
+	 * (step, sigmoid, tanh, etc...)
+	 */
 	public abstract double outputFunction( double net );
+	
+	/**
+	 * Sets the stored net (sum of weighted inputs) and output
+	 * values for this node based on the current input values of
+	 * this node's input nodes.
+	 */
+	@Override
+	public void calculateOutput( )
+	{
+		if ( inputLinks.isEmpty( ) )
+			return;
+		
+		double sum = 0.0;
+		
+		for ( Link link : inputLinks )
+		{
+			sum += link.getWeight( ) * link.getInputNode( ).getOutput( );
+		}
+		
+		net = sum;
+		output = outputFunction( net );
+	}
 	
 	@Override
 	public String getName( )
@@ -47,23 +87,6 @@ public abstract class AbstractNode implements Node
 	public double getError( )
 	{
 		return error;
-	}
-	
-	@Override
-	public void calculateOutput( )
-	{
-		if ( inputLinks.isEmpty( ) )
-			return;
-		
-		double sum = 0.0;
-		
-		for ( Link link : inputLinks )
-		{
-			sum += link.getWeight( ) * link.getInputNode( ).getOutput( );
-		}
-		
-		net = sum;
-		output = outputFunction( net );
 	}
 
 	@Override
@@ -107,27 +130,6 @@ public abstract class AbstractNode implements Node
 	{
 		this.outputLinks.add( link );
 	}
-	
-	/*
-	@Override
-	public String toString( )
-	{
-		StringBuilder b = new StringBuilder( );
-		
-		b.append( "[ " );
-		
-		
-		for ( Link link : inputLinks )
-		{
-			b.append( String.format( "%.3f", link.getWeight( ) ) );
-			b.append( " " );
-		}
-		
-		b.append( "]" );
-		
-		return b.toString( );
-	}
-	*/
 	
 	@Override
 	public String toString( )

@@ -1,5 +1,11 @@
 package edu.gmu.classifier.neuralnet.node;
 
+/**
+ * A weighted link between two nodes. A previous change in weight value is
+ * also stored in order to implement weight updates with momentum. 
+ * 
+ * @author ulman
+ */
 public class Link
 {
 	protected Node inputNode;
@@ -16,6 +22,14 @@ public class Link
 		this.outputNode = outputNode;
 	}
 	
+	/**
+	 * Update the weight of this link by delta_weight plus the previous
+	 * delta_weight times the momentum parameter which should generally
+	 * be on the interval [0,1).
+	 * 
+	 * @param delta_weight the amount to add to the link weight
+	 * @param momentum the momentum parameter on [0,1)
+	 */
 	public void deltaWeight( double delta_weight, double momentum )
 	{
 		delta_weight = delta_weight + momentum * this.previous_delta_weight;
