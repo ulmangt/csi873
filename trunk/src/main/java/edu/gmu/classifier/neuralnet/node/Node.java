@@ -35,12 +35,19 @@ public interface Node
 	
 	/**
 	 * Calculate error for output node using the truth value provided
-	 * @param truth
+	 * @param truth the true output value for the node
 	 */
 	public void calculateError( double truth );
 	
+	/**
+	 * @return the stored result of the last setError( ) or calculateError( ) call
+	 */
 	public double getError( );
 	
+	/**
+	 * Manually sets the node error to a fixed value
+	 * @param error
+	 */
 	public void setError( double error );
 	
 	/**

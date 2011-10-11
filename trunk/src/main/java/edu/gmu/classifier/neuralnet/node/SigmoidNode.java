@@ -4,6 +4,10 @@ import static java.lang.Math.*;
 
 import java.util.List;
 
+/**
+ * A node implementation which uses a sigmoid as its activation function.
+ * @author ulman
+ */
 public class SigmoidNode extends AbstractNode
 {
 	public SigmoidNode( )
