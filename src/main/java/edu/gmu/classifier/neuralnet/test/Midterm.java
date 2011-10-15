@@ -63,9 +63,11 @@ public class Midterm
 		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
 		*/
 		
+		/*
 		Net net = NetFactory.newNet( 64, 20, 10 );
 		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
 		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
+		*/
 		
 		/* 35% error
 		Net net = NetFactory.newNet( 64, 10, 10 );
@@ -85,10 +87,10 @@ public class Midterm
 		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
 		*/
 		
-		/* 65% error
+		
 		Net net = NetFactory.newNet( 64, 3, 10 );
 		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
 		b.train( net, trainingDataList, testDataList, 0.3, 0.0 );
-		*/
+		
 	}
 }
