@@ -101,17 +101,17 @@ public class Backpropagation
 			}
 			
 			// store weights
-//			net.apply( new NodeFunction( )
-//			{
-//				@Override
-//				public void run( Node node )
-//				{
-//					for ( Link link : node.getInputLinks( ) )
-//					{
-//						weightMap.put( link, link.getWeight( ) );
-//					}
-//				}
-//			});
+			net.apply( new NodeFunction( )
+			{
+				@Override
+				public void run( Node node )
+				{
+					for ( Link link : node.getInputLinks( ) )
+					{
+						weightMap.put( link, link.getWeight( ) );
+					}
+				}
+			});
 			
 			double testError = calculateError( net, testData );
 			double trainError = calculateError( net, trainData );
@@ -151,25 +151,28 @@ public class Backpropagation
 		frame.setVisible( true );
 		
 		// create jfreechart dataset for plotting purposes
-//		DefaultXYDataset dataset2 = new DefaultXYDataset( );
-//		for( Link link : weightMap.keySet( ) )
-//		{
-//			List<Double> list = weightMap.get( link );
-//			double[][] seriesData = new double[2][list.size( )];
-//			for ( int i = 0 ; i < list.size( ) ; i++ )
-//			{
-//				seriesData[0][i] = i;
-//				seriesData[1][i] = list.get( i );
-//			}
-//			dataset2.addSeries( link.toString( ), seriesData );
-//		}
-//		
-//		JFreeChart chart2 = ChartFactory.createXYLineChart( "Network Weights", "Iteration", "Weight", dataset2, PlotOrientation.VERTICAL, false, false, false );
-//		ChartPanel chartPanel2 = new ChartPanel( chart2 );
-//		JFrame frame2 = new JFrame( );
-//		frame2.setSize( 1000, 1000 );
-//		frame2.add( chartPanel2 );
-//		frame2.setVisible( true );
+		DefaultXYDataset dataset2 = new DefaultXYDataset( );
+		
+		Node outputNode0 = net.getOutputLayer( ).get( 0 );
+		for ( Link link : outputNode0.getInputLinks( ) )
+		//for( Link link : weightMap.keySet( ) )
+		{
+			List<Double> list = weightMap.get( link );
+			double[][] seriesData = new double[2][list.size( )];
+			for ( int i = 0 ; i < list.size( ) ; i++ )
+			{
+				seriesData[0][i] = i;
+				seriesData[1][i] = list.get( i );
+			}
+			dataset2.addSeries( link.toString( ), seriesData );
+		}
+		
+		JFreeChart chart2 = ChartFactory.createXYLineChart( "Digit 0 Output Node Weights", "Iteration", "Weight", dataset2, PlotOrientation.VERTICAL, true, false, false );
+		ChartPanel chartPanel2 = new ChartPanel( chart2 );
+		JFrame frame2 = new JFrame( );
+		frame2.setSize( 1000, 1000 );
+		frame2.add( chartPanel2 );
+		frame2.setVisible( true );
 	}
 	
 	protected double calculateError( Net net, List<TrainingExample> testData )
