@@ -173,6 +173,15 @@ public class Backpropagation
 		frame2.setSize( 1000, 1000 );
 		frame2.add( chartPanel2 );
 		frame2.setVisible( true );
+		
+		double trainError = calculateError( net, trainData );
+		double testError = calculateError( net, testData );
+	
+		double trainErrorInterval = 1.96 * Math.sqrt( trainError * ( 1 - trainError ) / trainData.size( ) );
+		double testErrorInterval = 1.96 * Math.sqrt( testError * ( 1 - testError ) / testData.size( ) );
+		
+		System.out.printf( "Train Error: %.3f Train Interval: (%.3f, %.3f)%n", trainError, trainError - trainErrorInterval, trainError + trainErrorInterval );
+		System.out.printf( "Test Error: %.3f Test Interval: (%.3f, %.3f)%n", testError, testError - testErrorInterval, testError + testErrorInterval );
 	}
 	
 	protected double calculateError( Net net, List<TrainingExample> testData )
@@ -227,7 +236,7 @@ public class Backpropagation
 			{
 				for ( Link link : node.getInputLinks( ) )
 				{
-					System.out.printf( "%s (%.5f)%n", link, link.getWeight( ) );
+					System.out.printf( "%s,%s,%.5f%n", link.getInputNode( ), link.getOutputNode( ), link.getWeight( ) );
 				}
 			}
 		});
