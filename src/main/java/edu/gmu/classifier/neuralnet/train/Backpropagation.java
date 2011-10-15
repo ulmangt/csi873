@@ -88,6 +88,7 @@ public class Backpropagation
 		{
 //			sSystem.out.println( counter );
 			
+			// loop over each training example
 			for ( TrainingExample data : trainData )
 			{
 				// calculate and store node outputs
@@ -131,6 +132,7 @@ public class Backpropagation
 				}
 			});
 			
+			// calculate and store training and test errors
 			double testError = calculateError( net, testData );
 			double trainError = calculateError( net, trainData );
 			
@@ -205,6 +207,11 @@ public class Backpropagation
 		System.out.printf( "Test Error: %.3f Test Interval: (%.3f, %.3f)%n", testError, testError - testErrorInterval, testError + testErrorInterval );
 	}
 	
+	/**
+	 * @param net the network to use to classify the training examples
+	 * @param testData 
+	 * @return the percentage of correctly classified examples for the provided list of data
+	 */
 	public double calculateError( Net net, List<TrainingExample> testData )
 	{
 		int totalCount = testData.size( );
@@ -223,6 +230,10 @@ public class Backpropagation
 		return 1.0 - ( (double) correctCount / (double) totalCount );
 	}
 	
+	/**
+	 * @param array
+	 * @return the index of the largest entry in the array
+	 */
 	public int getLargestIndex( double[] array )
 	{
 		double max = Double.NEGATIVE_INFINITY;
