@@ -11,7 +11,7 @@ public class NetFactory
 	}
 	
 	/**
-	 * Creates a 
+	 * Creates a neural network with the given number of nodes at each layer.
 	 * @param nodeCount
 	 */
 	public static Net newNet( int... nodeCount )

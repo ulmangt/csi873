@@ -20,6 +20,14 @@ import org.jfree.data.xy.DefaultXYDataset;
 
 import com.google.common.collect.ArrayListMultimap;
 
+/**
+ * Implementation of the neural network backpropagation training algorithm. Takes a 
+ * previously constructed edu.gmu.classifier.neuralnet.net.Net and TrainingExample
+ * instances loaded using edu.gmu.classifier.neuralnet.io.DataLoader and adjusts the
+ * weights of the network based on the training examples.
+ * 
+ * @author ulman
+ */
 public class Backpropagation
 {	
 	public static class TrainingExample
@@ -56,19 +64,29 @@ public class Backpropagation
 	
 	int counter = 0;
 	
+	/**
+	 * Trains the provided network based on the training examples.
+	 * 
+	 * @param net the network to train. The weights of the links in the network will be adjusted by this call
+	 * @param trainData the data set to use to train the network
+	 * @param testData the data set used to verify the effectiveness of the network
+	 * @param learningRate the step size of take at each iteration of the backpropagation algorithm
+	 * @param momentum whether to adjust link weight updates based on the magnitude of the previous update
+	 */
 	public void train( Net net, List<TrainingExample> trainData, List<TrainingExample> testData, double learningRate, double momentum )
 	{
-		// populate map to save weights
-		
+		// initialize data structures to store error and weight information at each iteration in order to generate plots
 		final ArrayListMultimap<Link,Double> weightMap = ArrayListMultimap.create( );
 		final ArrayList<Double> testErrorList = new ArrayList<Double>( );
 		final ArrayList<Double> trainErrorList = new ArrayList<Double>( );
 		
+		// initialize iteration counter
 		counter = 0;
 		
+		// loop until stopping criterion are met
 		while ( !stop( net ) )
 		{
-			System.out.println( counter );
+//			sSystem.out.println( counter );
 			
 			for ( TrainingExample data : trainData )
 			{
@@ -120,59 +138,62 @@ public class Backpropagation
 			trainErrorList.add( trainError );
 		}
 		
-		printWeights( net );
+		System.out.printf( "============================================%n" );
+		System.out.printf( "LR: %.2f M: %.2f%n", learningRate, momentum ); 
+		
+		//printWeights( net );
 		
 		// create jfreechart dataset for plotting purposes
-		double[][] testSeriesData = new double[2][testErrorList.size( )];
-		double[][] trainSeriesData = new double[2][trainErrorList.size( )];
-		DefaultXYDataset dataset = new DefaultXYDataset( );
-		
-		for( int i = 0 ; i < testErrorList.size( ) ; i++ )
-		{
-			testSeriesData[0][i] = i;
-			testSeriesData[1][i] = testErrorList.get( i );
-			
-			dataset.addSeries( "Test Error", testSeriesData );
-		}
-		
-		for( int i = 0 ; i < trainErrorList.size( ) ; i++ )
-		{
-			trainSeriesData[0][i] = i;
-			trainSeriesData[1][i] = trainErrorList.get( i );
-			
-			dataset.addSeries( "Train Error", trainSeriesData );
-		}
-		
-		JFreeChart chart = ChartFactory.createXYLineChart( "Test and Training Error", "Iteration", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
-		ChartPanel chartPanel = new ChartPanel( chart );
-		JFrame frame = new JFrame( );
-		frame.setSize( 1000, 1000 );
-		frame.add( chartPanel );
-		frame.setVisible( true );
-		
-		// create jfreechart dataset for plotting purposes
-		DefaultXYDataset dataset2 = new DefaultXYDataset( );
-		
-		Node outputNode0 = net.getOutputLayer( ).get( 0 );
-		for ( Link link : outputNode0.getInputLinks( ) )
-		//for( Link link : weightMap.keySet( ) )
-		{
-			List<Double> list = weightMap.get( link );
-			double[][] seriesData = new double[2][list.size( )];
-			for ( int i = 0 ; i < list.size( ) ; i++ )
-			{
-				seriesData[0][i] = i;
-				seriesData[1][i] = list.get( i );
-			}
-			dataset2.addSeries( link.toString( ), seriesData );
-		}
-		
-		JFreeChart chart2 = ChartFactory.createXYLineChart( "Digit 0 Output Node Weights", "Iteration", "Weight", dataset2, PlotOrientation.VERTICAL, true, false, false );
-		ChartPanel chartPanel2 = new ChartPanel( chart2 );
-		JFrame frame2 = new JFrame( );
-		frame2.setSize( 1000, 1000 );
-		frame2.add( chartPanel2 );
-		frame2.setVisible( true );
+//		double[][] testSeriesData = new double[2][testErrorList.size( )];
+//		double[][] trainSeriesData = new double[2][trainErrorList.size( )];
+//		DefaultXYDataset dataset = new DefaultXYDataset( );
+//		
+//		for( int i = 0 ; i < testErrorList.size( ) ; i++ )
+//		{
+//			testSeriesData[0][i] = i;
+//			testSeriesData[1][i] = testErrorList.get( i );
+//			
+//			dataset.addSeries( "Test Error", testSeriesData );
+//		}
+//		
+//		for( int i = 0 ; i < trainErrorList.size( ) ; i++ )
+//		{
+//			trainSeriesData[0][i] = i;
+//			trainSeriesData[1][i] = trainErrorList.get( i );
+//			
+//			dataset.addSeries( "Train Error", trainSeriesData );
+//		}
+//		
+//		JFreeChart chart = ChartFactory.createXYLineChart( String.format( "Test and Training Error (LR: %.2f M: %.2f)", learningRate, momentum), "Iteration", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
+//		ChartPanel chartPanel = new ChartPanel( chart );
+//		JFrame frame = new JFrame( );
+//		frame.setSize( 1000, 1000 );
+//		frame.add( chartPanel );
+//		frame.setVisible( true );
+//		
+//		// create jfreechart dataset for plotting purposes
+//		DefaultXYDataset dataset2 = new DefaultXYDataset( );
+//		
+//		Node outputNode0 = net.getOutputLayer( ).get( 0 );
+//		for ( Link link : outputNode0.getInputLinks( ) )
+//		//for( Link link : weightMap.keySet( ) )
+//		{
+//			List<Double> list = weightMap.get( link );
+//			double[][] seriesData = new double[2][list.size( )];
+//			for ( int i = 0 ; i < list.size( ) ; i++ )
+//			{
+//				seriesData[0][i] = i;
+//				seriesData[1][i] = list.get( i );
+//			}
+//			dataset2.addSeries( link.toString( ), seriesData );
+//		}
+//		
+//		JFreeChart chart2 = ChartFactory.createXYLineChart( String.format( "Digit 0 Output Node Weights (LR: %.2f M: %.2f)", learningRate, momentum), "Iteration", "Weight", dataset2, PlotOrientation.VERTICAL, true, false, false );
+//		ChartPanel chartPanel2 = new ChartPanel( chart2 );
+//		JFrame frame2 = new JFrame( );
+//		frame2.setSize( 1000, 1000 );
+//		frame2.add( chartPanel2 );
+//		frame2.setVisible( true );
 		
 		double trainError = calculateError( net, trainData );
 		double testError = calculateError( net, testData );
@@ -184,7 +205,7 @@ public class Backpropagation
 		System.out.printf( "Test Error: %.3f Test Interval: (%.3f, %.3f)%n", testError, testError - testErrorInterval, testError + testErrorInterval );
 	}
 	
-	protected double calculateError( Net net, List<TrainingExample> testData )
+	public double calculateError( Net net, List<TrainingExample> testData )
 	{
 		int totalCount = testData.size( );
 		int correctCount = 0;
@@ -202,7 +223,7 @@ public class Backpropagation
 		return 1.0 - ( (double) correctCount / (double) totalCount );
 	}
 	
-	protected int getLargestIndex( double[] array )
+	public int getLargestIndex( double[] array )
 	{
 		double max = Double.NEGATIVE_INFINITY;
 		int index = 0;
@@ -244,6 +265,6 @@ public class Backpropagation
 	
 	public boolean stop( Net net )
 	{
-		return counter++ > 1000;
+		return counter++ > 500;
 	}
 }

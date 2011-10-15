@@ -1,0 +1,121 @@
+============================================
+LR: 1.00 M: 0.30
+Train Error: 0.525 Train Interval: (0.493, 0.557)
+Test Error: 0.666 Test Interval: (0.620, 0.712)
+============================================
+LR: 0.97 M: 0.30
+Train Error: 0.512 Train Interval: (0.480, 0.544)
+Test Error: 0.607 Test Interval: (0.560, 0.655)
+============================================
+LR: 0.94 M: 0.30
+Train Error: 0.399 Train Interval: (0.367, 0.430)
+Test Error: 0.522 Test Interval: (0.474, 0.570)
+============================================
+LR: 0.91 M: 0.30
+Train Error: 0.504 Train Interval: (0.472, 0.536)
+Test Error: 0.605 Test Interval: (0.558, 0.652)
+============================================
+LR: 0.88 M: 0.30
+Train Error: 0.537 Train Interval: (0.505, 0.569)
+Test Error: 0.615 Test Interval: (0.568, 0.662)
+============================================
+LR: 0.85 M: 0.30
+Train Error: 0.461 Train Interval: (0.429, 0.493)
+Test Error: 0.593 Test Interval: (0.545, 0.640)
+============================================
+LR: 0.82 M: 0.30
+Train Error: 0.491 Train Interval: (0.459, 0.524)
+Test Error: 0.576 Test Interval: (0.528, 0.623)
+============================================
+LR: 0.79 M: 0.30
+Train Error: 0.373 Train Interval: (0.342, 0.404)
+Test Error: 0.527 Test Interval: (0.479, 0.575)
+============================================
+LR: 0.76 M: 0.30
+Train Error: 0.430 Train Interval: (0.398, 0.462)
+Test Error: 0.541 Test Interval: (0.493, 0.590)
+============================================
+LR: 0.73 M: 0.30
+Train Error: 0.465 Train Interval: (0.432, 0.497)
+Test Error: 0.598 Test Interval: (0.550, 0.645)
+============================================
+LR: 0.70 M: 0.30
+Train Error: 0.554 Train Interval: (0.522, 0.586)
+Test Error: 0.654 Test Interval: (0.608, 0.700)
+============================================
+LR: 0.67 M: 0.30
+Train Error: 0.577 Train Interval: (0.546, 0.609)
+Test Error: 0.659 Test Interval: (0.613, 0.704)
+============================================
+LR: 0.64 M: 0.30
+Train Error: 0.394 Train Interval: (0.362, 0.425)
+Test Error: 0.534 Test Interval: (0.486, 0.582)
+============================================
+LR: 0.61 M: 0.30
+Train Error: 0.435 Train Interval: (0.404, 0.467)
+Test Error: 0.541 Test Interval: (0.493, 0.590)
+============================================
+LR: 0.58 M: 0.30
+Train Error: 0.532 Train Interval: (0.500, 0.564)
+Test Error: 0.651 Test Interval: (0.605, 0.697)
+============================================
+LR: 0.55 M: 0.30
+Train Error: 0.449 Train Interval: (0.417, 0.481)
+Test Error: 0.610 Test Interval: (0.563, 0.657)
+============================================
+LR: 0.52 M: 0.30
+Train Error: 0.553 Train Interval: (0.521, 0.585)
+Test Error: 0.685 Test Interval: (0.640, 0.730)
+============================================
+LR: 0.49 M: 0.30
+Train Error: 0.408 Train Interval: (0.376, 0.439)
+Test Error: 0.556 Test Interval: (0.508, 0.604)
+============================================
+LR: 0.46 M: 0.30
+Train Error: 0.459 Train Interval: (0.427, 0.491)
+Test Error: 0.598 Test Interval: (0.550, 0.645)
+============================================
+LR: 0.43 M: 0.30
+Train Error: 0.447 Train Interval: (0.415, 0.479)
+Test Error: 0.568 Test Interval: (0.520, 0.616)
+============================================
+LR: 0.40 M: 0.30
+Train Error: 0.485 Train Interval: (0.453, 0.517)
+Test Error: 0.595 Test Interval: (0.548, 0.643)
+============================================
+LR: 0.37 M: 0.30
+Train Error: 0.490 Train Interval: (0.458, 0.522)
+Test Error: 0.607 Test Interval: (0.560, 0.655)
+============================================
+LR: 0.34 M: 0.30
+Train Error: 0.510 Train Interval: (0.478, 0.542)
+Test Error: 0.593 Test Interval: (0.545, 0.640)
+============================================
+LR: 0.31 M: 0.30
+Train Error: 0.405 Train Interval: (0.374, 0.437)
+Test Error: 0.541 Test Interval: (0.493, 0.590)
+============================================
+LR: 0.28 M: 0.30
+Train Error: 0.429 Train Interval: (0.397, 0.461)
+Test Error: 0.541 Test Interval: (0.493, 0.590)
+============================================
+LR: 0.25 M: 0.30
+Train Error: 0.398 Train Interval: (0.366, 0.429)
+Test Error: 0.512 Test Interval: (0.464, 0.561)
+============================================
+LR: 0.22 M: 0.30
+Train Error: 0.453 Train Interval: (0.421, 0.485)
+Test Error: 0.573 Test Interval: (0.525, 0.621)
+============================================
+LR: 0.19 M: 0.30
+Train Error: 0.423 Train Interval: (0.391, 0.454)
+Test Error: 0.561 Test Interval: (0.513, 0.609)
+============================================
+LR: 0.16 M: 0.30
+Train Error: 0.380 Train Interval: (0.348, 0.411)
+Test Error: 0.502 Test Interval: (0.454, 0.551)
+============================================
+LR: 0.13 M: 0.30
+Train Error: 0.382 Train Interval: (0.350, 0.413)
+Test Error: 0.502 Test Interval: (0.454, 0.551)
+

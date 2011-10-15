@@ -1,5 +1,7 @@
 package edu.gmu.classifier.neuralnet.node;
 
+import java.util.Random;
+
 /**
  * A collection of commonly used NodeFunction implementations.
  * 
@@ -36,11 +38,13 @@ public class NodeFunctions
 	{
 		return new NodeFunction( )
 		{
+			Random r = new Random( 0 );
+			
 			public void run( Node node )
 			{
 				for ( Link link : node.getInputLinks( ) )
 				{
-					link.setWeight( Math.random( ) * ( maxWeight - minWeight ) + minWeight );
+					link.setWeight( r.nextDouble( ) * ( maxWeight - minWeight ) + minWeight );
 				}
 			}
 		};
