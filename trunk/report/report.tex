@@ -15,20 +15,26 @@
 
 \tableofcontents
 
-\section{Name1}\label{Name1}
+\section{Network Implementation}\label{Network Parameters}
+
+The neural network used to classify the provided handwriting data set was a feed-forward network with 64 input nodes (one for each pixel in the input images), 10 output nodes (one for each digit 0 through 9), and one hidden layer. A number of different node counts for the hidden layer were tried and compared. The input and hidden layers also contained a threshold node whose output value was always fixed at \(1.0\). Each node in the hidden and output layers was implemented as a sigmoid threshold unit. Equation \ref{sigmoid1} demonstrates the calculations performed at a single node with inputs \(x_{0}\) through \(x_{n}\) and weights \(w_{0}\) through \(w_{n}\).
+
+
+\begin{equation}\label{sigmoid1}
+\begin{split}
+net &= \sum\limits_{i=0}^n w_{i}x_{i}\\
+\sigma_{net} &= \frac{1}{1+e^{-net}}
+\end{split}
+\end{equation}
 
 \subsection{Name2}\label{Name2}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{data/particles_prior.png}
+\includegraphics[width=0.85\textwidth]{data/0.15_0.3/64-10-10_15_3_error.png}
 \caption{Prior Particle Position Distribution}
 \label{prior}
 \end{figure}
-
-\begin{equation}\label{lfunc1}
-L(y|x) = P( Y=y | X=x ) \verb! for ! x \in S
-\end{equation}
 
 \begin{thebibliography}{9}
 
