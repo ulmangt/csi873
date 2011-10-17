@@ -283,6 +283,6 @@ public class Backpropagation
 	
 	public boolean stop( Net net )
 	{
-		return counter++ > 1000;
+		return counter++ > 2000;
 	}
 }

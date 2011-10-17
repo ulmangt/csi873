@@ -60,7 +60,7 @@ public class Midterm
 		}
 		
 		// create a network
-		Net net = NetFactory.newNet( 64, 3, 10 );
+		Net net = NetFactory.newNet( 64, 10, 10 );
 		
 		// randomize the network weights
 		net.apply( NodeFunctions.setRandomWeights( -0.1, 0.1 ) );
