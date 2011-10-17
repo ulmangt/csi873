@@ -140,62 +140,69 @@ public class Backpropagation
 			trainErrorList.add( trainError );
 		}
 		
+		//// print results and plots ////
+		
+		// print learning rate and momentum parameters
 		System.out.printf( "============================================%n" );
 		System.out.printf( "LR: %.2f M: %.2f%n", learningRate, momentum ); 
 		
-		//printWeights( net );
+		// print network weights
+		printWeights( net );
 		
 		// create jfreechart dataset for plotting purposes
-//		double[][] testSeriesData = new double[2][testErrorList.size( )];
-//		double[][] trainSeriesData = new double[2][trainErrorList.size( )];
-//		DefaultXYDataset dataset = new DefaultXYDataset( );
-//		
-//		for( int i = 0 ; i < testErrorList.size( ) ; i++ )
-//		{
-//			testSeriesData[0][i] = i;
-//			testSeriesData[1][i] = testErrorList.get( i );
-//			
-//			dataset.addSeries( "Test Error", testSeriesData );
-//		}
-//		
-//		for( int i = 0 ; i < trainErrorList.size( ) ; i++ )
-//		{
-//			trainSeriesData[0][i] = i;
-//			trainSeriesData[1][i] = trainErrorList.get( i );
-//			
-//			dataset.addSeries( "Train Error", trainSeriesData );
-//		}
-//		
-//		JFreeChart chart = ChartFactory.createXYLineChart( String.format( "Test and Training Error (LR: %.2f M: %.2f)", learningRate, momentum), "Iteration", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
-//		ChartPanel chartPanel = new ChartPanel( chart );
-//		JFrame frame = new JFrame( );
-//		frame.setSize( 1000, 1000 );
-//		frame.add( chartPanel );
-//		frame.setVisible( true );
-//		
-//		// create jfreechart dataset for plotting purposes
-//		DefaultXYDataset dataset2 = new DefaultXYDataset( );
-//		
-//		Node outputNode0 = net.getOutputLayer( ).get( 0 );
-//		for ( Link link : outputNode0.getInputLinks( ) )
-//		//for( Link link : weightMap.keySet( ) )
-//		{
-//			List<Double> list = weightMap.get( link );
-//			double[][] seriesData = new double[2][list.size( )];
-//			for ( int i = 0 ; i < list.size( ) ; i++ )
-//			{
-//				seriesData[0][i] = i;
-//				seriesData[1][i] = list.get( i );
-//			}
-//			dataset2.addSeries( link.toString( ), seriesData );
-//		}
-//		
-//		JFreeChart chart2 = ChartFactory.createXYLineChart( String.format( "Digit 0 Output Node Weights (LR: %.2f M: %.2f)", learningRate, momentum), "Iteration", "Weight", dataset2, PlotOrientation.VERTICAL, true, false, false );
-//		ChartPanel chartPanel2 = new ChartPanel( chart2 );
-//		JFrame frame2 = new JFrame( );
-//		frame2.setSize( 1000, 1000 );
-//		frame2.add( chartPanel2 );
-//		frame2.setVisible( true );
+		double[][] testSeriesData = new double[2][testErrorList.size( )];
+		double[][] trainSeriesData = new double[2][trainErrorList.size( )];
+		DefaultXYDataset dataset = new DefaultXYDataset( );
+		
+		// add data points to test error vs training iteration plot
+		for( int i = 0 ; i < testErrorList.size( ) ; i++ )
+		{
+			testSeriesData[0][i] = i;
+			testSeriesData[1][i] = testErrorList.get( i );
+			
+			dataset.addSeries( "Test Error", testSeriesData );
+		}
+		
+		// add data points to training error vs training iteration plot
+		for( int i = 0 ; i < trainErrorList.size( ) ; i++ )
+		{
+			trainSeriesData[0][i] = i;
+			trainSeriesData[1][i] = trainErrorList.get( i );
+			
+			dataset.addSeries( "Train Error", trainSeriesData );
+		}
+		
+		// display plots
+		JFreeChart chart = ChartFactory.createXYLineChart( String.format( "Test and Training Error (LR: %.2f M: %.2f)", learningRate, momentum), "Iteration", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
+		ChartPanel chartPanel = new ChartPanel( chart );
+		JFrame frame = new JFrame( );
+		frame.setSize( 1000, 1000 );
+		frame.add( chartPanel );
+		frame.setVisible( true );
+		
+		// create jfreechart dataset for plotting purposes
+		DefaultXYDataset dataset2 = new DefaultXYDataset( );
+		
+		Node outputNode0 = net.getOutputLayer( ).get( 0 );
+		for ( Link link : outputNode0.getInputLinks( ) )
+		//for( Link link : weightMap.keySet( ) )
+		{
+			List<Double> list = weightMap.get( link );
+			double[][] seriesData = new double[2][list.size( )];
+			for ( int i = 0 ; i < list.size( ) ; i++ )
+			{
+				seriesData[0][i] = i;
+				seriesData[1][i] = list.get( i );
+			}
+			dataset2.addSeries( link.toString( ), seriesData );
+		}
+		
+		JFreeChart chart2 = ChartFactory.createXYLineChart( String.format( "Digit 0 Output Node Weights (LR: %.2f M: %.2f)", learningRate, momentum), "Iteration", "Weight", dataset2, PlotOrientation.VERTICAL, true, false, false );
+		ChartPanel chartPanel2 = new ChartPanel( chart2 );
+		JFrame frame2 = new JFrame( );
+		frame2.setSize( 1000, 1000 );
+		frame2.add( chartPanel2 );
+		frame2.setVisible( true );
 		
 		double trainError = calculateError( net, trainData );
 		double testError = calculateError( net, testData );
@@ -276,6 +283,6 @@ public class Backpropagation
 	
 	public boolean stop( Net net )
 	{
-		return counter++ > 500;
+		return counter++ > 1000;
 	}
 }
