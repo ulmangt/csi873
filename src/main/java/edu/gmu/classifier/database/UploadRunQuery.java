@@ -30,7 +30,7 @@ public class UploadRunQuery
 		try
 		{
 			connection = DatabaseManager.getInstance( ).getConnection( );
-			statement = connection.prepareStatement( "INSERT INTO Handwriting.Run (sDescription, dtRunDate) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS );
+			statement = connection.prepareStatement( "INSERT INTO Handwriting.Run (sDescription, dtRunDate) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS );
 			statement.setString( 1, sDescription );
 			statement.setDate( 2, new Date( time ) );
 			statement.execute( );

@@ -26,8 +26,8 @@ public class UploadResultQuery
 		try
 		{
 			connection = DatabaseManager.getInstance( ).getConnection( );
-			statement = connection.prepareStatement( "INSERT INTO Handwriting.Result (ixData, isRun, sClassification) VALUES (?,?,?)" );
-			statement.setInt( 1, ixRun );
+			statement = connection.prepareStatement( "INSERT INTO Handwriting.Result (ixData, ixRun, sClassification) VALUES (?,?,?)" );
+			statement.setInt( 1, ixData );
 			statement.setInt( 2, ixRun );
 			statement.setString( 3, sClassification );
 			statement.execute( );
