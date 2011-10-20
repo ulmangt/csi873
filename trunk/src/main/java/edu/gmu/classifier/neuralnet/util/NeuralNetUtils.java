@@ -3,11 +3,11 @@ package edu.gmu.classifier.neuralnet.util;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.gmu.classifier.io.TrainingExample;
 import edu.gmu.classifier.neuralnet.net.Net;
 import edu.gmu.classifier.neuralnet.node.Link;
 import edu.gmu.classifier.neuralnet.node.Node;
 import edu.gmu.classifier.neuralnet.node.NodeFunction;
-import edu.gmu.classifier.neuralnet.train.Backpropagation.TrainingExample;
 
 public class NeuralNetUtils
 {

@@ -14,11 +14,11 @@ import java.util.Map.Entry;
 
 import edu.gmu.classifier.database.ResultsUploader;
 import edu.gmu.classifier.io.DataLoader;
+import edu.gmu.classifier.io.TrainingExample;
 import edu.gmu.classifier.neuralnet.factory.NetFactory;
 import edu.gmu.classifier.neuralnet.net.Net;
 import edu.gmu.classifier.neuralnet.node.NodeFunctions;
 import edu.gmu.classifier.neuralnet.train.Backpropagation;
-import edu.gmu.classifier.neuralnet.train.Backpropagation.TrainingExample;
 
 /**
  * Main class which uses the data loading and neural net training classes defined elsewhere
@@ -111,6 +111,6 @@ public class Midterm
 		
 		// upload results for visualization
 		//ResultsUploader.uploadTrainingResults( net, trainingDataListAll, "64-10-10_trainrate=0.15_momentum=0.3_stop=50_train" );
-		//ResultsUploader.uploadTestingResults( net, testDataList, "64-10-10_trainrate=0.15_momentum=0.3_stop=50_test" );
+		ResultsUploader.uploadTestingResults( net, testDataList, "64-10-10_trainrate=0.15_momentum=0.3_stop=50_test" );
 	}
 }

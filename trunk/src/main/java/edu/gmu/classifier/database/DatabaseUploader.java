@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.gmu.classifier.io.DataLoader;
-import edu.gmu.classifier.neuralnet.train.Backpropagation.TrainingExample;
+import edu.gmu.classifier.io.TrainingExample;
 
 public class DatabaseUploader
 {

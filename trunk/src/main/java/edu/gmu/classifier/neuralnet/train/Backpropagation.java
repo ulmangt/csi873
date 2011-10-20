@@ -16,6 +16,7 @@ import org.jfree.data.xy.DefaultXYDataset;
 
 import com.google.common.collect.ArrayListMultimap;
 
+import edu.gmu.classifier.io.TrainingExample;
 import edu.gmu.classifier.neuralnet.net.Net;
 import edu.gmu.classifier.neuralnet.node.Link;
 import edu.gmu.classifier.neuralnet.node.Node;
@@ -31,51 +32,7 @@ import edu.gmu.classifier.neuralnet.node.NodeFunctions;
  * @author ulman
  */
 public class Backpropagation
-{	
-	public static class TrainingExample
-	{
-		protected int trueDigit;
-		protected double[] inputs;
-		protected double[] outputs;
-		
-		public TrainingExample( double[] inputs, double[] outputs, int trueDigit )
-		{
-			this.trueDigit = trueDigit;
-			this.inputs = inputs;
-			this.outputs = outputs;
-		}
-		
-		public double[] getInputs( )
-		{
-			return inputs;
-		}
-		
-		public void setInputs( double[] inputs )
-		{
-			this.inputs = inputs;
-		}
-		
-		public double[] getOutputs( )
-		{
-			return outputs;
-		}
-		
-		public void setOutputs( double[] outputs )
-		{
-			this.outputs = outputs;
-		}
-		
-		public int getDigit( )
-		{
-			return this.trueDigit;
-		}
-		
-		public String getCharacter( )
-		{
-			return String.valueOf( this.trueDigit );
-		}
-	}
-	
+{
 	int counter = 0;
 	int improveCounter = 0;
 	double bestError = 1.0;

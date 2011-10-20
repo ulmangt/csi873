@@ -2,8 +2,8 @@ package edu.gmu.classifier.database;
 
 import java.util.List;
 
+import edu.gmu.classifier.io.TrainingExample;
 import edu.gmu.classifier.neuralnet.net.Net;
-import edu.gmu.classifier.neuralnet.train.Backpropagation.TrainingExample;
 import edu.gmu.classifier.neuralnet.util.NeuralNetUtils;
 
 public class ResultsUploader
