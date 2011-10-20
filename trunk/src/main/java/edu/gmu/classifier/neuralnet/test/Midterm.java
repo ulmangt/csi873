@@ -110,7 +110,7 @@ public class Midterm
 		System.out.printf( "Test Error: %.3f Test Interval: (%.3f, %.3f)%n", testError, testError - testErrorInterval, testError + testErrorInterval );
 		
 		// upload results for visualization
-		ResultsUploader.uploadTrainingResults( net, trainingDataListAll, "64-10-10_trainrate=0.15_momentum=0.3_stop=50_train" );
-		ResultsUploader.uploadTestingResults( net, testDataList, "64-10-10_trainrate=0.15_momentum=0.3_stop=50_test" );
+		//ResultsUploader.uploadTrainingResults( net, trainingDataListAll, "64-10-10_trainrate=0.15_momentum=0.3_stop=50_train" );
+		//ResultsUploader.uploadTestingResults( net, testDataList, "64-10-10_trainrate=0.15_momentum=0.3_stop=50_test" );
 	}
 }
