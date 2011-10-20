@@ -1,0 +1,1186 @@
+Iteration: 1 Since Improvement: 0 Best Error: 0.900
+Iteration: 2 Since Improvement: 1 Best Error: 0.900
+Iteration: 3 Since Improvement: 2 Best Error: 0.900
+Iteration: 4 Since Improvement: 3 Best Error: 0.900
+Iteration: 5 Since Improvement: 4 Best Error: 0.900
+Iteration: 6 Since Improvement: 5 Best Error: 0.900
+Iteration: 7 Since Improvement: 6 Best Error: 0.900
+Iteration: 8 Since Improvement: 7 Best Error: 0.900
+Iteration: 9 Since Improvement: 0 Best Error: 0.880
+Iteration: 10 Since Improvement: 1 Best Error: 0.880
+Iteration: 11 Since Improvement: 2 Best Error: 0.880
+Iteration: 12 Since Improvement: 3 Best Error: 0.880
+Iteration: 13 Since Improvement: 4 Best Error: 0.880
+Iteration: 14 Since Improvement: 5 Best Error: 0.880
+Iteration: 15 Since Improvement: 6 Best Error: 0.880
+Iteration: 16 Since Improvement: 0 Best Error: 0.860
+Iteration: 17 Since Improvement: 1 Best Error: 0.860
+Iteration: 18 Since Improvement: 2 Best Error: 0.860
+Iteration: 19 Since Improvement: 3 Best Error: 0.860
+Iteration: 20 Since Improvement: 0 Best Error: 0.820
+Iteration: 21 Since Improvement: 0 Best Error: 0.800
+Iteration: 22 Since Improvement: 1 Best Error: 0.800
+Iteration: 23 Since Improvement: 2 Best Error: 0.800
+Iteration: 24 Since Improvement: 3 Best Error: 0.800
+Iteration: 25 Since Improvement: 4 Best Error: 0.800
+Iteration: 26 Since Improvement: 5 Best Error: 0.800
+Iteration: 27 Since Improvement: 6 Best Error: 0.800
+Iteration: 28 Since Improvement: 7 Best Error: 0.800
+Iteration: 29 Since Improvement: 8 Best Error: 0.800
+Iteration: 30 Since Improvement: 9 Best Error: 0.800
+Iteration: 31 Since Improvement: 10 Best Error: 0.800
+Iteration: 32 Since Improvement: 0 Best Error: 0.780
+Iteration: 33 Since Improvement: 1 Best Error: 0.780
+Iteration: 34 Since Improvement: 0 Best Error: 0.760
+Iteration: 35 Since Improvement: 1 Best Error: 0.760
+Iteration: 36 Since Improvement: 0 Best Error: 0.740
+Iteration: 37 Since Improvement: 1 Best Error: 0.740
+Iteration: 38 Since Improvement: 2 Best Error: 0.740
+Iteration: 39 Since Improvement: 3 Best Error: 0.740
+Iteration: 40 Since Improvement: 4 Best Error: 0.740
+Iteration: 41 Since Improvement: 5 Best Error: 0.740
+Iteration: 42 Since Improvement: 6 Best Error: 0.740
+Iteration: 43 Since Improvement: 7 Best Error: 0.740
+Iteration: 44 Since Improvement: 0 Best Error: 0.720
+Iteration: 45 Since Improvement: 1 Best Error: 0.720
+Iteration: 46 Since Improvement: 2 Best Error: 0.720
+Iteration: 47 Since Improvement: 3 Best Error: 0.720
+Iteration: 48 Since Improvement: 0 Best Error: 0.700
+Iteration: 49 Since Improvement: 1 Best Error: 0.700
+Iteration: 50 Since Improvement: 2 Best Error: 0.700
+Iteration: 51 Since Improvement: 3 Best Error: 0.700
+Iteration: 52 Since Improvement: 4 Best Error: 0.700
+Iteration: 53 Since Improvement: 5 Best Error: 0.700
+Iteration: 54 Since Improvement: 6 Best Error: 0.700
+Iteration: 55 Since Improvement: 7 Best Error: 0.700
+Iteration: 56 Since Improvement: 8 Best Error: 0.700
+Iteration: 57 Since Improvement: 9 Best Error: 0.700
+Iteration: 58 Since Improvement: 10 Best Error: 0.700
+Iteration: 59 Since Improvement: 11 Best Error: 0.700
+Iteration: 60 Since Improvement: 12 Best Error: 0.700
+Iteration: 61 Since Improvement: 13 Best Error: 0.700
+Iteration: 62 Since Improvement: 14 Best Error: 0.700
+Iteration: 63 Since Improvement: 0 Best Error: 0.680
+Iteration: 64 Since Improvement: 1 Best Error: 0.680
+Iteration: 65 Since Improvement: 2 Best Error: 0.680
+Iteration: 66 Since Improvement: 3 Best Error: 0.680
+Iteration: 67 Since Improvement: 4 Best Error: 0.680
+Iteration: 68 Since Improvement: 5 Best Error: 0.680
+Iteration: 69 Since Improvement: 6 Best Error: 0.680
+Iteration: 70 Since Improvement: 7 Best Error: 0.680
+Iteration: 71 Since Improvement: 8 Best Error: 0.680
+Iteration: 72 Since Improvement: 9 Best Error: 0.680
+Iteration: 73 Since Improvement: 10 Best Error: 0.680
+Iteration: 74 Since Improvement: 11 Best Error: 0.680
+Iteration: 75 Since Improvement: 12 Best Error: 0.680
+Iteration: 76 Since Improvement: 13 Best Error: 0.680
+Iteration: 77 Since Improvement: 14 Best Error: 0.680
+Iteration: 78 Since Improvement: 15 Best Error: 0.680
+Iteration: 79 Since Improvement: 16 Best Error: 0.680
+Iteration: 80 Since Improvement: 17 Best Error: 0.680
+Iteration: 81 Since Improvement: 18 Best Error: 0.680
+Iteration: 82 Since Improvement: 19 Best Error: 0.680
+Iteration: 83 Since Improvement: 20 Best Error: 0.680
+Iteration: 84 Since Improvement: 21 Best Error: 0.680
+Iteration: 85 Since Improvement: 22 Best Error: 0.680
+Iteration: 86 Since Improvement: 23 Best Error: 0.680
+Iteration: 87 Since Improvement: 24 Best Error: 0.680
+Iteration: 88 Since Improvement: 25 Best Error: 0.680
+Iteration: 89 Since Improvement: 26 Best Error: 0.680
+Iteration: 90 Since Improvement: 27 Best Error: 0.680
+Iteration: 91 Since Improvement: 28 Best Error: 0.680
+Iteration: 92 Since Improvement: 29 Best Error: 0.680
+Iteration: 93 Since Improvement: 30 Best Error: 0.680
+Iteration: 94 Since Improvement: 31 Best Error: 0.680
+Iteration: 95 Since Improvement: 32 Best Error: 0.680
+Iteration: 96 Since Improvement: 33 Best Error: 0.680
+Iteration: 97 Since Improvement: 34 Best Error: 0.680
+Iteration: 98 Since Improvement: 35 Best Error: 0.680
+Iteration: 99 Since Improvement: 36 Best Error: 0.680
+Iteration: 100 Since Improvement: 37 Best Error: 0.680
+Iteration: 101 Since Improvement: 38 Best Error: 0.680
+Iteration: 102 Since Improvement: 39 Best Error: 0.680
+Iteration: 103 Since Improvement: 40 Best Error: 0.680
+Iteration: 104 Since Improvement: 41 Best Error: 0.680
+Iteration: 105 Since Improvement: 42 Best Error: 0.680
+Iteration: 106 Since Improvement: 43 Best Error: 0.680
+Iteration: 107 Since Improvement: 44 Best Error: 0.680
+Iteration: 108 Since Improvement: 45 Best Error: 0.680
+Iteration: 109 Since Improvement: 46 Best Error: 0.680
+Iteration: 110 Since Improvement: 47 Best Error: 0.680
+Iteration: 111 Since Improvement: 48 Best Error: 0.680
+Iteration: 112 Since Improvement: 49 Best Error: 0.680
+Iteration: 113 Since Improvement: 50 Best Error: 0.680
+Iteration: 114 Since Improvement: 51 Best Error: 0.680
+Iteration: 115 Since Improvement: 52 Best Error: 0.680
+Iteration: 116 Since Improvement: 53 Best Error: 0.680
+Iteration: 117 Since Improvement: 54 Best Error: 0.680
+Iteration: 118 Since Improvement: 55 Best Error: 0.680
+Iteration: 119 Since Improvement: 56 Best Error: 0.680
+Iteration: 120 Since Improvement: 57 Best Error: 0.680
+Iteration: 121 Since Improvement: 58 Best Error: 0.680
+Iteration: 122 Since Improvement: 59 Best Error: 0.680
+Iteration: 123 Since Improvement: 60 Best Error: 0.680
+Iteration: 124 Since Improvement: 61 Best Error: 0.680
+Iteration: 125 Since Improvement: 62 Best Error: 0.680
+Iteration: 126 Since Improvement: 63 Best Error: 0.680
+Iteration: 127 Since Improvement: 64 Best Error: 0.680
+Iteration: 128 Since Improvement: 65 Best Error: 0.680
+Iteration: 129 Since Improvement: 66 Best Error: 0.680
+Iteration: 130 Since Improvement: 67 Best Error: 0.680
+Iteration: 131 Since Improvement: 68 Best Error: 0.680
+Iteration: 132 Since Improvement: 69 Best Error: 0.680
+Iteration: 133 Since Improvement: 70 Best Error: 0.680
+Iteration: 134 Since Improvement: 71 Best Error: 0.680
+Iteration: 135 Since Improvement: 72 Best Error: 0.680
+Iteration: 136 Since Improvement: 73 Best Error: 0.680
+Iteration: 137 Since Improvement: 74 Best Error: 0.680
+Iteration: 138 Since Improvement: 75 Best Error: 0.680
+Iteration: 139 Since Improvement: 76 Best Error: 0.680
+Iteration: 140 Since Improvement: 77 Best Error: 0.680
+Iteration: 141 Since Improvement: 78 Best Error: 0.680
+Iteration: 142 Since Improvement: 79 Best Error: 0.680
+Iteration: 143 Since Improvement: 80 Best Error: 0.680
+Iteration: 144 Since Improvement: 81 Best Error: 0.680
+Iteration: 145 Since Improvement: 82 Best Error: 0.680
+Iteration: 146 Since Improvement: 83 Best Error: 0.680
+Iteration: 147 Since Improvement: 84 Best Error: 0.680
+Iteration: 148 Since Improvement: 85 Best Error: 0.680
+Iteration: 149 Since Improvement: 86 Best Error: 0.680
+Iteration: 150 Since Improvement: 87 Best Error: 0.680
+Iteration: 151 Since Improvement: 88 Best Error: 0.680
+Iteration: 152 Since Improvement: 89 Best Error: 0.680
+Iteration: 153 Since Improvement: 90 Best Error: 0.680
+Iteration: 154 Since Improvement: 91 Best Error: 0.680
+Iteration: 155 Since Improvement: 92 Best Error: 0.680
+Iteration: 156 Since Improvement: 93 Best Error: 0.680
+Iteration: 157 Since Improvement: 94 Best Error: 0.680
+Iteration: 158 Since Improvement: 95 Best Error: 0.680
+Iteration: 159 Since Improvement: 96 Best Error: 0.680
+Iteration: 160 Since Improvement: 97 Best Error: 0.680
+Iteration: 161 Since Improvement: 98 Best Error: 0.680
+Iteration: 162 Since Improvement: 99 Best Error: 0.680
+Iteration: 163 Since Improvement: 100 Best Error: 0.680
+Iteration: 164 Since Improvement: 101 Best Error: 0.680
+Iteration: 165 Since Improvement: 102 Best Error: 0.680
+Iteration: 166 Since Improvement: 103 Best Error: 0.680
+Iteration: 167 Since Improvement: 104 Best Error: 0.680
+Iteration: 168 Since Improvement: 105 Best Error: 0.680
+Iteration: 169 Since Improvement: 106 Best Error: 0.680
+Iteration: 170 Since Improvement: 107 Best Error: 0.680
+Iteration: 171 Since Improvement: 108 Best Error: 0.680
+Iteration: 172 Since Improvement: 109 Best Error: 0.680
+Iteration: 173 Since Improvement: 110 Best Error: 0.680
+Iteration: 174 Since Improvement: 111 Best Error: 0.680
+Iteration: 175 Since Improvement: 112 Best Error: 0.680
+Iteration: 176 Since Improvement: 113 Best Error: 0.680
+Iteration: 177 Since Improvement: 114 Best Error: 0.680
+Iteration: 178 Since Improvement: 115 Best Error: 0.680
+Iteration: 179 Since Improvement: 0 Best Error: 0.660
+Iteration: 180 Since Improvement: 1 Best Error: 0.660
+Iteration: 181 Since Improvement: 2 Best Error: 0.660
+Iteration: 182 Since Improvement: 3 Best Error: 0.660
+Iteration: 183 Since Improvement: 4 Best Error: 0.660
+Iteration: 184 Since Improvement: 5 Best Error: 0.660
+Iteration: 185 Since Improvement: 6 Best Error: 0.660
+Iteration: 186 Since Improvement: 7 Best Error: 0.660
+Iteration: 187 Since Improvement: 8 Best Error: 0.660
+Iteration: 188 Since Improvement: 9 Best Error: 0.660
+Iteration: 189 Since Improvement: 10 Best Error: 0.660
+Iteration: 190 Since Improvement: 11 Best Error: 0.660
+Iteration: 191 Since Improvement: 12 Best Error: 0.660
+Iteration: 192 Since Improvement: 13 Best Error: 0.660
+Iteration: 193 Since Improvement: 14 Best Error: 0.660
+Iteration: 194 Since Improvement: 15 Best Error: 0.660
+Iteration: 195 Since Improvement: 16 Best Error: 0.660
+Iteration: 196 Since Improvement: 17 Best Error: 0.660
+Iteration: 197 Since Improvement: 18 Best Error: 0.660
+Iteration: 198 Since Improvement: 19 Best Error: 0.660
+Iteration: 199 Since Improvement: 20 Best Error: 0.660
+Iteration: 200 Since Improvement: 21 Best Error: 0.660
+Iteration: 201 Since Improvement: 22 Best Error: 0.660
+Iteration: 202 Since Improvement: 23 Best Error: 0.660
+Iteration: 203 Since Improvement: 24 Best Error: 0.660
+Iteration: 204 Since Improvement: 25 Best Error: 0.660
+Iteration: 205 Since Improvement: 26 Best Error: 0.660
+Iteration: 206 Since Improvement: 27 Best Error: 0.660
+Iteration: 207 Since Improvement: 28 Best Error: 0.660
+Iteration: 208 Since Improvement: 29 Best Error: 0.660
+Iteration: 209 Since Improvement: 30 Best Error: 0.660
+Iteration: 210 Since Improvement: 31 Best Error: 0.660
+Iteration: 211 Since Improvement: 32 Best Error: 0.660
+Iteration: 212 Since Improvement: 33 Best Error: 0.660
+Iteration: 213 Since Improvement: 34 Best Error: 0.660
+Iteration: 214 Since Improvement: 35 Best Error: 0.660
+Iteration: 215 Since Improvement: 36 Best Error: 0.660
+Iteration: 216 Since Improvement: 37 Best Error: 0.660
+Iteration: 217 Since Improvement: 38 Best Error: 0.660
+Iteration: 218 Since Improvement: 39 Best Error: 0.660
+Iteration: 219 Since Improvement: 40 Best Error: 0.660
+Iteration: 220 Since Improvement: 41 Best Error: 0.660
+Iteration: 221 Since Improvement: 42 Best Error: 0.660
+Iteration: 222 Since Improvement: 43 Best Error: 0.660
+Iteration: 223 Since Improvement: 44 Best Error: 0.660
+Iteration: 224 Since Improvement: 45 Best Error: 0.660
+Iteration: 225 Since Improvement: 46 Best Error: 0.660
+Iteration: 226 Since Improvement: 47 Best Error: 0.660
+Iteration: 227 Since Improvement: 48 Best Error: 0.660
+Iteration: 228 Since Improvement: 49 Best Error: 0.660
+Iteration: 229 Since Improvement: 50 Best Error: 0.660
+Iteration: 230 Since Improvement: 51 Best Error: 0.660
+Iteration: 231 Since Improvement: 52 Best Error: 0.660
+Iteration: 232 Since Improvement: 53 Best Error: 0.660
+Iteration: 233 Since Improvement: 54 Best Error: 0.660
+Iteration: 234 Since Improvement: 55 Best Error: 0.660
+Iteration: 235 Since Improvement: 56 Best Error: 0.660
+Iteration: 236 Since Improvement: 57 Best Error: 0.660
+Iteration: 237 Since Improvement: 58 Best Error: 0.660
+Iteration: 238 Since Improvement: 59 Best Error: 0.660
+Iteration: 239 Since Improvement: 60 Best Error: 0.660
+Iteration: 240 Since Improvement: 61 Best Error: 0.660
+Iteration: 241 Since Improvement: 62 Best Error: 0.660
+Iteration: 242 Since Improvement: 63 Best Error: 0.660
+Iteration: 243 Since Improvement: 64 Best Error: 0.660
+Iteration: 244 Since Improvement: 65 Best Error: 0.660
+Iteration: 245 Since Improvement: 66 Best Error: 0.660
+Iteration: 246 Since Improvement: 67 Best Error: 0.660
+Iteration: 247 Since Improvement: 68 Best Error: 0.660
+Iteration: 248 Since Improvement: 69 Best Error: 0.660
+Iteration: 249 Since Improvement: 70 Best Error: 0.660
+Iteration: 250 Since Improvement: 71 Best Error: 0.660
+Iteration: 251 Since Improvement: 72 Best Error: 0.660
+Iteration: 252 Since Improvement: 73 Best Error: 0.660
+Iteration: 253 Since Improvement: 74 Best Error: 0.660
+Iteration: 254 Since Improvement: 75 Best Error: 0.660
+Iteration: 255 Since Improvement: 76 Best Error: 0.660
+Iteration: 256 Since Improvement: 77 Best Error: 0.660
+Iteration: 257 Since Improvement: 78 Best Error: 0.660
+Iteration: 258 Since Improvement: 79 Best Error: 0.660
+Iteration: 259 Since Improvement: 80 Best Error: 0.660
+Iteration: 260 Since Improvement: 81 Best Error: 0.660
+Iteration: 261 Since Improvement: 82 Best Error: 0.660
+Iteration: 262 Since Improvement: 83 Best Error: 0.660
+Iteration: 263 Since Improvement: 84 Best Error: 0.660
+Iteration: 264 Since Improvement: 85 Best Error: 0.660
+Iteration: 265 Since Improvement: 86 Best Error: 0.660
+Iteration: 266 Since Improvement: 87 Best Error: 0.660
+Iteration: 267 Since Improvement: 88 Best Error: 0.660
+Iteration: 268 Since Improvement: 89 Best Error: 0.660
+Iteration: 269 Since Improvement: 90 Best Error: 0.660
+Iteration: 270 Since Improvement: 91 Best Error: 0.660
+Iteration: 271 Since Improvement: 92 Best Error: 0.660
+Iteration: 272 Since Improvement: 93 Best Error: 0.660
+Iteration: 273 Since Improvement: 94 Best Error: 0.660
+Iteration: 274 Since Improvement: 95 Best Error: 0.660
+Iteration: 275 Since Improvement: 96 Best Error: 0.660
+Iteration: 276 Since Improvement: 97 Best Error: 0.660
+Iteration: 277 Since Improvement: 98 Best Error: 0.660
+Iteration: 278 Since Improvement: 99 Best Error: 0.660
+Iteration: 279 Since Improvement: 100 Best Error: 0.660
+Iteration: 280 Since Improvement: 101 Best Error: 0.660
+Iteration: 281 Since Improvement: 102 Best Error: 0.660
+Iteration: 282 Since Improvement: 103 Best Error: 0.660
+Iteration: 283 Since Improvement: 104 Best Error: 0.660
+Iteration: 284 Since Improvement: 105 Best Error: 0.660
+Iteration: 285 Since Improvement: 106 Best Error: 0.660
+Iteration: 286 Since Improvement: 107 Best Error: 0.660
+Iteration: 287 Since Improvement: 108 Best Error: 0.660
+Iteration: 288 Since Improvement: 109 Best Error: 0.660
+Iteration: 289 Since Improvement: 110 Best Error: 0.660
+Iteration: 290 Since Improvement: 111 Best Error: 0.660
+Iteration: 291 Since Improvement: 112 Best Error: 0.660
+Iteration: 292 Since Improvement: 113 Best Error: 0.660
+Iteration: 293 Since Improvement: 114 Best Error: 0.660
+Iteration: 294 Since Improvement: 115 Best Error: 0.660
+Iteration: 295 Since Improvement: 116 Best Error: 0.660
+Iteration: 296 Since Improvement: 117 Best Error: 0.660
+Iteration: 297 Since Improvement: 118 Best Error: 0.660
+Iteration: 298 Since Improvement: 119 Best Error: 0.660
+Iteration: 299 Since Improvement: 120 Best Error: 0.660
+Iteration: 300 Since Improvement: 121 Best Error: 0.660
+Iteration: 301 Since Improvement: 122 Best Error: 0.660
+Iteration: 302 Since Improvement: 123 Best Error: 0.660
+Iteration: 303 Since Improvement: 124 Best Error: 0.660
+Iteration: 304 Since Improvement: 125 Best Error: 0.660
+Iteration: 305 Since Improvement: 126 Best Error: 0.660
+Iteration: 306 Since Improvement: 127 Best Error: 0.660
+Iteration: 307 Since Improvement: 128 Best Error: 0.660
+Iteration: 308 Since Improvement: 129 Best Error: 0.660
+Iteration: 309 Since Improvement: 0 Best Error: 0.640
+Iteration: 310 Since Improvement: 1 Best Error: 0.640
+Iteration: 311 Since Improvement: 2 Best Error: 0.640
+Iteration: 312 Since Improvement: 3 Best Error: 0.640
+Iteration: 313 Since Improvement: 4 Best Error: 0.640
+Iteration: 314 Since Improvement: 5 Best Error: 0.640
+Iteration: 315 Since Improvement: 6 Best Error: 0.640
+Iteration: 316 Since Improvement: 7 Best Error: 0.640
+Iteration: 317 Since Improvement: 8 Best Error: 0.640
+Iteration: 318 Since Improvement: 9 Best Error: 0.640
+Iteration: 319 Since Improvement: 10 Best Error: 0.640
+Iteration: 320 Since Improvement: 11 Best Error: 0.640
+Iteration: 321 Since Improvement: 12 Best Error: 0.640
+Iteration: 322 Since Improvement: 13 Best Error: 0.640
+Iteration: 323 Since Improvement: 14 Best Error: 0.640
+Iteration: 324 Since Improvement: 15 Best Error: 0.640
+Iteration: 325 Since Improvement: 16 Best Error: 0.640
+Iteration: 326 Since Improvement: 17 Best Error: 0.640
+Iteration: 327 Since Improvement: 18 Best Error: 0.640
+Iteration: 328 Since Improvement: 19 Best Error: 0.640
+Iteration: 329 Since Improvement: 20 Best Error: 0.640
+Iteration: 330 Since Improvement: 21 Best Error: 0.640
+Iteration: 331 Since Improvement: 22 Best Error: 0.640
+Iteration: 332 Since Improvement: 23 Best Error: 0.640
+Iteration: 333 Since Improvement: 24 Best Error: 0.640
+Iteration: 334 Since Improvement: 25 Best Error: 0.640
+Iteration: 335 Since Improvement: 26 Best Error: 0.640
+Iteration: 336 Since Improvement: 27 Best Error: 0.640
+Iteration: 337 Since Improvement: 28 Best Error: 0.640
+Iteration: 338 Since Improvement: 29 Best Error: 0.640
+Iteration: 339 Since Improvement: 30 Best Error: 0.640
+Iteration: 340 Since Improvement: 31 Best Error: 0.640
+Iteration: 341 Since Improvement: 32 Best Error: 0.640
+Iteration: 342 Since Improvement: 33 Best Error: 0.640
+Iteration: 343 Since Improvement: 34 Best Error: 0.640
+Iteration: 344 Since Improvement: 35 Best Error: 0.640
+Iteration: 345 Since Improvement: 36 Best Error: 0.640
+Iteration: 346 Since Improvement: 37 Best Error: 0.640
+Iteration: 347 Since Improvement: 38 Best Error: 0.640
+Iteration: 348 Since Improvement: 39 Best Error: 0.640
+Iteration: 349 Since Improvement: 40 Best Error: 0.640
+Iteration: 350 Since Improvement: 41 Best Error: 0.640
+Iteration: 351 Since Improvement: 42 Best Error: 0.640
+Iteration: 352 Since Improvement: 43 Best Error: 0.640
+Iteration: 353 Since Improvement: 44 Best Error: 0.640
+Iteration: 354 Since Improvement: 45 Best Error: 0.640
+Iteration: 355 Since Improvement: 46 Best Error: 0.640
+Iteration: 356 Since Improvement: 47 Best Error: 0.640
+Iteration: 357 Since Improvement: 48 Best Error: 0.640
+Iteration: 358 Since Improvement: 49 Best Error: 0.640
+Iteration: 359 Since Improvement: 50 Best Error: 0.640
+Iteration: 360 Since Improvement: 51 Best Error: 0.640
+Iteration: 361 Since Improvement: 52 Best Error: 0.640
+Iteration: 362 Since Improvement: 53 Best Error: 0.640
+Iteration: 363 Since Improvement: 54 Best Error: 0.640
+Iteration: 364 Since Improvement: 55 Best Error: 0.640
+Iteration: 365 Since Improvement: 56 Best Error: 0.640
+Iteration: 366 Since Improvement: 57 Best Error: 0.640
+Iteration: 367 Since Improvement: 58 Best Error: 0.640
+Iteration: 368 Since Improvement: 59 Best Error: 0.640
+Iteration: 369 Since Improvement: 60 Best Error: 0.640
+Iteration: 370 Since Improvement: 61 Best Error: 0.640
+Iteration: 371 Since Improvement: 62 Best Error: 0.640
+Iteration: 372 Since Improvement: 63 Best Error: 0.640
+Iteration: 373 Since Improvement: 64 Best Error: 0.640
+Iteration: 374 Since Improvement: 0 Best Error: 0.620
+Iteration: 375 Since Improvement: 1 Best Error: 0.620
+Iteration: 376 Since Improvement: 2 Best Error: 0.620
+Iteration: 377 Since Improvement: 3 Best Error: 0.620
+Iteration: 378 Since Improvement: 4 Best Error: 0.620
+Iteration: 379 Since Improvement: 5 Best Error: 0.620
+Iteration: 380 Since Improvement: 6 Best Error: 0.620
+Iteration: 381 Since Improvement: 7 Best Error: 0.620
+Iteration: 382 Since Improvement: 8 Best Error: 0.620
+Iteration: 383 Since Improvement: 9 Best Error: 0.620
+Iteration: 384 Since Improvement: 10 Best Error: 0.620
+Iteration: 385 Since Improvement: 11 Best Error: 0.620
+Iteration: 386 Since Improvement: 12 Best Error: 0.620
+Iteration: 387 Since Improvement: 13 Best Error: 0.620
+Iteration: 388 Since Improvement: 14 Best Error: 0.620
+Iteration: 389 Since Improvement: 15 Best Error: 0.620
+Iteration: 390 Since Improvement: 16 Best Error: 0.620
+Iteration: 391 Since Improvement: 17 Best Error: 0.620
+Iteration: 392 Since Improvement: 18 Best Error: 0.620
+Iteration: 393 Since Improvement: 19 Best Error: 0.620
+Iteration: 394 Since Improvement: 20 Best Error: 0.620
+Iteration: 395 Since Improvement: 21 Best Error: 0.620
+Iteration: 396 Since Improvement: 22 Best Error: 0.620
+Iteration: 397 Since Improvement: 23 Best Error: 0.620
+Iteration: 398 Since Improvement: 24 Best Error: 0.620
+Iteration: 399 Since Improvement: 25 Best Error: 0.620
+Iteration: 400 Since Improvement: 26 Best Error: 0.620
+Iteration: 401 Since Improvement: 27 Best Error: 0.620
+Iteration: 402 Since Improvement: 28 Best Error: 0.620
+Iteration: 403 Since Improvement: 29 Best Error: 0.620
+Iteration: 404 Since Improvement: 30 Best Error: 0.620
+Iteration: 405 Since Improvement: 31 Best Error: 0.620
+Iteration: 406 Since Improvement: 32 Best Error: 0.620
+Iteration: 407 Since Improvement: 33 Best Error: 0.620
+Iteration: 408 Since Improvement: 34 Best Error: 0.620
+Iteration: 409 Since Improvement: 35 Best Error: 0.620
+Iteration: 410 Since Improvement: 36 Best Error: 0.620
+Iteration: 411 Since Improvement: 37 Best Error: 0.620
+Iteration: 412 Since Improvement: 38 Best Error: 0.620
+Iteration: 413 Since Improvement: 39 Best Error: 0.620
+Iteration: 414 Since Improvement: 40 Best Error: 0.620
+Iteration: 415 Since Improvement: 41 Best Error: 0.620
+Iteration: 416 Since Improvement: 42 Best Error: 0.620
+Iteration: 417 Since Improvement: 43 Best Error: 0.620
+Iteration: 418 Since Improvement: 44 Best Error: 0.620
+Iteration: 419 Since Improvement: 45 Best Error: 0.620
+Iteration: 420 Since Improvement: 46 Best Error: 0.620
+Iteration: 421 Since Improvement: 47 Best Error: 0.620
+Iteration: 422 Since Improvement: 48 Best Error: 0.620
+Iteration: 423 Since Improvement: 49 Best Error: 0.620
+Iteration: 424 Since Improvement: 50 Best Error: 0.620
+Iteration: 425 Since Improvement: 51 Best Error: 0.620
+Iteration: 426 Since Improvement: 52 Best Error: 0.620
+Iteration: 427 Since Improvement: 53 Best Error: 0.620
+Iteration: 428 Since Improvement: 54 Best Error: 0.620
+Iteration: 429 Since Improvement: 55 Best Error: 0.620
+Iteration: 430 Since Improvement: 56 Best Error: 0.620
+Iteration: 431 Since Improvement: 57 Best Error: 0.620
+Iteration: 432 Since Improvement: 58 Best Error: 0.620
+Iteration: 433 Since Improvement: 59 Best Error: 0.620
+Iteration: 434 Since Improvement: 60 Best Error: 0.620
+Iteration: 435 Since Improvement: 61 Best Error: 0.620
+Iteration: 436 Since Improvement: 62 Best Error: 0.620
+Iteration: 437 Since Improvement: 63 Best Error: 0.620
+Iteration: 438 Since Improvement: 64 Best Error: 0.620
+Iteration: 439 Since Improvement: 65 Best Error: 0.620
+Iteration: 440 Since Improvement: 66 Best Error: 0.620
+Iteration: 441 Since Improvement: 67 Best Error: 0.620
+Iteration: 442 Since Improvement: 68 Best Error: 0.620
+Iteration: 443 Since Improvement: 69 Best Error: 0.620
+Iteration: 444 Since Improvement: 70 Best Error: 0.620
+Iteration: 445 Since Improvement: 71 Best Error: 0.620
+Iteration: 446 Since Improvement: 72 Best Error: 0.620
+Iteration: 447 Since Improvement: 73 Best Error: 0.620
+Iteration: 448 Since Improvement: 74 Best Error: 0.620
+Iteration: 449 Since Improvement: 75 Best Error: 0.620
+Iteration: 450 Since Improvement: 76 Best Error: 0.620
+Iteration: 451 Since Improvement: 77 Best Error: 0.620
+Iteration: 452 Since Improvement: 78 Best Error: 0.620
+Iteration: 453 Since Improvement: 79 Best Error: 0.620
+Iteration: 454 Since Improvement: 80 Best Error: 0.620
+Iteration: 455 Since Improvement: 81 Best Error: 0.620
+Iteration: 456 Since Improvement: 82 Best Error: 0.620
+Iteration: 457 Since Improvement: 83 Best Error: 0.620
+Iteration: 458 Since Improvement: 84 Best Error: 0.620
+Iteration: 459 Since Improvement: 85 Best Error: 0.620
+Iteration: 460 Since Improvement: 86 Best Error: 0.620
+Iteration: 461 Since Improvement: 87 Best Error: 0.620
+Iteration: 462 Since Improvement: 88 Best Error: 0.620
+Iteration: 463 Since Improvement: 89 Best Error: 0.620
+Iteration: 464 Since Improvement: 90 Best Error: 0.620
+Iteration: 465 Since Improvement: 91 Best Error: 0.620
+Iteration: 466 Since Improvement: 92 Best Error: 0.620
+Iteration: 467 Since Improvement: 93 Best Error: 0.620
+Iteration: 468 Since Improvement: 94 Best Error: 0.620
+Iteration: 469 Since Improvement: 95 Best Error: 0.620
+Iteration: 470 Since Improvement: 96 Best Error: 0.620
+Iteration: 471 Since Improvement: 97 Best Error: 0.620
+Iteration: 472 Since Improvement: 98 Best Error: 0.620
+Iteration: 473 Since Improvement: 99 Best Error: 0.620
+Iteration: 474 Since Improvement: 100 Best Error: 0.620
+Iteration: 475 Since Improvement: 101 Best Error: 0.620
+Iteration: 476 Since Improvement: 102 Best Error: 0.620
+Iteration: 477 Since Improvement: 103 Best Error: 0.620
+Iteration: 478 Since Improvement: 104 Best Error: 0.620
+Iteration: 479 Since Improvement: 105 Best Error: 0.620
+Iteration: 480 Since Improvement: 106 Best Error: 0.620
+Iteration: 481 Since Improvement: 107 Best Error: 0.620
+Iteration: 482 Since Improvement: 108 Best Error: 0.620
+Iteration: 483 Since Improvement: 109 Best Error: 0.620
+Iteration: 484 Since Improvement: 110 Best Error: 0.620
+Iteration: 485 Since Improvement: 111 Best Error: 0.620
+Iteration: 486 Since Improvement: 112 Best Error: 0.620
+Iteration: 487 Since Improvement: 113 Best Error: 0.620
+Iteration: 488 Since Improvement: 114 Best Error: 0.620
+Iteration: 489 Since Improvement: 115 Best Error: 0.620
+Iteration: 490 Since Improvement: 116 Best Error: 0.620
+Iteration: 491 Since Improvement: 117 Best Error: 0.620
+Iteration: 492 Since Improvement: 118 Best Error: 0.620
+Iteration: 493 Since Improvement: 119 Best Error: 0.620
+Iteration: 494 Since Improvement: 120 Best Error: 0.620
+Iteration: 495 Since Improvement: 121 Best Error: 0.620
+Iteration: 496 Since Improvement: 122 Best Error: 0.620
+Iteration: 497 Since Improvement: 123 Best Error: 0.620
+Iteration: 498 Since Improvement: 124 Best Error: 0.620
+Iteration: 499 Since Improvement: 125 Best Error: 0.620
+Iteration: 500 Since Improvement: 126 Best Error: 0.620
+Iteration: 501 Since Improvement: 127 Best Error: 0.620
+Iteration: 502 Since Improvement: 128 Best Error: 0.620
+Iteration: 503 Since Improvement: 129 Best Error: 0.620
+Iteration: 504 Since Improvement: 130 Best Error: 0.620
+Iteration: 505 Since Improvement: 131 Best Error: 0.620
+Iteration: 506 Since Improvement: 132 Best Error: 0.620
+Iteration: 507 Since Improvement: 133 Best Error: 0.620
+Iteration: 508 Since Improvement: 134 Best Error: 0.620
+Iteration: 509 Since Improvement: 135 Best Error: 0.620
+Iteration: 510 Since Improvement: 136 Best Error: 0.620
+Iteration: 511 Since Improvement: 137 Best Error: 0.620
+Iteration: 512 Since Improvement: 138 Best Error: 0.620
+Iteration: 513 Since Improvement: 139 Best Error: 0.620
+Iteration: 514 Since Improvement: 140 Best Error: 0.620
+Iteration: 515 Since Improvement: 141 Best Error: 0.620
+Iteration: 516 Since Improvement: 142 Best Error: 0.620
+Iteration: 517 Since Improvement: 143 Best Error: 0.620
+Iteration: 518 Since Improvement: 144 Best Error: 0.620
+Iteration: 519 Since Improvement: 145 Best Error: 0.620
+Iteration: 520 Since Improvement: 146 Best Error: 0.620
+Iteration: 521 Since Improvement: 147 Best Error: 0.620
+Iteration: 522 Since Improvement: 148 Best Error: 0.620
+Iteration: 523 Since Improvement: 149 Best Error: 0.620
+Iteration: 524 Since Improvement: 150 Best Error: 0.620
+Iteration: 525 Since Improvement: 151 Best Error: 0.620
+Iteration: 526 Since Improvement: 152 Best Error: 0.620
+Iteration: 527 Since Improvement: 153 Best Error: 0.620
+Iteration: 528 Since Improvement: 154 Best Error: 0.620
+Iteration: 529 Since Improvement: 155 Best Error: 0.620
+Iteration: 530 Since Improvement: 156 Best Error: 0.620
+Iteration: 531 Since Improvement: 157 Best Error: 0.620
+Iteration: 532 Since Improvement: 158 Best Error: 0.620
+Iteration: 533 Since Improvement: 159 Best Error: 0.620
+Iteration: 534 Since Improvement: 160 Best Error: 0.620
+Iteration: 535 Since Improvement: 161 Best Error: 0.620
+Iteration: 536 Since Improvement: 162 Best Error: 0.620
+Iteration: 537 Since Improvement: 163 Best Error: 0.620
+Iteration: 538 Since Improvement: 164 Best Error: 0.620
+Iteration: 539 Since Improvement: 165 Best Error: 0.620
+Iteration: 540 Since Improvement: 166 Best Error: 0.620
+Iteration: 541 Since Improvement: 167 Best Error: 0.620
+Iteration: 542 Since Improvement: 168 Best Error: 0.620
+Iteration: 543 Since Improvement: 169 Best Error: 0.620
+Iteration: 544 Since Improvement: 170 Best Error: 0.620
+Iteration: 545 Since Improvement: 171 Best Error: 0.620
+Iteration: 546 Since Improvement: 172 Best Error: 0.620
+Iteration: 547 Since Improvement: 173 Best Error: 0.620
+Iteration: 548 Since Improvement: 174 Best Error: 0.620
+Iteration: 549 Since Improvement: 175 Best Error: 0.620
+Iteration: 550 Since Improvement: 176 Best Error: 0.620
+Iteration: 551 Since Improvement: 177 Best Error: 0.620
+Iteration: 552 Since Improvement: 178 Best Error: 0.620
+Iteration: 553 Since Improvement: 179 Best Error: 0.620
+Iteration: 554 Since Improvement: 180 Best Error: 0.620
+Iteration: 555 Since Improvement: 181 Best Error: 0.620
+Iteration: 556 Since Improvement: 182 Best Error: 0.620
+Iteration: 557 Since Improvement: 183 Best Error: 0.620
+Iteration: 558 Since Improvement: 184 Best Error: 0.620
+Iteration: 559 Since Improvement: 185 Best Error: 0.620
+Iteration: 560 Since Improvement: 186 Best Error: 0.620
+Iteration: 561 Since Improvement: 187 Best Error: 0.620
+Iteration: 562 Since Improvement: 188 Best Error: 0.620
+Iteration: 563 Since Improvement: 189 Best Error: 0.620
+Iteration: 564 Since Improvement: 190 Best Error: 0.620
+Iteration: 565 Since Improvement: 191 Best Error: 0.620
+Iteration: 566 Since Improvement: 192 Best Error: 0.620
+Iteration: 567 Since Improvement: 193 Best Error: 0.620
+Iteration: 568 Since Improvement: 194 Best Error: 0.620
+Iteration: 569 Since Improvement: 195 Best Error: 0.620
+Iteration: 570 Since Improvement: 196 Best Error: 0.620
+Iteration: 571 Since Improvement: 197 Best Error: 0.620
+Iteration: 572 Since Improvement: 198 Best Error: 0.620
+Iteration: 573 Since Improvement: 199 Best Error: 0.620
+Iteration: 574 Since Improvement: 200 Best Error: 0.620
+Iteration: 575 Since Improvement: 201 Best Error: 0.620
+Iteration: 576 Since Improvement: 202 Best Error: 0.620
+Iteration: 577 Since Improvement: 203 Best Error: 0.620
+Iteration: 578 Since Improvement: 204 Best Error: 0.620
+Iteration: 579 Since Improvement: 205 Best Error: 0.620
+Iteration: 580 Since Improvement: 206 Best Error: 0.620
+Iteration: 581 Since Improvement: 207 Best Error: 0.620
+Iteration: 582 Since Improvement: 208 Best Error: 0.620
+Iteration: 583 Since Improvement: 209 Best Error: 0.620
+Iteration: 584 Since Improvement: 210 Best Error: 0.620
+Iteration: 585 Since Improvement: 211 Best Error: 0.620
+Iteration: 586 Since Improvement: 212 Best Error: 0.620
+Iteration: 587 Since Improvement: 213 Best Error: 0.620
+Iteration: 588 Since Improvement: 214 Best Error: 0.620
+Iteration: 589 Since Improvement: 215 Best Error: 0.620
+Iteration: 590 Since Improvement: 216 Best Error: 0.620
+Iteration: 591 Since Improvement: 217 Best Error: 0.620
+Iteration: 592 Since Improvement: 218 Best Error: 0.620
+Iteration: 593 Since Improvement: 219 Best Error: 0.620
+Iteration: 594 Since Improvement: 220 Best Error: 0.620
+Iteration: 595 Since Improvement: 221 Best Error: 0.620
+Iteration: 596 Since Improvement: 222 Best Error: 0.620
+Iteration: 597 Since Improvement: 223 Best Error: 0.620
+Iteration: 598 Since Improvement: 224 Best Error: 0.620
+Iteration: 599 Since Improvement: 225 Best Error: 0.620
+Iteration: 600 Since Improvement: 226 Best Error: 0.620
+Iteration: 601 Since Improvement: 227 Best Error: 0.620
+Iteration: 602 Since Improvement: 228 Best Error: 0.620
+Iteration: 603 Since Improvement: 229 Best Error: 0.620
+Iteration: 604 Since Improvement: 230 Best Error: 0.620
+Iteration: 605 Since Improvement: 231 Best Error: 0.620
+Iteration: 606 Since Improvement: 232 Best Error: 0.620
+Iteration: 607 Since Improvement: 233 Best Error: 0.620
+Iteration: 608 Since Improvement: 234 Best Error: 0.620
+Iteration: 609 Since Improvement: 235 Best Error: 0.620
+Iteration: 610 Since Improvement: 236 Best Error: 0.620
+Iteration: 611 Since Improvement: 237 Best Error: 0.620
+Iteration: 612 Since Improvement: 238 Best Error: 0.620
+Iteration: 613 Since Improvement: 239 Best Error: 0.620
+Iteration: 614 Since Improvement: 240 Best Error: 0.620
+Iteration: 615 Since Improvement: 241 Best Error: 0.620
+Iteration: 616 Since Improvement: 242 Best Error: 0.620
+Iteration: 617 Since Improvement: 243 Best Error: 0.620
+Iteration: 618 Since Improvement: 244 Best Error: 0.620
+Iteration: 619 Since Improvement: 245 Best Error: 0.620
+Iteration: 620 Since Improvement: 246 Best Error: 0.620
+Iteration: 621 Since Improvement: 247 Best Error: 0.620
+Iteration: 622 Since Improvement: 248 Best Error: 0.620
+Iteration: 623 Since Improvement: 249 Best Error: 0.620
+Iteration: 624 Since Improvement: 250 Best Error: 0.620
+Iteration: 625 Since Improvement: 251 Best Error: 0.620
+Iteration: 626 Since Improvement: 252 Best Error: 0.620
+Iteration: 627 Since Improvement: 253 Best Error: 0.620
+Iteration: 628 Since Improvement: 254 Best Error: 0.620
+Iteration: 629 Since Improvement: 255 Best Error: 0.620
+Iteration: 630 Since Improvement: 256 Best Error: 0.620
+Iteration: 631 Since Improvement: 257 Best Error: 0.620
+Iteration: 632 Since Improvement: 258 Best Error: 0.620
+Iteration: 633 Since Improvement: 259 Best Error: 0.620
+Iteration: 634 Since Improvement: 260 Best Error: 0.620
+Iteration: 635 Since Improvement: 261 Best Error: 0.620
+Iteration: 636 Since Improvement: 262 Best Error: 0.620
+Iteration: 637 Since Improvement: 263 Best Error: 0.620
+Iteration: 638 Since Improvement: 264 Best Error: 0.620
+Iteration: 639 Since Improvement: 265 Best Error: 0.620
+Iteration: 640 Since Improvement: 266 Best Error: 0.620
+Iteration: 641 Since Improvement: 267 Best Error: 0.620
+Iteration: 642 Since Improvement: 268 Best Error: 0.620
+Iteration: 643 Since Improvement: 269 Best Error: 0.620
+Iteration: 644 Since Improvement: 0 Best Error: 0.600
+Iteration: 645 Since Improvement: 1 Best Error: 0.600
+Iteration: 646 Since Improvement: 2 Best Error: 0.600
+Iteration: 647 Since Improvement: 3 Best Error: 0.600
+Iteration: 648 Since Improvement: 4 Best Error: 0.600
+Iteration: 649 Since Improvement: 5 Best Error: 0.600
+Iteration: 650 Since Improvement: 6 Best Error: 0.600
+Iteration: 651 Since Improvement: 7 Best Error: 0.600
+Iteration: 652 Since Improvement: 8 Best Error: 0.600
+Iteration: 653 Since Improvement: 9 Best Error: 0.600
+Iteration: 654 Since Improvement: 10 Best Error: 0.600
+Iteration: 655 Since Improvement: 11 Best Error: 0.600
+Iteration: 656 Since Improvement: 12 Best Error: 0.600
+Iteration: 657 Since Improvement: 13 Best Error: 0.600
+Iteration: 658 Since Improvement: 14 Best Error: 0.600
+Iteration: 659 Since Improvement: 15 Best Error: 0.600
+Iteration: 660 Since Improvement: 16 Best Error: 0.600
+Iteration: 661 Since Improvement: 17 Best Error: 0.600
+Iteration: 662 Since Improvement: 18 Best Error: 0.600
+Iteration: 663 Since Improvement: 19 Best Error: 0.600
+Iteration: 664 Since Improvement: 20 Best Error: 0.600
+Iteration: 665 Since Improvement: 21 Best Error: 0.600
+Iteration: 666 Since Improvement: 22 Best Error: 0.600
+Iteration: 667 Since Improvement: 23 Best Error: 0.600
+Iteration: 668 Since Improvement: 24 Best Error: 0.600
+Iteration: 669 Since Improvement: 25 Best Error: 0.600
+Iteration: 670 Since Improvement: 26 Best Error: 0.600
+Iteration: 671 Since Improvement: 27 Best Error: 0.600
+Iteration: 672 Since Improvement: 28 Best Error: 0.600
+Iteration: 673 Since Improvement: 29 Best Error: 0.600
+Iteration: 674 Since Improvement: 30 Best Error: 0.600
+Iteration: 675 Since Improvement: 31 Best Error: 0.600
+Iteration: 676 Since Improvement: 32 Best Error: 0.600
+Iteration: 677 Since Improvement: 33 Best Error: 0.600
+Iteration: 678 Since Improvement: 34 Best Error: 0.600
+Iteration: 679 Since Improvement: 35 Best Error: 0.600
+Iteration: 680 Since Improvement: 36 Best Error: 0.600
+Iteration: 681 Since Improvement: 37 Best Error: 0.600
+Iteration: 682 Since Improvement: 38 Best Error: 0.600
+Iteration: 683 Since Improvement: 39 Best Error: 0.600
+Iteration: 684 Since Improvement: 40 Best Error: 0.600
+Iteration: 685 Since Improvement: 41 Best Error: 0.600
+Iteration: 686 Since Improvement: 42 Best Error: 0.600
+Iteration: 687 Since Improvement: 43 Best Error: 0.600
+Iteration: 688 Since Improvement: 44 Best Error: 0.600
+Iteration: 689 Since Improvement: 45 Best Error: 0.600
+Iteration: 690 Since Improvement: 46 Best Error: 0.600
+Iteration: 691 Since Improvement: 47 Best Error: 0.600
+Iteration: 692 Since Improvement: 48 Best Error: 0.600
+Iteration: 693 Since Improvement: 49 Best Error: 0.600
+Iteration: 694 Since Improvement: 50 Best Error: 0.600
+Iteration: 695 Since Improvement: 51 Best Error: 0.600
+Iteration: 696 Since Improvement: 52 Best Error: 0.600
+Iteration: 697 Since Improvement: 53 Best Error: 0.600
+Iteration: 698 Since Improvement: 54 Best Error: 0.600
+Iteration: 699 Since Improvement: 55 Best Error: 0.600
+Iteration: 700 Since Improvement: 56 Best Error: 0.600
+Iteration: 701 Since Improvement: 57 Best Error: 0.600
+Iteration: 702 Since Improvement: 58 Best Error: 0.600
+Iteration: 703 Since Improvement: 59 Best Error: 0.600
+Iteration: 704 Since Improvement: 60 Best Error: 0.600
+Iteration: 705 Since Improvement: 61 Best Error: 0.600
+Iteration: 706 Since Improvement: 62 Best Error: 0.600
+Iteration: 707 Since Improvement: 63 Best Error: 0.600
+Iteration: 708 Since Improvement: 64 Best Error: 0.600
+Iteration: 709 Since Improvement: 65 Best Error: 0.600
+Iteration: 710 Since Improvement: 66 Best Error: 0.600
+Iteration: 711 Since Improvement: 67 Best Error: 0.600
+Iteration: 712 Since Improvement: 68 Best Error: 0.600
+Iteration: 713 Since Improvement: 69 Best Error: 0.600
+Iteration: 714 Since Improvement: 70 Best Error: 0.600
+Iteration: 715 Since Improvement: 71 Best Error: 0.600
+Iteration: 716 Since Improvement: 72 Best Error: 0.600
+Iteration: 717 Since Improvement: 73 Best Error: 0.600
+Iteration: 718 Since Improvement: 74 Best Error: 0.600
+Iteration: 719 Since Improvement: 75 Best Error: 0.600
+Iteration: 720 Since Improvement: 76 Best Error: 0.600
+Iteration: 721 Since Improvement: 77 Best Error: 0.600
+Iteration: 722 Since Improvement: 78 Best Error: 0.600
+Iteration: 723 Since Improvement: 79 Best Error: 0.600
+Iteration: 724 Since Improvement: 80 Best Error: 0.600
+Iteration: 725 Since Improvement: 81 Best Error: 0.600
+Iteration: 726 Since Improvement: 82 Best Error: 0.600
+Iteration: 727 Since Improvement: 83 Best Error: 0.600
+Iteration: 728 Since Improvement: 84 Best Error: 0.600
+Iteration: 729 Since Improvement: 85 Best Error: 0.600
+Iteration: 730 Since Improvement: 86 Best Error: 0.600
+Iteration: 731 Since Improvement: 87 Best Error: 0.600
+Iteration: 732 Since Improvement: 88 Best Error: 0.600
+Iteration: 733 Since Improvement: 89 Best Error: 0.600
+Iteration: 734 Since Improvement: 90 Best Error: 0.600
+Iteration: 735 Since Improvement: 91 Best Error: 0.600
+Iteration: 736 Since Improvement: 92 Best Error: 0.600
+Iteration: 737 Since Improvement: 93 Best Error: 0.600
+Iteration: 738 Since Improvement: 94 Best Error: 0.600
+Iteration: 739 Since Improvement: 95 Best Error: 0.600
+Iteration: 740 Since Improvement: 96 Best Error: 0.600
+Iteration: 741 Since Improvement: 97 Best Error: 0.600
+Iteration: 742 Since Improvement: 98 Best Error: 0.600
+Iteration: 743 Since Improvement: 99 Best Error: 0.600
+Iteration: 744 Since Improvement: 100 Best Error: 0.600
+Iteration: 745 Since Improvement: 101 Best Error: 0.600
+Iteration: 746 Since Improvement: 102 Best Error: 0.600
+Iteration: 747 Since Improvement: 103 Best Error: 0.600
+Iteration: 748 Since Improvement: 104 Best Error: 0.600
+Iteration: 749 Since Improvement: 105 Best Error: 0.600
+Iteration: 750 Since Improvement: 106 Best Error: 0.600
+Iteration: 751 Since Improvement: 107 Best Error: 0.600
+Iteration: 752 Since Improvement: 108 Best Error: 0.600
+Iteration: 753 Since Improvement: 109 Best Error: 0.600
+Iteration: 754 Since Improvement: 110 Best Error: 0.600
+Iteration: 755 Since Improvement: 111 Best Error: 0.600
+Iteration: 756 Since Improvement: 112 Best Error: 0.600
+Iteration: 757 Since Improvement: 113 Best Error: 0.600
+Iteration: 758 Since Improvement: 114 Best Error: 0.600
+Iteration: 759 Since Improvement: 115 Best Error: 0.600
+Iteration: 760 Since Improvement: 116 Best Error: 0.600
+Iteration: 761 Since Improvement: 117 Best Error: 0.600
+Iteration: 762 Since Improvement: 118 Best Error: 0.600
+Iteration: 763 Since Improvement: 119 Best Error: 0.600
+Iteration: 764 Since Improvement: 120 Best Error: 0.600
+Iteration: 765 Since Improvement: 121 Best Error: 0.600
+Iteration: 766 Since Improvement: 122 Best Error: 0.600
+Iteration: 767 Since Improvement: 123 Best Error: 0.600
+Iteration: 768 Since Improvement: 124 Best Error: 0.600
+Iteration: 769 Since Improvement: 125 Best Error: 0.600
+Iteration: 770 Since Improvement: 126 Best Error: 0.600
+Iteration: 771 Since Improvement: 127 Best Error: 0.600
+Iteration: 772 Since Improvement: 128 Best Error: 0.600
+Iteration: 773 Since Improvement: 129 Best Error: 0.600
+Iteration: 774 Since Improvement: 130 Best Error: 0.600
+Iteration: 775 Since Improvement: 131 Best Error: 0.600
+Iteration: 776 Since Improvement: 132 Best Error: 0.600
+Iteration: 777 Since Improvement: 133 Best Error: 0.600
+Iteration: 778 Since Improvement: 134 Best Error: 0.600
+Iteration: 779 Since Improvement: 135 Best Error: 0.600
+Iteration: 780 Since Improvement: 136 Best Error: 0.600
+Iteration: 781 Since Improvement: 137 Best Error: 0.600
+Iteration: 782 Since Improvement: 138 Best Error: 0.600
+Iteration: 783 Since Improvement: 139 Best Error: 0.600
+Iteration: 784 Since Improvement: 140 Best Error: 0.600
+Iteration: 785 Since Improvement: 141 Best Error: 0.600
+Iteration: 786 Since Improvement: 142 Best Error: 0.600
+Iteration: 787 Since Improvement: 143 Best Error: 0.600
+Iteration: 788 Since Improvement: 144 Best Error: 0.600
+Iteration: 789 Since Improvement: 145 Best Error: 0.600
+Iteration: 790 Since Improvement: 146 Best Error: 0.600
+Iteration: 791 Since Improvement: 147 Best Error: 0.600
+Iteration: 792 Since Improvement: 148 Best Error: 0.600
+Iteration: 793 Since Improvement: 149 Best Error: 0.600
+Iteration: 794 Since Improvement: 150 Best Error: 0.600
+Iteration: 795 Since Improvement: 151 Best Error: 0.600
+Iteration: 796 Since Improvement: 152 Best Error: 0.600
+Iteration: 797 Since Improvement: 153 Best Error: 0.600
+Iteration: 798 Since Improvement: 154 Best Error: 0.600
+Iteration: 799 Since Improvement: 155 Best Error: 0.600
+Iteration: 800 Since Improvement: 156 Best Error: 0.600
+Iteration: 801 Since Improvement: 157 Best Error: 0.600
+Iteration: 802 Since Improvement: 158 Best Error: 0.600
+Iteration: 803 Since Improvement: 159 Best Error: 0.600
+Iteration: 804 Since Improvement: 160 Best Error: 0.600
+Iteration: 805 Since Improvement: 161 Best Error: 0.600
+Iteration: 806 Since Improvement: 162 Best Error: 0.600
+Iteration: 807 Since Improvement: 163 Best Error: 0.600
+Iteration: 808 Since Improvement: 164 Best Error: 0.600
+Iteration: 809 Since Improvement: 165 Best Error: 0.600
+Iteration: 810 Since Improvement: 166 Best Error: 0.600
+Iteration: 811 Since Improvement: 167 Best Error: 0.600
+Iteration: 812 Since Improvement: 168 Best Error: 0.600
+Iteration: 813 Since Improvement: 169 Best Error: 0.600
+Iteration: 814 Since Improvement: 170 Best Error: 0.600
+Iteration: 815 Since Improvement: 171 Best Error: 0.600
+Iteration: 816 Since Improvement: 172 Best Error: 0.600
+Iteration: 817 Since Improvement: 173 Best Error: 0.600
+Iteration: 818 Since Improvement: 174 Best Error: 0.600
+Iteration: 819 Since Improvement: 175 Best Error: 0.600
+Iteration: 820 Since Improvement: 176 Best Error: 0.600
+Iteration: 821 Since Improvement: 177 Best Error: 0.600
+Iteration: 822 Since Improvement: 178 Best Error: 0.600
+Iteration: 823 Since Improvement: 179 Best Error: 0.600
+Iteration: 824 Since Improvement: 180 Best Error: 0.600
+Iteration: 825 Since Improvement: 181 Best Error: 0.600
+Iteration: 826 Since Improvement: 182 Best Error: 0.600
+Iteration: 827 Since Improvement: 183 Best Error: 0.600
+Iteration: 828 Since Improvement: 184 Best Error: 0.600
+Iteration: 829 Since Improvement: 185 Best Error: 0.600
+Iteration: 830 Since Improvement: 186 Best Error: 0.600
+Iteration: 831 Since Improvement: 187 Best Error: 0.600
+Iteration: 832 Since Improvement: 188 Best Error: 0.600
+Iteration: 833 Since Improvement: 189 Best Error: 0.600
+Iteration: 834 Since Improvement: 190 Best Error: 0.600
+Iteration: 835 Since Improvement: 191 Best Error: 0.600
+Iteration: 836 Since Improvement: 192 Best Error: 0.600
+Iteration: 837 Since Improvement: 193 Best Error: 0.600
+Iteration: 838 Since Improvement: 194 Best Error: 0.600
+Iteration: 839 Since Improvement: 195 Best Error: 0.600
+Iteration: 840 Since Improvement: 196 Best Error: 0.600
+Iteration: 841 Since Improvement: 197 Best Error: 0.600
+Iteration: 842 Since Improvement: 198 Best Error: 0.600
+Iteration: 843 Since Improvement: 199 Best Error: 0.600
+Iteration: 844 Since Improvement: 200 Best Error: 0.600
+Iteration: 845 Since Improvement: 201 Best Error: 0.600
+Iteration: 846 Since Improvement: 202 Best Error: 0.600
+Iteration: 847 Since Improvement: 203 Best Error: 0.600
+Iteration: 848 Since Improvement: 204 Best Error: 0.600
+Iteration: 849 Since Improvement: 205 Best Error: 0.600
+Iteration: 850 Since Improvement: 206 Best Error: 0.600
+Iteration: 851 Since Improvement: 207 Best Error: 0.600
+Iteration: 852 Since Improvement: 208 Best Error: 0.600
+Iteration: 853 Since Improvement: 209 Best Error: 0.600
+Iteration: 854 Since Improvement: 210 Best Error: 0.600
+Iteration: 855 Since Improvement: 211 Best Error: 0.600
+Iteration: 856 Since Improvement: 212 Best Error: 0.600
+Iteration: 857 Since Improvement: 213 Best Error: 0.600
+Iteration: 858 Since Improvement: 214 Best Error: 0.600
+Iteration: 859 Since Improvement: 215 Best Error: 0.600
+Iteration: 860 Since Improvement: 216 Best Error: 0.600
+Iteration: 861 Since Improvement: 217 Best Error: 0.600
+Iteration: 862 Since Improvement: 218 Best Error: 0.600
+Iteration: 863 Since Improvement: 219 Best Error: 0.600
+Iteration: 864 Since Improvement: 220 Best Error: 0.600
+Iteration: 865 Since Improvement: 221 Best Error: 0.600
+Iteration: 866 Since Improvement: 222 Best Error: 0.600
+Iteration: 867 Since Improvement: 223 Best Error: 0.600
+Iteration: 868 Since Improvement: 224 Best Error: 0.600
+Iteration: 869 Since Improvement: 225 Best Error: 0.600
+Iteration: 870 Since Improvement: 226 Best Error: 0.600
+Iteration: 871 Since Improvement: 227 Best Error: 0.600
+Iteration: 872 Since Improvement: 228 Best Error: 0.600
+Iteration: 873 Since Improvement: 229 Best Error: 0.600
+Iteration: 874 Since Improvement: 230 Best Error: 0.600
+Iteration: 875 Since Improvement: 231 Best Error: 0.600
+Iteration: 876 Since Improvement: 232 Best Error: 0.600
+Iteration: 877 Since Improvement: 233 Best Error: 0.600
+Iteration: 878 Since Improvement: 234 Best Error: 0.600
+Iteration: 879 Since Improvement: 235 Best Error: 0.600
+Iteration: 880 Since Improvement: 236 Best Error: 0.600
+Iteration: 881 Since Improvement: 237 Best Error: 0.600
+Iteration: 882 Since Improvement: 238 Best Error: 0.600
+Iteration: 883 Since Improvement: 239 Best Error: 0.600
+Iteration: 884 Since Improvement: 240 Best Error: 0.600
+Iteration: 885 Since Improvement: 241 Best Error: 0.600
+Iteration: 886 Since Improvement: 242 Best Error: 0.600
+Iteration: 887 Since Improvement: 243 Best Error: 0.600
+Iteration: 888 Since Improvement: 244 Best Error: 0.600
+Iteration: 889 Since Improvement: 245 Best Error: 0.600
+Iteration: 890 Since Improvement: 246 Best Error: 0.600
+Iteration: 891 Since Improvement: 247 Best Error: 0.600
+Iteration: 892 Since Improvement: 248 Best Error: 0.600
+Iteration: 893 Since Improvement: 249 Best Error: 0.600
+Iteration: 894 Since Improvement: 250 Best Error: 0.600
+Iteration: 895 Since Improvement: 251 Best Error: 0.600
+Iteration: 896 Since Improvement: 252 Best Error: 0.600
+Iteration: 897 Since Improvement: 253 Best Error: 0.600
+Iteration: 898 Since Improvement: 254 Best Error: 0.600
+Iteration: 899 Since Improvement: 255 Best Error: 0.600
+Iteration: 900 Since Improvement: 256 Best Error: 0.600
+Iteration: 901 Since Improvement: 257 Best Error: 0.600
+Iteration: 902 Since Improvement: 258 Best Error: 0.600
+Iteration: 903 Since Improvement: 259 Best Error: 0.600
+Iteration: 904 Since Improvement: 260 Best Error: 0.600
+Iteration: 905 Since Improvement: 261 Best Error: 0.600
+Iteration: 906 Since Improvement: 262 Best Error: 0.600
+Iteration: 907 Since Improvement: 263 Best Error: 0.600
+Iteration: 908 Since Improvement: 264 Best Error: 0.600
+Iteration: 909 Since Improvement: 265 Best Error: 0.600
+Iteration: 910 Since Improvement: 266 Best Error: 0.600
+Iteration: 911 Since Improvement: 267 Best Error: 0.600
+Iteration: 912 Since Improvement: 268 Best Error: 0.600
+Iteration: 913 Since Improvement: 269 Best Error: 0.600
+Iteration: 914 Since Improvement: 270 Best Error: 0.600
+Iteration: 915 Since Improvement: 271 Best Error: 0.600
+Iteration: 916 Since Improvement: 272 Best Error: 0.600
+Iteration: 917 Since Improvement: 273 Best Error: 0.600
+Iteration: 918 Since Improvement: 274 Best Error: 0.600
+Iteration: 919 Since Improvement: 275 Best Error: 0.600
+Iteration: 920 Since Improvement: 276 Best Error: 0.600
+Iteration: 921 Since Improvement: 277 Best Error: 0.600
+Iteration: 922 Since Improvement: 278 Best Error: 0.600
+Iteration: 923 Since Improvement: 279 Best Error: 0.600
+Iteration: 924 Since Improvement: 280 Best Error: 0.600
+Iteration: 925 Since Improvement: 281 Best Error: 0.600
+Iteration: 926 Since Improvement: 282 Best Error: 0.600
+Iteration: 927 Since Improvement: 283 Best Error: 0.600
+Iteration: 928 Since Improvement: 284 Best Error: 0.600
+Iteration: 929 Since Improvement: 285 Best Error: 0.600
+Iteration: 930 Since Improvement: 286 Best Error: 0.600
+Iteration: 931 Since Improvement: 287 Best Error: 0.600
+Iteration: 932 Since Improvement: 288 Best Error: 0.600
+Iteration: 933 Since Improvement: 289 Best Error: 0.600
+Iteration: 934 Since Improvement: 290 Best Error: 0.600
+Iteration: 935 Since Improvement: 291 Best Error: 0.600
+Iteration: 936 Since Improvement: 292 Best Error: 0.600
+Iteration: 937 Since Improvement: 293 Best Error: 0.600
+Iteration: 938 Since Improvement: 294 Best Error: 0.600
+Iteration: 939 Since Improvement: 295 Best Error: 0.600
+Iteration: 940 Since Improvement: 296 Best Error: 0.600
+Iteration: 941 Since Improvement: 297 Best Error: 0.600
+Iteration: 942 Since Improvement: 298 Best Error: 0.600
+Iteration: 943 Since Improvement: 299 Best Error: 0.600
+Iteration: 944 Since Improvement: 300 Best Error: 0.600
+Iteration: 945 Since Improvement: 301 Best Error: 0.600
+============================================
+LR: 0.15 M: 0.30
+0-1,1-1,0.01585
+0-2,1-1,-7.84811
+0-3,1-1,-3.33281
+0-4,1-1,1.16632
+0-5,1-1,-0.06039
+0-6,1-1,-0.64536
+0-7,1-1,-3.22864
+0-8,1-1,0.98814
+0-9,1-1,-2.84739
+0-10,1-1,-1.45071
+0-11,1-1,-4.36034
+0-12,1-1,-2.45276
+0-13,1-1,1.37754
+0-14,1-1,-1.36219
+0-15,1-1,-3.03025
+0-16,1-1,-1.44314
+0-17,1-1,0.77777
+0-18,1-1,-0.19799
+0-19,1-1,-1.81059
+0-20,1-1,-2.59013
+0-21,1-1,-2.90150
+0-22,1-1,-2.63089
+0-23,1-1,1.14220
+0-24,1-1,1.84773
+0-25,1-1,4.20084
+0-26,1-1,1.24982
+0-27,1-1,-3.07616
+0-28,1-1,-4.25932
+0-29,1-1,-2.73406
+0-30,1-1,-1.76635
+0-31,1-1,4.45506
+0-32,1-1,7.28929
+0-33,1-1,0.92801
+0-34,1-1,1.34150
+0-35,1-1,2.19160
+0-36,1-1,-1.01101
+0-37,1-1,-0.84852
+0-38,1-1,2.65295
+0-39,1-1,-2.43991
+0-40,1-1,-0.11359
+0-41,1-1,6.52635
+0-42,1-1,6.85851
+0-43,1-1,7.17731
+0-44,1-1,4.31870
+0-45,1-1,2.57732
+0-46,1-1,0.66184
+0-47,1-1,1.46177
+0-48,1-1,-4.36856
+0-49,1-1,-3.38600
+0-50,1-1,2.29083
+0-51,1-1,2.67035
+0-52,1-1,4.02213
+0-53,1-1,1.78612
+0-54,1-1,2.49303
+0-55,1-1,-0.74939
+0-56,1-1,1.41710
+0-57,1-1,-1.82075
+0-58,1-1,0.63785
+0-59,1-1,1.32329
+0-60,1-1,-0.83877
+0-61,1-1,2.59082
+0-62,1-1,0.12843
+0-63,1-1,5.03028
+0-64,1-1,6.38066
+0-0,1-1,-3.89992
+0-1,1-2,4.47855
+0-2,1-2,-4.89871
+0-3,1-2,-0.85406
+0-4,1-2,-1.98979
+0-5,1-2,1.63557
+0-6,1-2,0.24974
+0-7,1-2,4.98434
+0-8,1-2,0.56924
+0-9,1-2,0.41577
+0-10,1-2,-2.13936
+0-11,1-2,-2.24596
+0-12,1-2,-3.73984
+0-13,1-2,1.12102
+0-14,1-2,-3.51986
+0-15,1-2,4.05290
+0-16,1-2,5.13904
+0-17,1-2,-2.46375
+0-18,1-2,-3.06055
+0-19,1-2,0.26863
+0-20,1-2,0.87679
+0-21,1-2,-6.96684
+0-22,1-2,-3.72993
+0-23,1-2,-5.58012
+0-24,1-2,5.30674
+0-25,1-2,6.22971
+0-26,1-2,2.32840
+0-27,1-2,1.83948
+0-28,1-2,1.01993
+0-29,1-2,-3.27460
+0-30,1-2,-2.59772
+0-31,1-2,2.19002
+0-32,1-2,7.03611
+0-33,1-2,6.21766
+0-34,1-2,-0.02006
+0-35,1-2,-2.27185
+0-36,1-2,-0.99548
+0-37,1-2,-2.16097
+0-38,1-2,-0.21867
+0-39,1-2,4.14081
+0-40,1-2,-5.08037
+0-41,1-2,-0.72928
+0-42,1-2,0.55079
+0-43,1-2,0.63936
+0-44,1-2,-1.20890
+0-45,1-2,0.14283
+0-46,1-2,2.59039
+0-47,1-2,-0.13807
+0-48,1-2,-0.67465
+0-49,1-2,2.76381
+0-50,1-2,1.13563
+0-51,1-2,0.74998
+0-52,1-2,1.71606
+0-53,1-2,0.07418
+0-54,1-2,-0.43026
+0-55,1-2,0.42093
+0-56,1-2,-5.95345
+0-57,1-2,4.79092
+0-58,1-2,1.37672
+0-59,1-2,-1.31778
+0-60,1-2,3.10179
+0-61,1-2,1.41473
+0-62,1-2,-0.84551
+0-63,1-2,-5.29044
+0-64,1-2,-5.45193
+0-0,1-2,7.00292
+0-1,1-3,1.22603
+0-2,1-3,0.97233
+0-3,1-3,-0.13243
+0-4,1-3,2.70349
+0-5,1-3,1.20017
+0-6,1-3,-1.85584
+0-7,1-3,-1.57137
+0-8,1-3,6.79512
+0-9,1-3,3.52583
+0-10,1-3,-2.03428
+0-11,1-3,-0.40507
+0-12,1-3,0.27159
+0-13,1-3,1.12688
+0-14,1-3,-0.53048
+0-15,1-3,-2.75221
+0-16,1-3,-0.50961
+0-17,1-3,-3.75006
+0-18,1-3,-1.71548
+0-19,1-3,-0.18400
+0-20,1-3,0.13378
+0-21,1-3,-0.57994
+0-22,1-3,3.70933
+0-23,1-3,3.12133
+0-24,1-3,3.31159
+0-25,1-3,3.95918
+0-26,1-3,5.04192
+0-27,1-3,1.17010
+0-28,1-3,-1.19616
+0-29,1-3,-2.41100
+0-30,1-3,2.46314
+0-31,1-3,3.79243
+0-32,1-3,2.52550
+0-33,1-3,2.55239
+0-34,1-3,3.38319
+0-35,1-3,4.93224
+0-36,1-3,-2.02993
+0-37,1-3,-1.54404
+0-38,1-3,-1.46969
+0-39,1-3,2.65343
+0-40,1-3,9.38705
+0-41,1-3,8.65347
+0-42,1-3,3.37564
+0-43,1-3,-7.03844
+0-44,1-3,-1.43759
+0-45,1-3,-1.70918
+0-46,1-3,-5.42841
+0-47,1-3,-0.78670
+0-48,1-3,-2.40685
+0-49,1-3,-4.49531
+0-50,1-3,-8.34562
+0-51,1-3,-4.72443
+0-52,1-3,-2.23384
+0-53,1-3,-3.64255
+0-54,1-3,-5.22514
+0-55,1-3,-9.43020
+0-56,1-3,-4.43883
+0-57,1-3,-2.58956
+0-58,1-3,-4.38020
+0-59,1-3,-4.90668
+0-60,1-3,-1.04499
+0-61,1-3,-0.64473
+0-62,1-3,0.83170
+0-63,1-3,-2.16930
+0-64,1-3,0.67572
+0-0,1-3,11.69541
+1-1,2-1,3.53320
+1-2,2-1,1.11289
+1-3,2-1,1.69321
+1-0,2-1,-6.68077
+1-1,2-2,-0.90732
+1-2,2-2,1.54366
+1-3,2-2,0.97130
+1-0,2-2,-3.33768
+1-1,2-3,1.89386
+1-2,2-3,-1.71313
+1-3,2-3,-0.99189
+1-0,2-3,-2.32279
+1-1,2-4,-1.47860
+1-2,2-4,-2.91536
+1-3,2-4,-2.73282
+1-0,2-4,-0.35412
+1-1,2-5,0.51923
+1-2,2-5,-1.56415
+1-3,2-5,0.86728
+1-0,2-5,-2.52514
+1-1,2-6,-4.71040
+1-2,2-6,3.33946
+1-3,2-6,-3.02718
+1-0,2-6,-1.69693
+1-1,2-7,1.36364
+1-2,2-7,1.80156
+1-3,2-7,-1.27330
+1-0,2-7,-2.42881
+1-1,2-8,-1.01092
+1-2,2-8,0.48146
+1-3,2-8,1.43896
+1-0,2-8,-2.71167
+1-1,2-9,-0.76029
+1-2,2-9,-0.04665
+1-3,2-9,-2.26123
+1-0,2-9,0.43744
+1-1,2-10,-11.66177
+1-2,2-10,-2.88016
+1-3,2-10,2.53737
+1-0,2-10,-1.21662
+Train Error: 0.588 Train Interval: (0.555, 0.620)
+Validation Error: 0.660 Validation Interval: (0.529, 0.791)
+Test Error: 0.685 Test Interval: (0.640, 0.730)
+
