@@ -1,14 +1,10 @@
 package edu.gmu.classifier.neuralnet.train;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import static edu.gmu.classifier.neuralnet.util.NeuralNetUtils.calculateError;
+import static edu.gmu.classifier.neuralnet.util.NeuralNetUtils.printWeights;
 
-import edu.gmu.classifier.neuralnet.net.Net;
-import edu.gmu.classifier.neuralnet.node.Link;
-import edu.gmu.classifier.neuralnet.node.Node;
-import edu.gmu.classifier.neuralnet.node.NodeFunction;
-import edu.gmu.classifier.neuralnet.node.NodeFunctions;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 
@@ -19,6 +15,12 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.DefaultXYDataset;
 
 import com.google.common.collect.ArrayListMultimap;
+
+import edu.gmu.classifier.neuralnet.net.Net;
+import edu.gmu.classifier.neuralnet.node.Link;
+import edu.gmu.classifier.neuralnet.node.Node;
+import edu.gmu.classifier.neuralnet.node.NodeFunction;
+import edu.gmu.classifier.neuralnet.node.NodeFunctions;
 
 /**
  * Implementation of the neural network backpropagation training algorithm. Takes a 
@@ -224,27 +226,6 @@ public class Backpropagation
 		
 		System.out.printf( "Train Error: %.3f Train Interval: (%.3f, %.3f)%n", trainError, trainError - trainErrorInterval, trainError + trainErrorInterval );
 		System.out.printf( "Test Error: %.3f Test Interval: (%.3f, %.3f)%n", testError, testError - testErrorInterval, testError + testErrorInterval );
-	}
-	
-	protected void printWeights( int iteration, final Net net, TrainingExample data )
-	{
-		System.out.printf( "Iteration %d Training Example %s %s%n", iteration, Arrays.toString( data.getInputs( ) ), Arrays.toString( data.getOutputs( ) ) );
-		printWeights( net );
-	}
-	
-	protected void printWeights( final Net net )
-	{
-		net.apply( new NodeFunction( )
-		{
-			@Override
-			public void run( Node node )
-			{
-				for ( Link link : node.getInputLinks( ) )
-				{
-					System.out.printf( "%s,%s,%.5f%n", link.getInputNode( ), link.getOutputNode( ), link.getWeight( ) );
-				}
-			}
-		});
 	}
 	
 	public boolean stop( Net net )
