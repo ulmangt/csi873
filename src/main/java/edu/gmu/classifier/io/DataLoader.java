@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import edu.gmu.classifier.neuralnet.train.Backpropagation.TrainingExample;
-
 /**
  * Utility functions for loading image data files.
  *  
