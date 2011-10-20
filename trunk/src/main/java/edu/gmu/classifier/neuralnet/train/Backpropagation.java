@@ -77,30 +77,34 @@ public class Backpropagation
 	}
 	
 	int counter = 0;
+	int improveCounter = 0;
+	double bestError = 1.0;
 	
 	/**
 	 * Trains the provided network based on the training examples.
 	 * 
 	 * @param net the network to train. The weights of the links in the network will be adjusted by this call
 	 * @param trainData the data set to use to train the network
-	 * @param testData the data set used to verify the effectiveness of the network
+	 * @param validationData the data set used to verify the effectiveness of the network and determine when to halt training
 	 * @param learningRate the step size of take at each iteration of the backpropagation algorithm
 	 * @param momentum whether to adjust link weight updates based on the magnitude of the previous update
 	 */
-	public void train( Net net, List<TrainingExample> trainData, List<TrainingExample> testData, double learningRate, double momentum )
+	public void train( Net net, List<TrainingExample> trainData, List<TrainingExample> validationData, double learningRate, double momentum )
 	{
 		// initialize data structures to store error and weight information at each iteration in order to generate plots
 		final ArrayListMultimap<Link,Double> weightMap = ArrayListMultimap.create( );
-		final ArrayList<Double> testErrorList = new ArrayList<Double>( );
+		final ArrayList<Double> validationErrorList = new ArrayList<Double>( );
 		final ArrayList<Double> trainErrorList = new ArrayList<Double>( );
 		
-		// initialize iteration counter
+		// initialize counters
 		counter = 0;
+		improveCounter = 0;
+		bestError = 1.0;
 		
 		// loop until stopping criterion are met
-		while ( !stop( net ) )
+		while ( !stop( net, validationData ) )
 		{
-//			sSystem.out.println( counter );
+			System.out.println( "Iteration: " + counter );
 			
 			// loop over each training example
 			for ( TrainingExample data : trainData )
@@ -146,11 +150,11 @@ public class Backpropagation
 				}
 			});
 			
-			// calculate and store training and test errors
-			double testError = calculateError( net, testData );
+			// calculate and store training and validation errors
+			double validationError = calculateError( net, validationData );
 			double trainError = calculateError( net, trainData );
 			
-			testErrorList.add( testError );
+			validationErrorList.add( validationError );
 			trainErrorList.add( trainError );
 		}
 		
@@ -164,30 +168,30 @@ public class Backpropagation
 		printWeights( net );
 		
 		// create jfreechart dataset for plotting purposes
-		double[][] testSeriesData = new double[2][testErrorList.size( )];
+		double[][] validationSeriesData = new double[2][validationErrorList.size( )];
 		double[][] trainSeriesData = new double[2][trainErrorList.size( )];
 		DefaultXYDataset dataset = new DefaultXYDataset( );
 		
-		// add data points to test error vs training iteration plot
-		for( int i = 0 ; i < testErrorList.size( ) ; i++ )
+		// add data points to validation error vs training iteration plot
+		for( int i = 0 ; i < validationErrorList.size( ) ; i++ )
 		{
-			testSeriesData[0][i] = i;
-			testSeriesData[1][i] = testErrorList.get( i );
+			validationSeriesData[0][i] = i * trainData.size( );
+			validationSeriesData[1][i] = validationErrorList.get( i );
 			
-			dataset.addSeries( "Test Error", testSeriesData );
+			dataset.addSeries( "Validation Error", validationSeriesData );
 		}
 		
 		// add data points to training error vs training iteration plot
 		for( int i = 0 ; i < trainErrorList.size( ) ; i++ )
 		{
-			trainSeriesData[0][i] = i;
+			trainSeriesData[0][i] = i * trainData.size( );
 			trainSeriesData[1][i] = trainErrorList.get( i );
 			
 			dataset.addSeries( "Train Error", trainSeriesData );
 		}
 		
 		// display plots
-		JFreeChart chart = ChartFactory.createXYLineChart( String.format( "Test and Training Error (LR: %.2f M: %.2f)", learningRate, momentum), "Iteration", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
+		JFreeChart chart = ChartFactory.createXYLineChart( String.format( "Validation and Training Error (LR: %.2f M: %.2f)", learningRate, momentum), "Iteration", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
 		ChartPanel chartPanel = new ChartPanel( chart );
 		JFrame frame = new JFrame( );
 		frame.setSize( 1000, 1000 );
@@ -217,19 +221,30 @@ public class Backpropagation
 		frame2.setSize( 1000, 1000 );
 		frame2.add( chartPanel2 );
 		frame2.setVisible( true );
-		
-		double trainError = calculateError( net, trainData );
-		double testError = calculateError( net, testData );
-	
-		double trainErrorInterval = 1.96 * Math.sqrt( trainError * ( 1 - trainError ) / trainData.size( ) );
-		double testErrorInterval = 1.96 * Math.sqrt( testError * ( 1 - testError ) / testData.size( ) );
-		
-		System.out.printf( "Train Error: %.3f Train Interval: (%.3f, %.3f)%n", trainError, trainError - trainErrorInterval, trainError + trainErrorInterval );
-		System.out.printf( "Test Error: %.3f Test Interval: (%.3f, %.3f)%n", testError, testError - testErrorInterval, testError + testErrorInterval );
 	}
 	
-	public boolean stop( Net net )
+	/**
+	 * Stopping condition function. At each iteration, the network is tested against the validation data set. If
+	 * the error has not improved for 50 iterations (where an iteration is one pass through all the training data)
+	 * then the training is stopped.
+	 * 
+	 * @param net the network
+	 * @param validationData the validation data set
+	 * @return whether or not to stop the algorithm
+	 */
+	public boolean stop( Net net, List<TrainingExample> validationData )
 	{
-		return counter++ > 2000;
+		double validationError = calculateError( net, validationData );
+		
+		if ( validationError < bestError )
+		{
+			bestError = validationError;
+			improveCounter = 0;
+			return false;
+		}
+		else
+		{
+			return improveCounter++ > 50;
+		}
 	}
 }
