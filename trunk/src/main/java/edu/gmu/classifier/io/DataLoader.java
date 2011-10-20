@@ -114,7 +114,19 @@ public class DataLoader
 	protected static double[] createOutputArray( int trueDigit )
 	{
 		double[] outputArray = new double[10];
-		outputArray[trueDigit] = 1.0;
+		
+		for ( int i = 0 ; i < 10 ; i++ )
+		{
+			if ( i == trueDigit )
+			{
+				outputArray[i] = 0.9;
+			}
+			else
+			{
+				outputArray[i] = 0.1;
+			}
+		}
+		
 		return outputArray;
 	}
 	

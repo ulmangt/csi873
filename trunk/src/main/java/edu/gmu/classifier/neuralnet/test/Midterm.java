@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.gmu.classifier.database.ResultsUploader;
 import edu.gmu.classifier.io.DataLoader;
 import edu.gmu.classifier.neuralnet.factory.NetFactory;
 import edu.gmu.classifier.neuralnet.net.Net;
@@ -75,5 +76,9 @@ public class Midterm
 		// run the backpropagation algorithm to train the network using the above training examples
 		Backpropagation b = new Backpropagation( );
 		b.train( net, trainingDataList, testDataList, 0.15, 0.3 );
+		
+		// upload results for visualization
+		ResultsUploader.uploadTrainingResults( net, trainingDataList, "64-10-10_trainrate=0.15_momentum=0.3_train" );
+		ResultsUploader.uploadTestingResults( net, trainingDataList, "64-10-10_trainrate=0.15_momentum=0.3_test" );
 	}
 }
