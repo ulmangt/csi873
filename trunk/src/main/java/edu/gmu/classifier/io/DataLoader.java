@@ -1,6 +1,5 @@
-package edu.gmu.classifier.neuralnet.io;
+package edu.gmu.classifier.io;
 
-import java.awt.Rectangle;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -99,7 +98,7 @@ public class DataLoader
 			double[] outputData = createOutputArray( trueDigit );
 			
 			// add  the training example to the return list
-			trainingExamples.add( new TrainingExample( inputData, outputData ) );
+			trainingExamples.add( new TrainingExample( inputData, outputData, trueDigit ) );
 			
 			// update the line number count
 			lineNumber++;
@@ -133,73 +132,5 @@ public class DataLoader
 		{
 			throw new RuntimeException( String.format( "Cannot determine digit from file name: %s", fileName ) );
 		}
-	}
-	
-	protected static Rectangle findOffsets( double[] data )
-	{
-		int minX = X_SIZE + 1;
-		int maxX = -1;
-		
-		int minY = Y_SIZE + 1;
-		int maxY = -1;
-		
-		for ( int x = 0 ; x < X_SIZE ; x++ )
-		{
-			for ( int y = 0 ; y < Y_SIZE ; y++ )
-			{
-				int index = getIndex( x, y );
-				double value = data[index];
-			
-				if ( value > 0.0 )
-				{
-					if ( x < minX ) minX = x;
-					if ( x > maxX ) maxX = x;
-					if ( y < minY ) minY = y;
-					if ( y > maxY ) maxY = y;
-				}
-			}
-		}
-		
-		return new Rectangle( minX, minY, maxX - minX, maxY - minY );
-	}
-	
-	protected static double[] shift( double[] data )
-	{
-		Rectangle rect = findOffsets( data );
-		return shift( -rect.x, -rect.y, data );
-	}
-	
-	protected static double[] shift( int shiftX, int shiftY, double[] data )
-	{
-		double[] newData = new double[data.length];
-		
-		for ( int i = 0 ; i < data.length ; i++ )
-		{
-			int x = getX( i ) + shiftX;
-			int y = getY( i ) + shiftY;
-			int newi = getIndex( x, y );
-			
-			if ( newi < 0 || newi >= data.length )
-				continue;
-			
-			newData[newi] = data[i];
-		}
-		
-		return newData;
-	}
-	
-	protected static int getIndex( int x, int y )
-	{
-		return y * X_SIZE + x;
-	}
-	
-	protected static int getX( int index )
-	{
-		return index % X_SIZE;
-	}
-	
-	protected static int getY( int index )
-	{
-		return index / X_SIZE;
 	}
 }

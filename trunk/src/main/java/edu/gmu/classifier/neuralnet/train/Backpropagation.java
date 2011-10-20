@@ -32,11 +32,13 @@ public class Backpropagation
 {	
 	public static class TrainingExample
 	{
+		protected int trueDigit;
 		protected double[] inputs;
 		protected double[] outputs;
 		
-		public TrainingExample( double[] inputs, double[] outputs )
+		public TrainingExample( double[] inputs, double[] outputs, int trueDigit )
 		{
+			this.trueDigit = trueDigit;
 			this.inputs = inputs;
 			this.outputs = outputs;
 		}
@@ -59,6 +61,16 @@ public class Backpropagation
 		public void setOutputs( double[] outputs )
 		{
 			this.outputs = outputs;
+		}
+		
+		public int getDigit( )
+		{
+			return this.trueDigit;
+		}
+		
+		public String getCharacter( )
+		{
+			return String.valueOf( this.trueDigit );
 		}
 	}
 	
@@ -212,52 +224,6 @@ public class Backpropagation
 		
 		System.out.printf( "Train Error: %.3f Train Interval: (%.3f, %.3f)%n", trainError, trainError - trainErrorInterval, trainError + trainErrorInterval );
 		System.out.printf( "Test Error: %.3f Test Interval: (%.3f, %.3f)%n", testError, testError - testErrorInterval, testError + testErrorInterval );
-	}
-	
-	/**
-	 * @param net the network to use to classify the training examples
-	 * @param testData 
-	 * @return the percentage of correctly classified examples for the provided list of data
-	 */
-	public double calculateError( Net net, List<TrainingExample> testData )
-	{
-		int totalCount = testData.size( );
-		int correctCount = 0;
-		
-		for ( TrainingExample data : testData )
-		{
-			double[] output = net.calculateOutput( data.getInputs( ) );
-		
-			if ( getLargestIndex( output ) == getLargestIndex( data.getOutputs( ) ) )
-			{
-				correctCount++;
-			}
-		}
-		
-		return 1.0 - ( (double) correctCount / (double) totalCount );
-	}
-	
-	/**
-	 * @param array
-	 * @return the index of the largest entry in the array
-	 */
-	public int getLargestIndex( double[] array )
-	{
-		double max = Double.NEGATIVE_INFINITY;
-		int index = 0;
-		
-		for ( int i = 0 ; i < array.length ; i++ )
-		{
-			double data = array[i];
-			
-			if ( data > max )
-			{
-				max = data;
-				index = i;
-			}
-		}
-		
-		return index;
 	}
 	
 	protected void printWeights( int iteration, final Net net, TrainingExample data )

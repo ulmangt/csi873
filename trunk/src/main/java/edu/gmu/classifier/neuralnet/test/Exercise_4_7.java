@@ -24,8 +24,8 @@ public class Exercise_4_7
 		Backpropagation b = new Backpropagation( );
 		
 		List<TrainingExample> training = new ArrayList<TrainingExample>( );
-		training.add( new TrainingExample( new double[] { 1, 0 }, new double[] { 1 } ) );
-		training.add( new TrainingExample( new double[] { 0, 1 }, new double[] { 0 } ) );
+		training.add( new TrainingExample( new double[] { 1, 0 }, new double[] { 1 }, 1 ) );
+		training.add( new TrainingExample( new double[] { 0, 1 }, new double[] { 0 }, 0 ) );
 		
 		b.train( net, training, new ArrayList<TrainingExample>( ), 0.3, 0.9 );
 		
