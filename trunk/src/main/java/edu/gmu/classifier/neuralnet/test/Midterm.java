@@ -79,6 +79,6 @@ public class Midterm
 		
 		// upload results for visualization
 		ResultsUploader.uploadTrainingResults( net, trainingDataList, "64-10-10_trainrate=0.15_momentum=0.3_train" );
-		ResultsUploader.uploadTestingResults( net, trainingDataList, "64-10-10_trainrate=0.15_momentum=0.3_test" );
+		ResultsUploader.uploadTestingResults( net, testDataList, "64-10-10_trainrate=0.15_momentum=0.3_test" );
 	}
 }
