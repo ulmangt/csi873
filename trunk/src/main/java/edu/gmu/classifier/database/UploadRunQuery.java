@@ -1,10 +1,10 @@
 package edu.gmu.classifier.database;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import com.mysql.jdbc.Statement;
 
@@ -32,7 +32,7 @@ public class UploadRunQuery
 			connection = DatabaseManager.getInstance( ).getConnection( );
 			statement = connection.prepareStatement( "INSERT INTO Handwriting.Run (sDescription, dtRunDate) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS );
 			statement.setString( 1, sDescription );
-			statement.setDate( 2, new Date( time ) );
+			statement.setTimestamp( 2, new Timestamp( time ) );
 			statement.execute( );
 
 			ResultSet rs = statement.getGeneratedKeys( );
