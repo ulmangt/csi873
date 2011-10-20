@@ -203,7 +203,7 @@ public class Backpropagation
 		}
 		else
 		{
-			return improveCounter++ > 300;
+			return improveCounter++ > 200;
 		}
 	}
 }
