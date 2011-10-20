@@ -104,7 +104,7 @@ public class Backpropagation
 		// loop until stopping criterion are met
 		while ( !stop( net, validationData ) )
 		{
-			System.out.println( "Iteration: " + counter );
+			System.out.printf( "Iteration: %d Since Improvement: %d Best Error: %.3f%n", counter, improveCounter, bestError );
 			
 			// loop over each training example
 			for ( TrainingExample data : trainData )
@@ -234,6 +234,8 @@ public class Backpropagation
 	 */
 	public boolean stop( Net net, List<TrainingExample> validationData )
 	{
+		counter++;
+		
 		double validationError = calculateError( net, validationData );
 		
 		if ( validationError < bestError )
@@ -244,7 +246,7 @@ public class Backpropagation
 		}
 		else
 		{
-			return improveCounter++ > 50;
+			return improveCounter++ > 300;
 		}
 	}
 }
