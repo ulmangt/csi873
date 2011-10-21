@@ -32,7 +32,9 @@ net &= \sum\limits_{i=0}^n w_{i}x_{i}\\
 
 Java (version 1.6.0\_27) was used to implement the neural network and training algorithm. The code is available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi873/}. Compiling and running the code requires the Java build tool Maven (\url{http://maven.apache.org/}). Plots were generated using the Java plotting library JFreeChart (\url{http://www.jfree.org/jfreechart/}). The Google Java general purpose Java utility library Guava (\url{http://code.google.com/p/guava-libraries/}) was also utilized for its multi-map collection data structures.
 
-Project work completed for CSI710 (Scientific Databases) was utilized to create the handwriting sample visualizations and confusion matrix plots. The code the visualization software is also available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi701-group2/}. 
+The source code is also included in the appendix and is organized with code implementing the core backpropagation algorithm and network structure up front, with less critical I/O and support code behind. Of particular interest is the edu.gmu.classifier.neuralnet.train.Backpropagation class, which implements the stochastic backpropagation algorithm, the edu.gmu.classifier.neuralnet.net.AbstractNet class, which handles network construction and calculation of network output, and the edu.gmu.classifier.neuralnet.node.SigmoidNode class, which provides error, output, and weight update calculations specific to networks using a sigmoid activation function (see Equation \ref{sigmoid1}).
+
+Prior project work completed for CSI710 (Scientific Databases) was utilized to create the handwriting sample visualizations and confusion matrix plots. The code the visualization software is also available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi701-group2/}.
 
 \begin{figure}
 \centering
