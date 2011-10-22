@@ -319,6 +319,17 @@ Training      & 0.110 &  0.090 & 0.131  \\
 \label{trainconfusion10}
 \end{figure}
 
+With ten hidden nodes the network is good enough that many of the missclassifications which it makes are cases where even a human observer would find making a correct classification difficult or impossible. For example, Figure \ref{10_5missclass7} contains images of the handwriting instances of digit ``5'' which the ten hidden node network classified as a ``7''. In one case the digit is clearly actually a ``7'' and the data label is simply incorrect. In at three of the remaining four instances, the image is garbled beyond recognition as a ``5''. In only one case could a human observer be reasonably expected to perform better than the ten hidden node network (for this particular small set of digits).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{data/final/10_test_5missclass7.png}
+\caption{5s Missclassified as 7s by 10 Hidden Node Network}
+\label{10_5missclass7}
+\end{figure}
+
+\section{Conclusion}\label{conclusion}
+
 \begin{thebibliography}{9}
 
 \bibitem{cpl}
