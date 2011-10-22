@@ -49,14 +49,14 @@ The neural network described above was trained to classify \(8\) by \(8\) pixel 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{data/visualization/all_training_data.png}
+\includegraphics[width=1.00\textwidth]{data/visualization/all_training_data.png}
 \caption{Handwriting samples from training data set}
 \label{train_all}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{data/visualization/all_testing_data.png}
+\includegraphics[width=1.00\textwidth]{data/visualization/all_testing_data.png}
 \caption{Handwriting samples from test data set}
 \label{test_all}
 \end{figure}
@@ -77,7 +77,7 @@ Experiments were performed with 2, 3, and 4 hidden layers as indicated by the ex
 
 The two hidden node network required aproximately 200,000 stochastic backpropagation algorithm iterations to train. The final error evaluated against the testing data set was \(0.720\) with a 95\% confidence interval of \((0.676 , 0.763)\). The confidence interval calculation is summarized in Equation \ref{conf2sample}.
 
-\subsection{Confidence Interval Discussion (Question 2c)}\label{hidden2}
+\subsection{Confidence Interval Discussion (Question 2c)}\label{conf2}
 
 Table \ref{table2} summarizes the missclassification error and 95\% confidence intervals for the testing, validation, and training data sets. Although the training error confidence interval is based on more samples, and is thus tighter, the testing error confidence interval provides a more realistic estimate of the true error of the two hidden node neural network classifier as applied to unseen data. This is because the network may be overfit to the particular characteristics of the training data samples which might not be representative of the overall class of all possible input data. Therefore, the error measured using the the testing data set (which was not used to train the algorithm) provides a more realistic sense regarding how the classifier will perform on new data. 
 
@@ -242,6 +242,31 @@ Training      & 0.345 &  0.314 & 0.377  \\
 \includegraphics[width=0.7\textwidth]{data/final/4_train_confusion.png}
 \caption{Confusion Matrix for Training Data Set for 4 Hidden Node Network}
 \label{trainconfusion4}
+\end{figure}
+
+Figure \ref{4_4missclass9} contains all the handwriting testing instances of the digit ``4'' which were missclassified as ``9'' by the four hidden node network. There clearly are a number of instances where the ``4'' is indeed similar to a ``9'' as well as cases where the data is messy enough to make it difficult to identify any digit in the data. However, the majority of the handwriting instances appear to be recognizable as the digit ``4'' (to a human observer). This is another reason to hope that a larger network and a more complicated decision boundary might provide better results.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{data/final/4_test_4missclass9.png}
+\caption{4s Missclassified as 9s by 4 Hidden Node Network}
+\label{4_4missclass9}
+\end{figure}
+
+Figures \ref{4_3missclass8} and \ref{4_7missclass9} provide examples of other more minor trouble areas for the four hidden node network. As might be expected, missclassifications appear to occur more often for pairs of digits like ``3'' and ``8'' (Figure \ref{4_3missclass8}) and ``7'' and ``9'' (Figure \ref{4_7missclass9}) whose structure is similar.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{data/final/4_test_3missclass8.png}
+\caption{3s Missclassified as 8s by 4 Hidden Node Network}
+\label{4_3missclass8}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{data/final/4_test_7missclass9.png}
+\caption{7s Missclassified as 9s by 4 Hidden Node Network}
+\label{4_7missclass9}
 \end{figure}
 
 \subsection{Ten Hidden Nodes}\label{hidden10}
