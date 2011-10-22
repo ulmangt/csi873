@@ -65,6 +65,19 @@ Prior project work completed for CSI710 (Scientific Databases) was utilized to c
 
 \section{Results}\label{Results}
 
+Experiments were performed with 2, 3, and 4 hidden layers as indicated by the exam instructions. In adition, out of curiosity, a network with a 10 node hidden layer was also tested. Results for each case are summarized in the following sections.
+
+\section{Two Hidden Nodes}\label{hidden2}
+
+
+
+\begin{equation}\label{conf2sample}
+\begin{split}
+error_{S}(h) &\pm z_{N}\sqrt{\frac{error_{S}(h)(1-error_{S}(h))}{n}} \\
+0.72 &\pm 1.96\sqrt{\frac{(0.72)(1-0.72)}{410}} 
+\end{split}
+\end{equation}
+
 \begin{table}
 \caption{Missclassification Error for 2 Hidden Node Network}
 \begin{center}
@@ -82,6 +95,35 @@ Training      & 0.702 &  0.672 & 0.732  \\
 \label{table2}
 \end{center}
 \end{table}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/2_hidden_node_error.png}
+\caption{Missclassification Error for 2 Hidden Node Network by Iteration}
+\label{error2}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/2_hidden_node_0weight.png}
+\caption{Output Node 0 Input Weights for 2 Hidden Node Network by Iteration}
+\label{weight2}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/2_test_confusion.png}
+\caption{Confusion Matrix for Testing Data Set for 2 Hidden Node Network}
+\label{testconfusion2}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/2_train_confusion.png}
+\caption{Confusion Matrix for Training Data Set for 2 Hidden Node Network}
+\label{trainconfusion2}
+\end{figure}
+
 
 \begin{table}
 \caption{Missclassification Error for 3 Hidden Node Network}
