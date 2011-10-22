@@ -30,6 +30,8 @@ net &= \sum\limits_{i=0}^n w_{i}x_{i}\\
 
 The stochastic backpropagation algorithm was used to train the network. Simple experiments (described below) were performed to gain intuition about what training rates and momentum parameters worked well for this data set. A learning rate of \(0.15\) and a momentum of \(0.3\) were used for the final runs. Network weights were randomly initialized between \(-0.1\) and \(0.1\) before training began.
 
+\subsection{Expected Output}
+
 \begin{figure}\label{expected1}
 \[ \begin{Bmatrix} 0.1 & 0.1 & 0.9 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 \end{Bmatrix} \]
 \caption{Expected output vector for digit: 2}
@@ -37,7 +39,11 @@ The stochastic backpropagation algorithm was used to train the network. Simple e
 
 Values of \(0.9\) and \(0.1\) (instead of \(0.0\) and \(1.0\)) were used for the entries in the length 10 output vector for the training examples. This greatly reduced the tendancy of the weights to take on very large values during training (because the sigmoid has horizontal asymptotes near \(0.0\) and \(1.0\). Figure \ref{expected1} demonstrates the expected output vector for a \(2\) digit.
 
-\section{Data Set}\label{Dataset}
+\subsection{Stopping Criteria}
+
+A group of \(50\) training examples (five from each digit) were set aside from the \(930\) training examples to be used as a validation data set. After each iteration, the error rate was evaluated against this validation sample. The training was stopped if the error rate of the validation sample had not improved in the past (aproximately) 200,000 iterations.
+
+\section{Data Sets}\label{Dataset}
 
 The neural network described above was trained to classify \(8\) by \(8\) pixel handwriting samples with \(1\) bit of information per pixel. A total of \(930\) training samples and \(410\) testing samples was provided. Figure \ref{train_all} provides a visualization of each training sample and Figure \ref{test_all} provides a visualization of each testing sample.
 
@@ -69,7 +75,9 @@ Experiments were performed with 2, 3, and 4 hidden layers as indicated by the ex
 
 \section{Two Hidden Nodes}\label{hidden2}
 
+The two hidden node network required aproximately 200,000 stochastic backpropagation algorithm iterations to train. The final error evaluated against the testing data set was \(0.720\) with a 95\% confidence interval of \((0.676 , 0.763)\). The confidence interval calculation is summarized in Equation \ref{conf2sample}.
 
+Table \ref{table2} summarizes the missclassification error and 95\% confidence intervals for the testing, validation, and training data sets. Although the training error confidence interval is based on more samples, and thus tighter, the testing error confidence interval provides a more realistic estimate of the true error of the two hidden node neural network classifier as applied to unseen data. This is because the network may be overfit to the particular characteristics of the training data samples which might not all be representative of the overall class of all possible input data. Therefore, the error we measure using the the testing data set (which was not used to train the algorithm) should give us a more realistic sense regarding how the classifier will perform on new data. 
 
 \begin{equation}\label{conf2sample}
 \begin{split}
@@ -96,6 +104,8 @@ Training      & 0.702 &  0.672 & 0.732  \\
 \end{center}
 \end{table}
 
+Figure \ref{error2} summarizes the training process of the two hidden node network by plotting the evolution of the training and validation errors during training. Figure \ref{weight2} plots the evolution of the weights for the output node associated with the digit "0".
+
 \begin{figure}
 \centering
 \includegraphics[width=0.85\textwidth]{data/final/2_hidden_node_error.png}
@@ -109,6 +119,10 @@ Training      & 0.702 &  0.672 & 0.732  \\
 \caption{Output Node 0 Input Weights for 2 Hidden Node Network by Iteration}
 \label{weight2}
 \end{figure}
+
+Figures \ref{testconfusion2} and \ref{trainconfusion2} summarize the error rate of the trained network against the testing and training data sets on a digit-by-digit basis. Each box represents the number of handwriting samples which were classified as the digit in the column header but were actually instances of the digit in the row header. Thus, correct classifications are listed along the diagonal of the confusion matrix. The boxes are color coded on a blue to red scale according to the number of handwriting samples falling in the box. Note: because rows indicate the true digit represented by the handwriting samples, the values in each row add up to 41 in the testing data case and 93 in the training data case.
+
+It is clear from Figures \ref{testconfusion2} and \ref{trainconfusion2} (as well as the errors reported in Table \ref{table2}) that two hidden nodes does not provide sufficient degrees of freedom to allow the neural network to distinguish between all ten characters. The resulting decision surfaces are simply insufficiently complex. In this particular case, the network classifies the digits 0 and 7 with some accuracy and classifies almost all other training examples as either 8 or 9.
 
 \begin{figure}
 \centering
