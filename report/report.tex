@@ -28,7 +28,7 @@ net &= \sum\limits_{i=0}^n w_{i}x_{i}\\
 \end{split}
 \end{equation}
 
-The stochastic backpropagation algorithm was used to train the network. Simple experiments (described below) were performed to gain intuition about what training rates and momentum parameters worked well for this data set. A learning rate of \(0.15\) and a momentum of \(0.3\) were used for the final runs. Network weights were randomly initialized between \(-0.1\) and \(0.1\) before training began.
+The stochastic back-propagation algorithm was used to train the network. Simple experiments (described below) were performed to gain intuition about what training rates and momentum parameters worked well for this data set. A learning rate of \(0.15\) and a momentum of \(0.3\) were used for the final runs. Network weights were randomly initialized between \(-0.1\) and \(0.1\) before training began.
 
 \subsection{Expected Output}
 
@@ -37,11 +37,11 @@ The stochastic backpropagation algorithm was used to train the network. Simple e
 \caption{Expected output vector for digit: 2}
 \end{figure}
 
-Values of \(0.9\) and \(0.1\) (instead of \(0.0\) and \(1.0\)) were used for the entries in the length 10 output vector for the training examples. This greatly reduced the tendancy of the weights to take on very large values during training (because the sigmoid has horizontal asymptotes near \(0.0\) and \(1.0\). Figure \ref{expected1} demonstrates the expected output vector for a \(2\) digit.
+Values of \(0.9\) and \(0.1\) (instead of \(0.0\) and \(1.0\)) were used for the entries in the length 10 output vector for the training examples. This greatly reduced the tenancy of the weights to take on very large values during training (because the sigmoid has horizontal asymptotes near \(0.0\) and \(1.0\). Figure \ref{expected1} demonstrates the expected output vector for a \(2\) digit.
 
 \subsection{Stopping Criteria}
 
-A group of \(50\) training examples (five from each digit) were set aside from the \(930\) training examples to be used as a validation data set. After each iteration, the error rate was evaluated against this validation sample. The training was stopped if the error rate of the validation sample had not improved in the past (aproximately) 200,000 iterations.
+A group of \(50\) training examples (five from each digit) were set aside from the \(930\) training examples to be used as a validation data set. After each iteration, the error rate was evaluated against this validation sample. The training was stopped if the error rate of the validation sample had not improved in the past (approximately) 200,000 iterations.
 
 \section{Data Sets}\label{Dataset}
 
@@ -61,25 +61,25 @@ The neural network described above was trained to classify \(8\) by \(8\) pixel 
 \label{test_all}
 \end{figure}
 
-\section{Software Implemenation}\label{Software Implemenation}
+\section{Software Implementation}\label{Software Implementation}
 
 Java (version 1.6.0\_27) was used to implement the neural network and training algorithm. The code is available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi873/}. Compiling and running the code requires the Java build tool Maven (\url{http://maven.apache.org/}). Plots were generated using the Java plotting library JFreeChart (\url{http://www.jfree.org/jfreechart/}). The Google Java general purpose Java utility library Guava (\url{http://code.google.com/p/guava-libraries/}) was also utilized for its multi-map collection data structures.
 
-The source code is also included in the appendix and is organized with code implementing the core backpropagation algorithm and network structure up front, with less critical I/O and support code behind. Of particular interest is the Backpropagation class, which implements the stochastic backpropagation algorithm, the AbstractNet class, which handles network construction and calculation of network output, and the SigmoidNode class, which provides error, output, and weight update calculations specific to networks using a sigmoid activation function (see Equation \ref{sigmoid1}). Finnaly, the Midterm class is the main class responsible for using the components described above to load data, constructing and train a network, and output results.
+The source code is also included in the appendix and is organized with code implementing the core back-propagation algorithm and network structure up front, with less critical I/O and support code behind. Of particular interest is the Backpropagation class, which implements the stochastic back-propagation algorithm, the AbstractNet class, which handles network construction and calculation of network output, and the SigmoidNode class, which provides error, output, and weight update calculations specific to networks using a sigmoid activation function (see Equation \ref{sigmoid1}). Finally, the Midterm class is the main class responsible for using the components described above to load data, constructing and train a network, and output results.
 
 Prior project work completed for CSI710 (Scientific Databases) was utilized to create the handwriting sample visualizations and confusion matrix plots. The code the visualization software is also available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi701-group2/}.
 
 \section{Results}\label{Results}
 
-Experiments were performed with 2, 3, and 4 hidden layers as indicated by the exam instructions. In adition, out of curiosity, a network with a 10 node hidden layer was also tested. Results for each case are summarized in the following sections.
+Experiments were performed with 2, 3, and 4 hidden layers as indicated by the exam instructions. In addition, out of curiosity, a network with a 10 node hidden layer was also tested. Results for each case are summarized in the following sections.
 
 \subsection{Two Hidden Nodes}\label{hidden2}
 
-The two hidden node network required aproximately 200,000 stochastic backpropagation algorithm iterations to train. The final error evaluated against the testing data set was \(0.720\) with a 95\% confidence interval of \((0.676 , 0.763)\). The confidence interval calculation is summarized in Equation \ref{conf2sample}.
+The two hidden node network required approximately 200,000 stochastic back-propagation algorithm iterations to train. The final error evaluated against the testing data set was \(0.720\) with a 95\% confidence interval of \((0.676 , 0.763)\). The confidence interval calculation is summarized in Equation \ref{conf2sample}.
 
 \subsection{Confidence Interval Discussion (Question 2c)}\label{conf2}
 
-Table \ref{table2} summarizes the missclassification error and 95\% confidence intervals for the testing, validation, and training data sets. Although the training error confidence interval is based on more samples, and is thus tighter, the testing error confidence interval provides a more realistic estimate of the true error of the two hidden node neural network classifier as applied to unseen data. This is because the network may be overfit to the particular characteristics of the training data samples which might not be representative of the overall class of all possible input data. Therefore, the error measured using the the testing data set (which was not used to train the algorithm) provides a more realistic sense regarding how the classifier will perform on new data. 
+Table \ref{table2} summarizes the misclassification error and 95\% confidence intervals for the testing, validation, and training data sets. Although the training error confidence interval is based on more samples, and is thus tighter, the testing error confidence interval provides a more realistic estimate of the true error of the two hidden node neural network classifier as applied to unseen data. This is because the network may be over-fit to the particular characteristics of the training data samples which might not be representative of the overall class of all possible input data. Therefore, the error measured using the the testing data set (which was not used to train the algorithm) provides a more realistic sense regarding how the classifier will perform on new data. 
 
 \begin{equation}\label{conf2sample}
 \begin{split}
@@ -89,7 +89,7 @@ error_{S}(h) &\pm z_{N}\sqrt{\frac{error_{S}(h)(1-error_{S}(h))}{n}} \\
 \end{equation}
 
 \begin{table}
-\caption{Missclassification Error for 2 Hidden Node Network}
+\caption{Misclassification Error for 2 Hidden Node Network}
 \begin{center}
 \begin{tabular}{llcc}
 \toprule
@@ -111,7 +111,7 @@ Figure \ref{error2} summarizes the training process of the two hidden node netwo
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{data/final/2_hidden_node_error.png}
-\caption{Missclassification Error for 2 Hidden Node Network by Iteration}
+\caption{Misclassification Error for 2 Hidden Node Network by Iteration}
 \label{error2}
 \end{figure}
 
@@ -142,10 +142,10 @@ It is clear from Figures \ref{testconfusion2} and \ref{trainconfusion2} (as well
 
 \subsection{Three Hidden Nodes}\label{hidden3}
 
-Missclassification error rate for testing data with three hidden nodes improved slightly to \(0.685\) with a 95\% confidence interval of \((0.640 , 0.730)\). Table \ref{table3} summarizes the missclassification error and 95\% confidence intervals for the testing, validation, and training data sets.
+Misclassification error rate for testing data with three hidden nodes improved slightly to \(0.685\) with a 95\% confidence interval of \((0.640 , 0.730)\). Table \ref{table3} summarizes the misclassification error and 95\% confidence intervals for the testing, validation, and training data sets.
 
 \begin{table}
-\caption{Missclassification Error for 3 Hidden Node Network}
+\caption{Misclassification Error for 3 Hidden Node Network}
 \begin{center}
 \begin{tabular}{llcc}
 \toprule
@@ -165,7 +165,7 @@ Training      & 0.588 &  0.555 & 0.620  \\
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{data/final/3_hidden_node_error.png}
-\caption{Missclassification Error for 3 Hidden Node Network by Iteration}
+\caption{Misclassification Error for 3 Hidden Node Network by Iteration}
 \label{error3}
 \end{figure}
 
@@ -176,7 +176,7 @@ Training      & 0.588 &  0.555 & 0.620  \\
 \label{weight3}
 \end{figure}
 
-As indicated by Figure \ref{error3}, the three hidden node network took approximately 800,000 iterations to train, almsot four times longer than the two hidden node network. However, as indicated by Figure \ref{weight3}, the weights for at least some of the output nodes stabilized much earlier than that. Note that the x-axis in Figure \ref{weight3} is measured in (approximately) 1000s of iterations.
+As indicated by Figure \ref{error3}, the three hidden node network took approximately 800,000 iterations to train, almost four times longer than the two hidden node network. However, as indicated by Figure \ref{weight3}, the weights for at least some of the output nodes stabilized much earlier than that. Note that the x-axis in Figure \ref{weight3} is measured in (approximately) 1000s of iterations.
 
 \begin{figure}
 \centering
@@ -196,10 +196,10 @@ However, the confusion matrix in Figures \ref{testconfusion3} and \ref{trainconf
 
 \subsection{Four Hidden Nodes}\label{hidden4}
 
-With four hidden nodes, the missclassification error rate for the testing data set finally falls to \(0.463\) with a 95\% confidence interval of \((0.415 , 0.512)\). The confusion matrices in Figures \ref{testconfusion4} and \ref{trainconfusion4} also indicate much better performance. There are high numbers of correct classifications spread over almost all digits. The noteable exception being the digit ``4'' which is never classified correctly and is very frequently classified incorrectly as a ``9''. Given the similarity in structure between the digits ``9'' and ``4'' it is simultaneously quite striking and quite intuitive that the network would lump these two digits together.
+With four hidden nodes, the misclassification error rate for the testing data set finally falls to \(0.463\) with a 95\% confidence interval of \((0.415 , 0.512)\). The confusion matrices in Figures \ref{testconfusion4} and \ref{trainconfusion4} also indicate much better performance. There are high numbers of correct classifications spread over almost all digits. The notable exception being the digit ``4'' which is never classified correctly and is very frequently classified incorrectly as a ``9''. Given the similarity in structure between the digits ``9'' and ``4'' it is simultaneously quite striking and quite intuitive that the network would lump these two digits together.
 
 \begin{table}
-\caption{Missclassification Error for 4 Hidden Node Network}
+\caption{Misclassification Error for 4 Hidden Node Network}
 \begin{center}
 \begin{tabular}{llcc}
 \toprule
@@ -219,7 +219,7 @@ Training      & 0.345 &  0.314 & 0.377  \\
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{data/final/4_hidden_node_error.png}
-\caption{Missclassification Error for 4 Hidden Node Network by Iteration}
+\caption{Misclassification Error for 4 Hidden Node Network by Iteration}
 \label{error4}
 \end{figure}
 
@@ -244,28 +244,28 @@ Training      & 0.345 &  0.314 & 0.377  \\
 \label{trainconfusion4}
 \end{figure}
 
-Figure \ref{4_4missclass9} contains all the handwriting testing instances of the digit ``4'' which were missclassified as ``9'' by the four hidden node network. There clearly are a number of instances where the ``4'' is indeed similar to a ``9'' as well as cases where the data is messy enough to make it difficult to identify any digit in the data. However, the majority of the handwriting instances appear to be recognizable as the digit ``4'' (to a human observer). This is another reason to hope that a larger network and a more complicated decision boundary might provide better results.
+Figure \ref{4_4missclass9} contains all the handwriting testing instances of the digit ``4'' which were misclassified as ``9'' by the four hidden node network. There clearly are a number of instances where the ``4'' is indeed similar to a ``9'' as well as cases where the data is messy enough to make it difficult to identify any digit in the data. However, the majority of the handwriting instances appear to be recognizable as the digit ``4'' (to a human observer). This is another reason to hope that a larger network and a more complicated decision boundary might provide better results.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{data/final/4_test_4missclass9.png}
-\caption{4s Missclassified as 9s by 4 Hidden Node Network}
+\caption{4s Misclassified as 9s by 4 Hidden Node Network}
 \label{4_4missclass9}
 \end{figure}
 
-Figures \ref{4_3missclass8} and \ref{4_7missclass9} provide examples of other more minor trouble areas for the four hidden node network. As might be expected, missclassifications appear to occur more often for pairs of digits like ``3'' and ``8'' (Figure \ref{4_3missclass8}) and ``7'' and ``9'' (Figure \ref{4_7missclass9}) whose structure is similar.
+Figures \ref{4_3missclass8} and \ref{4_7missclass9} provide examples of other more minor trouble areas for the four hidden node network. As might be expected, misclassifications appear to occur more often for pairs of digits like ``3'' and ``8'' (Figure \ref{4_3missclass8}) and ``7'' and ``9'' (Figure \ref{4_7missclass9}) whose structure is similar.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{data/final/4_test_3missclass8.png}
-\caption{3s Missclassified as 8s by 4 Hidden Node Network}
+\caption{3s Misclassified as 8s by 4 Hidden Node Network}
 \label{4_3missclass8}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{data/final/4_test_7missclass9.png}
-\caption{7s Missclassified as 9s by 4 Hidden Node Network}
+\caption{7s Misclassified as 9s by 4 Hidden Node Network}
 \label{4_7missclass9}
 \end{figure}
 
@@ -274,7 +274,7 @@ Figures \ref{4_3missclass8} and \ref{4_7missclass9} provide examples of other mo
 Because the results in Figures \ref{testconfusion4} and \ref{trainconfusion4} for the four hidden node network indicated that the network still had an insufficiently complicated decision boundary to differentiate between all ten digits, I performed an additional experiment with ten hidden nodes. This resulted in a significantly improved testing error rate of \(0.385\) with a 95\% confidence interval of \((0.338 , 0.432)\). Further, as indicated in Figures \ref{testconfusion10} and \ref{trainconfusion10}, the neural network is finally able to correctly classify the majority of handwriting instances for all of the ten digits.
 
 \begin{table}
-\caption{Missclassification Error for 10 Hidden Node Network}
+\caption{Misclassification Error for 10 Hidden Node Network}
 \begin{center}
 \begin{tabular}{llcc}
 \toprule
@@ -294,7 +294,7 @@ Training      & 0.110 &  0.090 & 0.131  \\
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{data/final/10_hidden_nodes_error.png}
-\caption{Missclassification Error for 10 Hidden Node Network by Iteration}
+\caption{Misclassification Error for 10 Hidden Node Network by Iteration}
 \label{error10}
 \end{figure}
 
@@ -319,16 +319,18 @@ Training      & 0.110 &  0.090 & 0.131  \\
 \label{trainconfusion10}
 \end{figure}
 
-With ten hidden nodes the network is good enough that many of the missclassifications which it makes are cases where even a human observer would find making a correct classification difficult or impossible. For example, Figure \ref{10_5missclass7} contains images of the handwriting instances of digit ``5'' which the ten hidden node network classified as a ``7''. In one case the digit is clearly actually a ``7'' and the data label is simply incorrect. In at three of the remaining four instances, the image is garbled beyond recognition as a ``5''. In only one case could a human observer be reasonably expected to perform better than the ten hidden node network (for this particular small set of digits).
+With ten hidden nodes the network is good enough that many of the misclassifications which it makes are cases where even a human observer would find making a correct classification difficult or impossible. For example, Figure \ref{10_5missclass7} contains images of the handwriting instances of digit ``5'' which the ten hidden node network classified as a ``7''. In one case the digit is clearly actually a ``7'' and the data label is simply incorrect. In at three of the remaining four instances, the image is garbled beyond recognition as a ``5''. In only one case could a human observer be reasonably expected to perform better than the ten hidden node network (for this particular small set of digits).
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{data/final/10_test_5missclass7.png}
-\caption{5s Missclassified as 7s by 10 Hidden Node Network}
+\caption{5s Misclassified as 7s by 10 Hidden Node Network}
 \label{10_5missclass7}
 \end{figure}
 
 \section{Conclusion}\label{conclusion}
+
+A misclassification error rate of \(0.463\) was achieved for a 4 hidden node neural network classifier using the testing data set.
 
 \begin{thebibliography}{9}
 
