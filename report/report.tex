@@ -77,7 +77,7 @@ Experiments were performed with 2, 3, and 4 hidden layers as indicated by the ex
 
 The two hidden node network required aproximately 200,000 stochastic backpropagation algorithm iterations to train. The final error evaluated against the testing data set was \(0.720\) with a 95\% confidence interval of \((0.676 , 0.763)\). The confidence interval calculation is summarized in Equation \ref{conf2sample}.
 
-Table \ref{table2} summarizes the missclassification error and 95\% confidence intervals for the testing, validation, and training data sets. Although the training error confidence interval is based on more samples, and thus tighter, the testing error confidence interval provides a more realistic estimate of the true error of the two hidden node neural network classifier as applied to unseen data. This is because the network may be overfit to the particular characteristics of the training data samples which might not all be representative of the overall class of all possible input data. Therefore, the error we measure using the the testing data set (which was not used to train the algorithm) should give us a more realistic sense regarding how the classifier will perform on new data. 
+Table \ref{table2} summarizes the missclassification error and 95\% confidence intervals for the testing, validation, and training data sets. Although the training error confidence interval is based on more samples, and is thus tighter, the testing error confidence interval provides a more realistic estimate of the true error of the two hidden node neural network classifier as applied to unseen data. This is because the network may be overfit to the particular characteristics of the training data samples which might not be representative of the overall class of all possible input data. Therefore, the error measured using the the testing data set (which was not used to train the algorithm) provides a more realistic sense regarding how the classifier will perform on new data. 
 
 \begin{equation}\label{conf2sample}
 \begin{split}
@@ -104,7 +104,7 @@ Training      & 0.702 &  0.672 & 0.732  \\
 \end{center}
 \end{table}
 
-Figure \ref{error2} summarizes the training process of the two hidden node network by plotting the evolution of the training and validation errors during training. Figure \ref{weight2} plots the evolution of the weights for the output node associated with the digit "0".
+Figure \ref{error2} summarizes the training process of the two hidden node network by plotting the evolution of the training and validation errors during training. Figure \ref{weight2} plots the evolution of the weights for the output node associated with the digit ``0''.
 
 \begin{figure}
 \centering
@@ -138,6 +138,8 @@ It is clear from Figures \ref{testconfusion2} and \ref{trainconfusion2} (as well
 \label{trainconfusion2}
 \end{figure}
 
+\section{Three Hidden Nodes}\label{hidden3}
+
 
 \begin{table}
 \caption{Missclassification Error for 3 Hidden Node Network}
@@ -157,6 +159,36 @@ Training      & 0.588 &  0.555 & 0.620  \\
 \end{center}
 \end{table}
 
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/3_hidden_node_error.png}
+\caption{Missclassification Error for 3 Hidden Node Network by Iteration}
+\label{error3}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/3_hidden_node_0weight.png}
+\caption{Output Node 0 Input Weights for 3 Hidden Node Network by Iteration}
+\label{weight3}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/3_test_confusion.png}
+\caption{Confusion Matrix for Testing Data Set for 3 Hidden Node Network}
+\label{testconfusion3}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/3_train_confusion.png}
+\caption{Confusion Matrix for Training Data Set for 3 Hidden Node Network}
+\label{trainconfusion3}
+\end{figure}
+
+\section{Four Hidden Nodes}\label{hidden4}
+
 \begin{table}
 \caption{Missclassification Error for 4 Hidden Node Network}
 \begin{center}
@@ -174,6 +206,36 @@ Training      & 0.345 &  0.314 & 0.377  \\
 \label{table4}
 \end{center}
 \end{table}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/4_hidden_node_error.png}
+\caption{Missclassification Error for 4 Hidden Node Network by Iteration}
+\label{error4}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/4_hidden_node_0weight.png}
+\caption{Output Node 0 Input Weights for 4 Hidden Node Network by Iteration}
+\label{weight4}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/4_test_confusion.png}
+\caption{Confusion Matrix for Testing Data Set for 4 Hidden Node Network}
+\label{testconfusion4}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/4_train_confusion.png}
+\caption{Confusion Matrix for Training Data Set for 4 Hidden Node Network}
+\label{trainconfusion4}
+\end{figure}
+
+\section{Ten Hidden Nodes}\label{hidden10}
 
 \begin{table}
 \caption{Missclassification Error for 10 Hidden Node Network}
@@ -193,13 +255,41 @@ Training      & 0.110 &  0.090 & 0.131  \\
 \end{center}
 \end{table}
 
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/10_hidden_nodes_error.png}
+\caption{Missclassification Error for 10 Hidden Node Network by Iteration}
+\label{error10}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/10_hidden_nodes.png}
+\caption{Output Node 0 Input Weights for 10 Hidden Node Network by Iteration}
+\label{weight10}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/10_test_confusion.png}
+\caption{Confusion Matrix for Testing Data Set for 10 Hidden Node Network}
+\label{testconfusion10}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{data/final/10_train_confusion.png}
+\caption{Confusion Matrix for Training Data Set for 10 Hidden Node Network}
+\label{trainconfusion10}
+\end{figure}
+
 \begin{thebibliography}{9}
 
 \bibitem{cpl}
-  Brian W. Kernighan and Dennis M. Ritchie,
-  \emph{The C Programming Language},
-  Prentice Hall PTR, New Jersey,
-  2009.
+  Tom M. Mitchell,
+  \emph{Machine Learning},
+  WCB McGraw-Hill, Boston,
+  1997.
 
 \end{thebibliography}
 
