@@ -11,6 +11,13 @@ import org.apache.commons.dbcp.PoolingDriver;
 import org.apache.commons.pool.ObjectPool;
 import org.apache.commons.pool.impl.GenericObjectPool;
 
+/**
+ * Connects to an sql database and maintains a pool of open database connections.
+ * These connections are used to interface with the CSI710 handwriting image
+ * visualization tool.
+ * 
+ * @author ulman
+ */
 public class DatabaseManager
 {
 	private static final DatabaseManager instance = new DatabaseManager( );

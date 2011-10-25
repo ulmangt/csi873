@@ -8,9 +8,13 @@ import java.sql.Timestamp;
 
 import com.mysql.jdbc.Statement;
 
+/**
+ * A query which uploads metadata information about a classifier.
+ * 
+ * @author ulman
+ */
 public class UploadRunQuery
 {
-
 	protected int ixRun;
 	protected String sDescription;
 	protected long time;

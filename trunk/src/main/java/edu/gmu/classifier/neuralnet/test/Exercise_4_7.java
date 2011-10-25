@@ -10,6 +10,11 @@ import edu.gmu.classifier.neuralnet.net.Net;
 import edu.gmu.classifier.neuralnet.node.NodeFunctions;
 import edu.gmu.classifier.neuralnet.train.Backpropagation;
 
+/**
+ * A simple testing example using problem 4.7 from Machine Learning
+ * 
+ * @author ulman
+ */
 public class Exercise_4_7
 {
 	public static void main( String[] args )
