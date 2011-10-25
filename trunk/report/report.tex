@@ -19,7 +19,7 @@
 
 \section{Network Implementation}\label{Network Parameters}
 
-The neural network used to classify the provided handwriting data set was a feed-forward network with 64 input nodes (one for each pixel in the input images), 10 output nodes (one for each digit 0 through 9), and one hidden layer. A number of different node counts for the hidden layer were tried and compared. The input and hidden layers also contained a threshold node whose output value was always fixed at \(1.0\). Each node in the hidden and output layers was implemented as a sigmoid threshold unit. Equation \ref{sigmoid1} demonstrates the calculations performed at a single node with inputs \(x_{0}\) through \(x_{n}\) and weights \(w_{0}\) through \(w_{n}\).
+The neural network used to classify the provided handwriting data set was a feed-forward network with 64 input nodes (one for each pixel in the input images), 10 output nodes (one for each digit 0 through 9), and one hidden layer. A number of different hidden layer node counts were tried and compared. The input and hidden layers also contained a threshold node whose output value was always fixed at \(1.0\). Each node in the hidden and output layers was implemented as a sigmoid threshold unit. Equation \ref{sigmoid1} demonstrates the calculations performed at a single node with inputs \(x_{0}\) through \(x_{n}\) and weights \(w_{0}\) through \(w_{n}\).
 
 \begin{equation}\label{sigmoid1}
 \begin{split}
@@ -28,20 +28,21 @@ net &= \sum\limits_{i=0}^n w_{i}x_{i}\\
 \end{split}
 \end{equation}
 
-The stochastic back-propagation algorithm was used to train the network. Simple experiments (described below) were performed to gain intuition about what training rates and momentum parameters worked well for this data set. A learning rate of \(0.15\) and a momentum of \(0.3\) were used for the final runs. Network weights were randomly initialized between \(-0.1\) and \(0.1\) before training began.
+The stochastic back-propagation algorithm was used to train the network. A number of preliminary runs were performed to gain intuition about what training rates and momentum parameters worked well for this data set. A learning rate of \(0.15\) and a momentum of \(0.3\) were used for the final runs. Network weights were randomly initialized between \(-0.1\) and \(0.1\) before training began.
 
-\subsection{Expected Output}
+\subsection{Expected Output}\label{expectedout}
 
-\begin{figure}\label{expected1}
+Values of \(0.9\) and \(0.1\) (instead of \(0.0\) and \(1.0\)) were used for the entries in the length 10 output vector for the training examples. This greatly reduced the tenancy of the weights to take on very large values during training (because the sigmoid has horizontal asymptotes near \(0.0\) and \(1.0\)). Figure \ref{expected1} demonstrates the expected output vector for a ``2'' digit.
+
+\begin{figure}
 \[ \begin{Bmatrix} 0.1 & 0.1 & 0.9 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 \end{Bmatrix} \]
 \caption{Expected output vector for digit: 2}
+\label{expected1}
 \end{figure}
-
-Values of \(0.9\) and \(0.1\) (instead of \(0.0\) and \(1.0\)) were used for the entries in the length 10 output vector for the training examples. This greatly reduced the tenancy of the weights to take on very large values during training (because the sigmoid has horizontal asymptotes near \(0.0\) and \(1.0\). Figure \ref{expected1} demonstrates the expected output vector for a \(2\) digit.
 
 \subsection{Stopping Criteria}
 
-A group of \(50\) training examples (five from each digit) were set aside from the \(930\) training examples to be used as a validation data set. After each iteration, the error rate was evaluated against this validation sample. The training was stopped if the error rate of the validation sample had not improved in the past (approximately) 200,000 iterations.
+A group of \(50\) training examples (five representing digit) were set aside from the \(930\) training examples to be used as a validation data set. After each iteration, the error rate was evaluated against this validation sample. The training was stopped if the error rate of the validation sample had not improved in the past (approximately) 200,000 iterations.
 
 \section{Data Sets}\label{Dataset}
 
@@ -63,9 +64,9 @@ The neural network described above was trained to classify \(8\) by \(8\) pixel 
 
 \section{Software Implementation}\label{Software Implementation}
 
-Java (version 1.6.0\_27) was used to implement the neural network and training algorithm. The code is available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi873/}. Compiling and running the code requires the Java build tool Maven (\url{http://maven.apache.org/}). Plots were generated using the Java plotting library JFreeChart (\url{http://www.jfree.org/jfreechart/}). The Google Java general purpose Java utility library Guava (\url{http://code.google.com/p/guava-libraries/}) was also utilized for its multi-map collection data structures.
+Java (version 1.6.0\_27) was used to implement the neural network and training algorithm. The code is available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi873/}. Compiling and running the code requires the Java build tool Maven (\url{http://maven.apache.org/}). Plots were generated using the Java plotting library JFreeChart (\url{http://www.jfree.org/jfreechart/}). The Google general purpose Java utility library Guava (\url{http://code.google.com/p/guava-libraries/}) was also utilized for its multi-map collection data structures.
 
-The source code is also included in the appendix and is organized with code implementing the core back-propagation algorithm and network structure up front, with less critical I/O and support code behind. Of particular interest is the Backpropagation class, which implements the stochastic back-propagation algorithm, the AbstractNet class, which handles network construction and calculation of network output, and the SigmoidNode class, which provides error, output, and weight update calculations specific to networks using a sigmoid activation function (see Equation \ref{sigmoid1}). Finally, the Midterm class is the main class responsible for using the components described above to load data, constructing and train a network, and output results.
+The source code is also included in the appendix and is organized with code implementing the core back-propagation algorithm and network structure first, with less critical I/O and support code behind. Of particular interest is the Backpropagation class, which implements the stochastic back-propagation algorithm; the AbstractNet class, which handles network construction and calculation of network output; and the SigmoidNode class, which provides error, output, and weight update calculations specific to networks using a sigmoid activation function (see Equation \ref{sigmoid1}). Finally, the Midterm class is the main class responsible for using the components described above to load data, construct and train a network, and output results.
 
 Prior project work completed for CSI710 (Scientific Databases) was utilized to create the handwriting sample visualizations and confusion matrix plots. The code the visualization software is also available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi701-group2/}.
 
@@ -79,7 +80,7 @@ The two hidden node network required approximately 200,000 stochastic back-propa
 
 \subsection{Confidence Interval Discussion (Question 2c)}\label{conf2}
 
-Table \ref{table2} summarizes the misclassification error and 95\% confidence intervals for the testing, validation, and training data sets. Although the training error confidence interval is based on more samples, and is thus tighter, the testing error confidence interval provides a more realistic estimate of the true error of the two hidden node neural network classifier as applied to unseen data. This is because the network may be over-fit to the particular characteristics of the training data samples which might not be representative of the overall class of all possible input data. Therefore, the error measured using the the testing data set (which was not used to train the algorithm) provides a more realistic sense regarding how the classifier will perform on new data. 
+Table \ref{table2} summarizes the misclassification error and 95\% confidence intervals for the testing, validation, and training data sets. Although the training error confidence interval is based on more samples, and is thus tighter, the testing error confidence interval provides a more realistic estimate of the true error of the two hidden node neural network classifier as applied to unseen data. This is because the network may be over-fit to the particular characteristics of the training data samples which might not be representative of the overall class of all possible input data. Therefore, the error measured using the the testing data set (which was not used to train the algorithm) provides a more realistic sense of how the classifier will perform on new data. 
 
 \begin{equation}\label{conf2sample}
 \begin{split}
@@ -106,7 +107,7 @@ Training      & 0.702 &  0.672 & 0.732  \\
 \end{center}
 \end{table}
 
-Figure \ref{error2} summarizes the training process of the two hidden node network by plotting the evolution of the training and validation errors during training. Figure \ref{weight2} plots the evolution of the weights for the output node associated with the digit ``0''.
+Figure \ref{error2} summarizes the training process of the two hidden node network by plotting the evolution of the training and validation errors versus training iteration number. Figure \ref{weight2} plots the evolution of the weights for the output node associated with the digit ``0''.
 
 \begin{figure}
 \centering
@@ -176,7 +177,7 @@ Training      & 0.588 &  0.555 & 0.620  \\
 \label{weight3}
 \end{figure}
 
-As indicated by Figure \ref{error3}, the three hidden node network took approximately 800,000 iterations to train, almost four times longer than the two hidden node network. However, as indicated by Figure \ref{weight3}, the weights for at least some of the output nodes stabilized much earlier than that. Note that the x-axis in Figure \ref{weight3} is measured in (approximately) 1000s of iterations.
+As indicated by Figure \ref{error3}, the three hidden node network took approximately 800,000 iterations to train---almost four times longer than the two hidden node network. However, as indicated by Figure \ref{weight3}, the weights for at least some of the output nodes stabilized much earlier than that. Note that the x-axis in Figure \ref{weight3} is measured in (approximately) 1000s of iterations.
 
 \begin{figure}
 \centering
