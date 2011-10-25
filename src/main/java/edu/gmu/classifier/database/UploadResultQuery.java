@@ -4,6 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * A query which uploads the classification call made for a single handwriting
+ * sample by a classifier.
+ * 
+ * @author ulman
+ */
 public class UploadResultQuery
 {
 	protected int ixData;

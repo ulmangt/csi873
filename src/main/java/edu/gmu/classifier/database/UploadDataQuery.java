@@ -8,6 +8,11 @@ import java.sql.SQLException;
 
 import com.mysql.jdbc.Statement;
 
+/**
+ * A query which uploads a single 8x8 handwriting image to the database.
+ * 
+ * @author ulman
+ */
 public class UploadDataQuery
 {
 	protected int ixDataSet;

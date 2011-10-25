@@ -6,6 +6,11 @@ import edu.gmu.classifier.io.TrainingExample;
 import edu.gmu.classifier.neuralnet.net.Net;
 import edu.gmu.classifier.neuralnet.util.NeuralNetUtils;
 
+/**
+ * Uploads classification run results to the database.
+ * 
+ * @author ulman
+ */
 public class ResultsUploader
 {
 	public static final int IX_TRAIN_FIRST_INDEX = 171585;

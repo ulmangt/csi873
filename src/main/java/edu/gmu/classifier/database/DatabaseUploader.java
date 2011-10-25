@@ -10,6 +10,13 @@ import java.util.List;
 import edu.gmu.classifier.io.DataLoader;
 import edu.gmu.classifier.io.TrainingExample;
 
+/**
+ * A utility class which can take the handwriting data files loaded by
+ * edu.gmu.classifier.io.DataLoader and place them into an sql database
+ * of the format required by the CSI710 handwriting viewer application.
+ * 
+ * @author ulman
+ */
 public class DatabaseUploader
 {
 	public static final int IX_TRAIN_DATA_SET = 4;
