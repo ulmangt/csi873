@@ -99,14 +99,16 @@ public class Homework7
 	 * Calculate the conditional probability p( index i = 0 | digit = d )
 	 * 
 	 * @param examplesForDigit the set of training digits for digit d
-	 * @param digit
-	 * @param inputIndex
+	 * @param digit the digit which the array of training examples corresponds to
+	 * @param inputIndex the input data index (i in the above expression)
 	 * @return the probability p( index i = 0 | digit = d )
 	 */
 	public static double calculateTrainingProbability( List<TrainingExample> examplesForDigit, int digit, int inputIndex )
 	{
 		int count = 0;
 
+		// count the number of training examples for the given digit which have a 0
+		// at inputIndex in their input data array
 		for ( TrainingExample example : examplesForDigit )
 		{
 			if ( example.getInputs( )[inputIndex] == 0.0 ) count++;
@@ -120,10 +122,19 @@ public class Homework7
 		return (double) count / ( double ) examplesForDigit.size( );
 	}
 	
+	/**
+	 * Calculate the error rate for a given set of data.
+	 * 
+	 * @param p0map a map containing pre-computed conditional probabilities p( index i = 0 | digit = d )
+	 * @param dataList the set of data to compute the error rate for
+	 * 
+	 * @return the percentage of incorrect classifications in the data set
+	 */
 	public static double calculateErrorRate( Map<P, Double> p0map, List<TrainingExample> dataList )
 	{
 		int correctCount = 0;
 		
+		// loop through each training data example, counting the number which are classified correctly
 		for ( TrainingExample data : dataList )
 		{
 			double[] likelihoods = calculateOutputLikelihoods( p0map, data );
