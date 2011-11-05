@@ -82,24 +82,29 @@ public class Homework7
 		double trainErrorRate = calculateErrorRate( p0map, trainingDataListAll );
 		double testErrorRate = calculateErrorRate( p0map, testDataList );
 		
-		System.out.printf( "Training Error Rate: %.3d Testing ErrorRate: %.3d%n", trainErrorRate, testErrorRate );
+		System.out.printf( "Training Error Rate: %.3f Testing ErrorRate: %.3f%n", trainErrorRate, testErrorRate );
 	}
 
 	public static double calculateTrainingProbability( List<TrainingExample> examplesForDigit, int inputIndex )
 	{
-		double count = 0;
+		int count = 0;
 
 		for ( TrainingExample example : examplesForDigit )
 		{
-			if ( example.getInputs( )[inputIndex] == 0 ) count++;
+			if ( example.getInputs( )[inputIndex] == 0.0 ) count++;
+		}
+		
+		if ( count == 0 )
+		{
+			System.out.printf( "Zero probability warning: index: %d%n", inputIndex );
 		}
 
-		return count / ( double ) examplesForDigit.size( );
+		return (double) count / ( double ) examplesForDigit.size( );
 	}
 	
 	public static double calculateErrorRate( Map<P, Double> p0map, List<TrainingExample> dataList )
 	{
-		double correctCount = 0;
+		int correctCount = 0;
 		
 		for ( TrainingExample data : dataList )
 		{
@@ -118,6 +123,7 @@ public class Homework7
 	public static double[] calculateOutputLikelihoods( Map<P, Double> p0map, TrainingExample data )
 	{
 		double[] likelihoods = new double[10];
+		double[] input = data.getInputs( );
 		
 		// apply the naive bayes classifier using the precalucated conditional probabilities
 		// the result is one likelihood value for each digit
@@ -128,7 +134,8 @@ public class Homework7
 			
 			for ( int i = 0 ; i < DataLoader.INPUT_SIZE; i++ )
 			{
-				likelihood *= p0map.get( new P( i, d ) );
+				double p = p0map.get( new P( i, d ) );
+				likelihood *= input[i] == 0 ? p : 1-p;
 			}
 			
 			likelihoods[d] = likelihood;
