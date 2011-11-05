@@ -74,18 +74,36 @@ public class Homework7
 			for ( int i = 0; i < DataLoader.INPUT_SIZE; i++ )
 			{
 				P key = new P( i, d );
-				Double p = calculateTrainingProbability( examplesForDigit, i );
+				Double p = calculateTrainingProbability( examplesForDigit, d, i );
 				p0map.put( key, p );
 			}
 		}
 		
+		// calculate error and 95% confidence interval for test, training, and validation data sets
 		double trainErrorRate = calculateErrorRate( p0map, trainingDataListAll );
 		double testErrorRate = calculateErrorRate( p0map, testDataList );
 		
+		double trainErrorInterval = 1.96 * Math.sqrt( trainErrorRate * ( 1 - trainErrorRate ) / trainingDataListAll.size( ) );
+		double testErrorInterval = 1.96 * Math.sqrt( testErrorRate * ( 1 - testErrorRate ) / testDataList.size( ) );
+		
+		System.out.printf( "Train Error: %.3f Train Interval: (%.3f, %.3f)%n", trainErrorRate, trainErrorRate - trainErrorInterval, trainErrorRate + trainErrorInterval );
+		System.out.printf( "Test Error: %.3f Test Interval: (%.3f, %.3f)%n", testErrorRate, testErrorRate - testErrorInterval, testErrorRate + testErrorInterval );
+		
 		System.out.printf( "Training Error Rate: %.3f Testing ErrorRate: %.3f%n", trainErrorRate, testErrorRate );
+	
+//		ResultsUploader.uploadTrainingResults( p0map, trainingDataListAll, "NaiveBayesTraining" );
+//		ResultsUploader.uploadTestingResults( p0map, testDataList, "NaiveBayesTesting" );
 	}
 
-	public static double calculateTrainingProbability( List<TrainingExample> examplesForDigit, int inputIndex )
+	/**
+	 * Calculate the conditional probability p( index i = 0 | digit = d )
+	 * 
+	 * @param examplesForDigit the set of training digits for digit d
+	 * @param digit
+	 * @param inputIndex
+	 * @return the probability p( index i = 0 | digit = d )
+	 */
+	public static double calculateTrainingProbability( List<TrainingExample> examplesForDigit, int digit, int inputIndex )
 	{
 		int count = 0;
 
@@ -96,7 +114,7 @@ public class Homework7
 		
 		if ( count == 0 )
 		{
-			System.out.printf( "Zero probability warning: index: %d%n", inputIndex );
+			System.out.printf( "Zero probability warning: index: %d digit: %d%n", inputIndex, digit );
 		}
 
 		return (double) count / ( double ) examplesForDigit.size( );
@@ -120,12 +138,22 @@ public class Homework7
 		return 1.0 - ( double ) correctCount / (double) dataList.size( );
 	}
 	
+	/**
+	 * Use the pre-calculated conditional probabilities stored in p0map to calculate the probability
+	 * that the TrainingExample represents each of the ten possible digits.
+	 * 
+	 * @param p0map a map of pre-computed conditional probabilities p( index i = 0 | digit = d )
+	 * @param data the training data element
+	 * @return the probability that data represents each of the possible ten digits
+	 */
 	public static double[] calculateOutputLikelihoods( Map<P, Double> p0map, TrainingExample data )
 	{
+		// allocate an array to return the 10 calculated probabilities for each digit
 		double[] likelihoods = new double[10];
+		// get the input data for the training example
 		double[] input = data.getInputs( );
 		
-		// apply the naive bayes classifier using the precalucated conditional probabilities
+		// apply the naive bayes classifier using the pre-calculated conditional probabilities
 		// the result is one likelihood value for each digit
 		for ( int d = 0; d < 10; d++ )
 		{
@@ -134,7 +162,10 @@ public class Homework7
 			
 			for ( int i = 0 ; i < DataLoader.INPUT_SIZE; i++ )
 			{
+				// get the pre-computed conditional probability for the current digit and input index
 				double p = p0map.get( new P( i, d ) );
+				// the pre-computed probabilities are for input = 0, subtract one minus the probability
+				// if the input value at the index is a 1
 				likelihood *= input[i] == 0 ? p : 1-p;
 			}
 			
