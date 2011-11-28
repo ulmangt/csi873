@@ -24,6 +24,25 @@
 
 \section{Proof}\label{Proof}
 
+The weight for a given prediction algorithm after making \(k\) mistakes is given by Equation \ref{eq1}.
+
+\begin{equation}\label{eq1}
+\beta^k
+\end{equation}
+
+Let \(w_0\) be the initial sum of the weights for all \(n\) algorithms given by Equation \ref{eq2}.
+
+\begin{equation}\label{eq2}
+\sum_{i=1}^{n} w_{j} = n = w_{0}
+\end{equation}
+
+In the worst case, all \(n\) prediction algorithms make a mistake and the total weight sum is given by Equation \ref{eq3}.
+
+\begin{equation}\label{eq3}
+\sum_{i=1}^{n} \beta w_{j} = \beta \sum_{i=1}^{n} w_{j} = \beta n
+\end{equation}
+
+
 
 \begin{thebibliography}{9}
 
