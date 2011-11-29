@@ -24,25 +24,37 @@
 
 \section{Proof}\label{Proof}
 
-The weight for a given prediction algorithm after making \(k\) mistakes is given by Equation \ref{eq1}.
-
-\begin{equation}\label{eq1}
-\beta^k
-\end{equation}
-
-Let \(w_0\) be the initial sum of the weights for all \(n\) algorithms given by Equation \ref{eq2}.
+The weight for a given prediction algorithm \(a_j\) after making \(k\) mistakes is given by \(\beta^k\). Let \(w_0\) be the initial sum of the weights for all \(n\) algorithms given by Equation \ref{eq2}. Initially, \(W=n\) since the weights \(w_j\) of each prediction alagorithm are initialized to \(1\).
 
 \begin{equation}\label{eq2}
-\sum_{i=1}^{n} w_{j} = n = w_{0}
+\sum_{i=1}^{n} w_{j} = W
 \end{equation}
 
-In the worst case, all \(n\) prediction algorithms make a mistake and the total weight sum is given by Equation \ref{eq3}.
+When the Weighted-Majority learner makes a mistake, the total weight \(W\) will be reduced them most when all \(n\) prediction algorithms make mistakes. In this case each has their weight reduced by \(\beta\). The total weight \(W\) will be reduced the least in the case where prediction algorithms accounting exactly half of the total weight make mistakes. In this case, the total weight will be reduced by \(1-\frac{\beta}{2} \).
+
+Now let \(M\) denote the total number of mistakes made by the Weighted-Majority learner. From above, the total weight after \(M\) mistakes cannot be greater than \( n \left( 1-\frac{\beta}{2} \right) ^M \). Further, this quantity must be greater than the weight \(w_j\) of any individual learner, giving Equation \ref{eq3}.
 
 \begin{equation}\label{eq3}
-\sum_{i=1}^{n} \beta w_{j} = \beta \sum_{i=1}^{n} w_{j} = \beta n
+\beta^k \le n \left( 1-\frac{\beta}{2} \right) ^M
 \end{equation}
 
+Taking the base-2 log of both sides results in Equaion \ref{eq4}.
 
+\begin{equation}\label{eq4}
+k \log _2 \left( \beta \right) \le \log _2 \left( n \right) + M \log _2 \left( 1-\frac{\beta}{2} \right)
+\end{equation}
+
+Move the \(\log _2 \left( n \right)\) term to the other side of the inequality and divide by \(\log _2 \left( 1-\frac{\beta}{2} \right)\) to reach Equation \ref{eq5}. Note that the divisor is always negative, so the inequality is flipped.
+
+\begin{equation}\label{eq5}
+\frac{k \log _2 \left( \beta \right) - \log _2 \left( n \right)}{ \log _2 \left( 1-\frac{\beta}{2} \right) } \ge M 
+\end{equation}
+
+Multiplying the numerator and denominator by \(-1\) yields Equation \ref{eq6}
+
+\begin{equation}\label{eq6}
+\frac{k \log _2 \left( \frac{1}{\beta} \right) + \log _2 \left( n \right)}{ \log _2 \left( \frac{1}{1-\frac{\beta}{2}} \right) } \ge M 
+\end{equation}
 
 \begin{thebibliography}{9}
 
