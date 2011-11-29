@@ -18,42 +18,52 @@
 
 \section{Theorem}\label{Theorem}
 
-\begin{equation}
+Relative mistake bound for Weighted-Majority. Let \(D\) be any sequence of training examples, let \(A\) be any set of \(n\) prediction algorithms, and let \(k\) be the minimum number of mistakes made by any algorithm in \(A\) for the training sequence \(D\). Then the number of mistakes over \(D\) made by the Weighted-Majority algorithm using \(0 < \beta < 1\) is given by Equation \ref{theorem}.
+
+\begin{equation}\label{theorem}
 \frac{-k \log _2 \left( \beta \right) + \log _2 \left( n \right)}{1 - \log _2 \left( 1 + \beta \right)}
 \end{equation}
 
 \section{Proof}\label{Proof}
 
-The weight for a given prediction algorithm \(a_j\) after making \(k\) mistakes is given by \(\beta^k\). Let \(w_0\) be the initial sum of the weights for all \(n\) algorithms given by Equation \ref{eq2}. Initially, \(W=n\) since the weights \(w_j\) of each prediction alagorithm are initialized to \(1\).
+The weight for a given prediction algorithm \(a_j\) after making \(k\) mistakes is given by \(\beta^k\).
+
+Let \(W\) be the sum of the weights for all \(n\) algorithms. Initially, \(W=n\) since the weights \(w_j\) of each prediction alagorithm are initialized to \(1\) (Equation \ref{eq2}).
 
 \begin{equation}\label{eq2}
 \sum_{i=1}^{n} w_{j} = W
 \end{equation}
 
-When the Weighted-Majority learner makes a mistake, the total weight \(W\) will be reduced them most when all \(n\) prediction algorithms make mistakes. In this case each has their weight reduced by \(\beta\). The total weight \(W\) will be reduced the least in the case where prediction algorithms accounting exactly half of the total weight make mistakes. In this case, the total weight will be reduced by \(1-\frac{\beta}{2} \).
+When the Weighted-Majority learner makes a mistake, the total weight \(W\) will be reduced most when all \(n\) prediction algorithms make mistakes. In this case each has their weight reduced by \(\beta\). The total weight \(W\) will be reduced the least in the case where prediction algorithms accounting exactly half of the total weight make mistakes. In this case, the total weight will be reduced by \( \frac{1}{2}+\frac{\beta}{2} \) or \( \frac{1 + \beta}{2} \).
 
-Now let \(M\) denote the total number of mistakes made by the Weighted-Majority learner. From above, the total weight after \(M\) mistakes cannot be greater than \( n \left( 1-\frac{\beta}{2} \right) ^M \). Further, this quantity must be greater than the weight \(w_j\) of any individual learner, giving Equation \ref{eq3}.
+Now let \(M\) denote the total number of mistakes made by the Weighted-Majority learner. From above, the total weight after \(M\) mistakes cannot be greater than \( n \left( \frac{1 + \beta}{2} \right) ^M \). Further, this quantity must be greater than the weight \(w_j\) of any individual learner, giving Equation \ref{eq3}.
 
 \begin{equation}\label{eq3}
-\beta^k \le n \left( 1-\frac{\beta}{2} \right) ^M
+\beta^k \le n \left( \frac{1 + \beta}{2} \right) ^M
 \end{equation}
 
 Taking the base-2 log of both sides results in Equaion \ref{eq4}.
 
 \begin{equation}\label{eq4}
-k \log _2 \left( \beta \right) \le \log _2 \left( n \right) + M \log _2 \left( 1-\frac{\beta}{2} \right)
+k \log _2 \left( \beta \right) \le \log _2 \left( n \right) + M \log _2 \left( \frac{1 + \beta}{2} \right)
 \end{equation}
 
-Move the \(\log _2 \left( n \right)\) term to the other side of the inequality and divide by \(\log _2 \left( 1-\frac{\beta}{2} \right)\) to reach Equation \ref{eq5}. Note that the divisor is always negative, so the inequality is flipped.
+Move the \(\log _2 \left( n \right)\) term to the other side of the inequality and divide by \(\log _2 \left( \frac{1 + \beta}{2} \right)\) to reach Equation \ref{eq5}. Note that the divisor is always negative because \(0 < \beta < 1\), so the inequality is flipped.
 
 \begin{equation}\label{eq5}
-\frac{k \log _2 \left( \beta \right) - \log _2 \left( n \right)}{ \log _2 \left( 1-\frac{\beta}{2} \right) } \ge M 
+\frac{k \log _2 \left( \beta \right) - \log _2 \left( n \right)}{ \log _2 \left( \frac{1 + \beta}{2} \right) } \ge M 
 \end{equation}
 
 Multiplying the numerator and denominator by \(-1\) yields Equation \ref{eq6}
 
 \begin{equation}\label{eq6}
-\frac{k \log _2 \left( \frac{1}{\beta} \right) + \log _2 \left( n \right)}{ \log _2 \left( \frac{1}{1-\frac{\beta}{2}} \right) } \ge M 
+\frac{-k \log _2 \left( \beta \right) + \log _2 \left( n \right)}{ \log _2 \left( \frac{2}{1 + \beta} \right) } \ge M 
+\end{equation}
+
+Simplifying the denominator yields Equation \ref{eq7} which is the expression given by the theorem to be proven.
+
+\begin{equation}\label{eq7}
+\frac{-k \log _2 \left( \beta \right) + \log _2 \left( n \right)}{ 1 - \log _2 \left( 1 + \beta \right) } \ge M 
 \end{equation}
 
 \begin{thebibliography}{9}
