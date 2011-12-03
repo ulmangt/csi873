@@ -126,7 +126,7 @@ public class DataFileGenerator
 			}
 		}
 		
-		return dataList;
+		return filteredList;
 	}
 	
 	public static void generateDataFile( String inFileName, String outDirectoryName, String outFilePrefix, int digit1, int digit2 ) throws IOException
@@ -287,12 +287,15 @@ public class DataFileGenerator
 		{
 			double[] x_i = dataList.get( i ).getInputs( );
 			double y_i = out.getOutput( dataList.get( i ) );
-			double a_i = a[i];
 			
 			double sum = 0.0;
-			for ( TrainingExample x : dataList )
+			for ( int j = 0 ; j < b.length ; j++ )
 			{
-				sum += out.getOutput( x ) * a_i * kernel.getValue( x.getInputs( ), x_i );
+				TrainingExample x = dataList.get( j );
+				double[] x_j = x.getInputs( );
+				double y_j = out.getOutput( x );
+				
+				sum += y_j * a[j] * kernel.getValue( x_j, x_i );
 			}
 			
 			b[i] = sum - y_i;
@@ -323,6 +326,12 @@ public class DataFileGenerator
 		double[] a = read_a( temporaryOutput );
 		double[] b = calculate_b( dataList, new TwoClass( 2, 5 ), new Polynomial( 0.0156, 0.0, 3.0 ), 100, a );
 		
-		
+		for ( int i = 0 ; i < a.length ; i++ )
+		{
+			if ( a[i] < 100 && a[i] > 0.001 )
+			{
+				System.out.printf( "%.4f %.12f%n", a[i], b[i] );
+			}
+		}
 	}
 }
