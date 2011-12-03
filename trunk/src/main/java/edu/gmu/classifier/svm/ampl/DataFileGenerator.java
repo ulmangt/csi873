@@ -57,25 +57,29 @@ public class DataFileGenerator
 		}
 	};
 	
-	public static void generateAllDataFiles( ) throws IOException
+	public static void generateAllDataFiles( String inDirectoryString, String outDirectoryString ) throws IOException
 	{
-		generateDataFile( "/home/ulman/CSI873/midterm/data", "/home/ulman/CSI873/midterm/repository/final/ampl/classify_2-5.dat", 2, 5 );
+		generateDataFile( inDirectoryString, outDirectoryString,  "classify_2-5", 2, 5 );
 		
 		for ( int i = 0 ; i < 10 ; i++ )
 		{
-			generateDataFile( "/home/ulman/CSI873/midterm/data", String.format( "/home/ulman/CSI873/midterm/repository/final/ampl/classify_%d.dat", i ), i );
+			generateDataFile( inDirectoryString, outDirectoryString, String.format( "classify_%d", i ), i );
 		}
 	}
 	
-	public static void generateDataFile( String inFileName, String outFileName, int digit ) throws IOException
+	public static void generateDataFile( String inFileName, String outDirectoryName, String outFilePrefix, int digit ) throws IOException
 	{
 		List<TrainingExample> dataList = DataLoader.loadDirectory( inFileName );
 		
-		File outFile = new File( outFileName );
+		File outDirectory = new File( outDirectoryName );
+		File outFile = new File( outDirectory, outFilePrefix + ".dat" );
 		outputDataFile( new FileOutputStream( outFile ), dataList, new OneVersusAll( digit ) );
+		
+		File outCommandFile = new File( outDirectory, outFilePrefix + ".cmd" );
+		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ) );
 	}
 	
-	public static void generateDataFile( String inFileName, String outFileName, int digit1, int digit2 ) throws IOException
+	public static void generateDataFile( String inFileName, String outDirectoryName, String outFilePrefix, int digit1, int digit2 ) throws IOException
 	{
 		List<TrainingExample> dataList = DataLoader.loadDirectory( inFileName );
 		
@@ -88,8 +92,33 @@ public class DataFileGenerator
 			}
 		}
 		
-		File outFile = new File( outFileName );
+		File outDirectory = new File( outDirectoryName );
+		File outFile = new File( outDirectory, outFilePrefix + ".dat" );
 		outputDataFile( new FileOutputStream( outFile ), filteredList, new TwoClass( digit1, digit2 ) );
+		
+		File outCommandFile = new File( outDirectory, outFilePrefix + ".cmd" );
+		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ) );
+	}
+	
+	public static void outputCommandFile( OutputStream stream, String dataFileName ) throws IOException
+	{
+		BufferedWriter out = new BufferedWriter( new OutputStreamWriter( stream ) );
+		
+		out.write( "reset;" );
+		out.newLine( );
+
+		out.write( "model classify.mod;" );
+		out.newLine( );
+
+		out.write( String.format( "data %s;%n", dataFileName ) );
+
+		out.write( "solve;" );
+		out.newLine( );
+
+		out.write( "display a;" );
+		out.newLine( );
+		
+		out.close( );
 	}
 	
 	public static void outputDataFile( OutputStream stream, List<TrainingExample> dataList, OutputGenerator gen ) throws IOException
@@ -150,6 +179,6 @@ public class DataFileGenerator
 	
 	public static void main( String[] args ) throws IOException
 	{
-		generateAllDataFiles( );
+		generateAllDataFiles( "/home/ulman/CSI873/midterm/data", "/home/ulman/CSI873/midterm/repository/final/ampl" );
 	}
 }
