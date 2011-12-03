@@ -23,6 +23,35 @@ public class DataFileGenerator
 		public double getOutput( TrainingExample data );
 	}
 	
+	public interface Kernel
+	{
+		public double getValue( double[] x1, double[] x2 );
+	}
+	
+	public static class Polynomial implements Kernel
+	{
+		double alpha, beta, delta;
+		
+		public Polynomial( double alpha, double beta, double delta )
+		{
+			this.alpha = alpha;
+			this.beta = beta;
+			this.delta = delta;
+		}
+
+		@Override
+		public double getValue( double[] x1, double[] x2 )
+		{
+			double dot = 0.0;
+			for ( int i = 0 ; i < x1.length ; i++ )
+			{
+				dot += x1[i] * x2[i];
+			}
+			
+			return Math.pow( alpha * dot + beta, delta ); 
+		}
+	}
+	
 	public static class OneVersusAll implements OutputGenerator
 	{
 		protected int digit;
@@ -61,6 +90,7 @@ public class DataFileGenerator
 		}
 	};
 	
+	
 	public static void generateAllDataFiles( String inDirectoryString, String outDirectoryString ) throws IOException
 	{
 		generateDataFile( inDirectoryString, outDirectoryString,  "classify_2-5", 2, 5 );
@@ -83,7 +113,7 @@ public class DataFileGenerator
 		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ) );
 	}
 	
-	public static void generateDataFile( String inFileName, String outDirectoryName, String outFilePrefix, int digit1, int digit2 ) throws IOException
+	public static List<TrainingExample> loadData( String inFileName, int digit1, int digit2 ) throws IOException
 	{
 		List<TrainingExample> dataList = DataLoader.loadDirectory( inFileName );
 		
@@ -96,9 +126,16 @@ public class DataFileGenerator
 			}
 		}
 		
+		return dataList;
+	}
+	
+	public static void generateDataFile( String inFileName, String outDirectoryName, String outFilePrefix, int digit1, int digit2 ) throws IOException
+	{
+		List<TrainingExample> dataList = loadData( inFileName, digit1, digit2 );
+		
 		File outDirectory = new File( outDirectoryName );
 		File outFile = new File( outDirectory, outFilePrefix + ".dat" );
-		outputDataFile( new FileOutputStream( outFile ), filteredList, new TwoClass( digit1, digit2 ) );
+		outputDataFile( new FileOutputStream( outFile ), dataList, new TwoClass( digit1, digit2 ) );
 		
 		File outCommandFile = new File( outDirectory, outFilePrefix + ".cmd" );
 		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ) );
@@ -181,12 +218,12 @@ public class DataFileGenerator
 		out.close( );
 	}
 	
-	public static List<Double> readAmplOutput( String file ) throws IOException
+	public static double[] read_a( String file ) throws IOException
 	{
 		FileInputStream stream = new FileInputStream( file );
 		try
 		{
-			return readAmplOutput( stream );
+			return read_a( stream );
 		}
 		finally
 		{
@@ -194,7 +231,7 @@ public class DataFileGenerator
 		}
 	}
 	
-	public static List<Double> readAmplOutput( InputStream stream ) throws IOException
+	public static double[] read_a( InputStream stream ) throws IOException
 	{
 		List<Double> list = new ArrayList<Double>( );
 		
@@ -233,7 +270,35 @@ public class DataFileGenerator
 			}
 		}
 		
-		return list;
+		double[] array = new double[list.size( )];
+		for ( int i = 0 ; i < list.size( ) ; i++ )
+			array[i] = list.get( i );
+		
+		return array;
+	}
+	
+	// calculate b's for each a
+	// only one is needed for an i s.t. 0 < a[i] < C, but this is a good check
+	public static double[] calculate_b( List<TrainingExample> dataList, OutputGenerator out, Kernel kernel, double C, double[] a ) throws IOException
+	{
+		double[] b = new double[ a.length ];
+		
+		for ( int i = 0 ; i < b.length ; i++ )
+		{
+			double[] x_i = dataList.get( i ).getInputs( );
+			double y_i = out.getOutput( dataList.get( i ) );
+			double a_i = a[i];
+			
+			double sum = 0.0;
+			for ( TrainingExample x : dataList )
+			{
+				sum += out.getOutput( x ) * a_i * kernel.getValue( x.getInputs( ), x_i );
+			}
+			
+			b[i] = sum - y_i;
+		}
+		
+		return b;
 	}
 	
 	private static void ensureLength( int index, List<Double> list )
@@ -252,9 +317,12 @@ public class DataFileGenerator
 //		String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
 //		generateAllDataFiles( inputDirectory, outputDirectory );
 		
+		List<TrainingExample> dataList = loadData( "/home/ulman/CSI873/midterm/data", 2, 5 );
 		String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
-		String temporaryOutput = String.format( "%s/%s", outputDirectory, "out.tmp" );;
-		List<Double> out = readAmplOutput( temporaryOutput );
-		System.out.println( out );
+		String temporaryOutput = String.format( "%s/%s", outputDirectory, "out.tmp" );
+		double[] a = read_a( temporaryOutput );
+		double[] b = calculate_b( dataList, new TwoClass( 2, 5 ), new Polynomial( 0.0156, 0.0, 3.0 ), 100, a );
+		
+		
 	}
 }
