@@ -56,6 +56,16 @@ public class DataFileGenerator
 		}
 	};
 	
+	public static void generateAllDataFiles( String directory ) throws IOException
+	{
+		generateDataFile( "/home/ulman/CSI873/midterm/data", "/home/ulman/CSI873/final/ampl/classify_2-5.dat", 2, 5 );
+		
+		for ( int i = 0 ; i < 10 ; i++ )
+		{
+			generateDataFile( "/home/ulman/CSI873/midterm/data", String.format( "/home/ulman/CSI873/final/ampl/classify_%d.dat", i ), i );
+		}
+	}
+	
 	public static void generateDataFile( String inFileName, String outFileName, int digit ) throws IOException
 	{
 		List<TrainingExample> dataList = DataLoader.loadDirectory( inFileName );
