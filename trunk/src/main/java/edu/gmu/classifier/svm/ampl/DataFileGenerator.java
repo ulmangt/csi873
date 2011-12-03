@@ -1,6 +1,7 @@
 package edu.gmu.classifier.svm.ampl;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -56,20 +57,22 @@ public class DataFileGenerator
 		}
 	};
 	
-	public static void generateAllDataFiles( String directory ) throws IOException
+	public static void generateAllDataFiles( ) throws IOException
 	{
-		generateDataFile( "/home/ulman/CSI873/midterm/data", "/home/ulman/CSI873/final/ampl/classify_2-5.dat", 2, 5 );
+		generateDataFile( "/home/ulman/CSI873/midterm/data", "/home/ulman/CSI873/midterm/repository/final/ampl/classify_2-5.dat", 2, 5 );
 		
 		for ( int i = 0 ; i < 10 ; i++ )
 		{
-			generateDataFile( "/home/ulman/CSI873/midterm/data", String.format( "/home/ulman/CSI873/final/ampl/classify_%d.dat", i ), i );
+			generateDataFile( "/home/ulman/CSI873/midterm/data", String.format( "/home/ulman/CSI873/midterm/repository/final/ampl/classify_%d.dat", i ), i );
 		}
 	}
 	
 	public static void generateDataFile( String inFileName, String outFileName, int digit ) throws IOException
 	{
 		List<TrainingExample> dataList = DataLoader.loadDirectory( inFileName );
-		outputDataFile( new FileOutputStream( outFileName ), dataList, new OneVersusAll( digit ) );
+		
+		File outFile = new File( outFileName );
+		outputDataFile( new FileOutputStream( outFile ), dataList, new OneVersusAll( digit ) );
 	}
 	
 	public static void generateDataFile( String inFileName, String outFileName, int digit1, int digit2 ) throws IOException
@@ -85,7 +88,8 @@ public class DataFileGenerator
 			}
 		}
 		
-		outputDataFile( new FileOutputStream( outFileName ), filteredList, new TwoClass( digit1, digit2 ) );
+		File outFile = new File( outFileName );
+		outputDataFile( new FileOutputStream( outFile ), filteredList, new TwoClass( digit1, digit2 ) );
 	}
 	
 	public static void outputDataFile( OutputStream stream, List<TrainingExample> dataList, OutputGenerator gen ) throws IOException
@@ -101,19 +105,19 @@ public class DataFileGenerator
 		int n = dataList.get( 0 ).getInputs( ).length;
 		out.write( String.format( "param n := %d;%n", n ) );
 		
-		out.write( String.format( "param C := %f;%n", 100 ) );
+		out.write( String.format( "param C := %f;%n", 100.0 ) );
 		
 		out.write( String.format( "param alpha := %f;%n", 0.0156 ) );
 		
-		out.write( String.format( "param beta := %f;%n", 0 ) );
+		out.write( String.format( "param beta := %f;%n", 0.0 ) );
 		
-		out.write( String.format( "param delta := %f;%n", 3 ) );
+		out.write( String.format( "param delta := %f;%n", 3.0 ) );
 		
 		out.write( String.format( "param y :=%n" ) );
 		for ( int i = 0 ; i < l ; i++ )
 		{
 			TrainingExample data = dataList.get( i );
-			out.write( String.format( " %d %f%n", i, gen.getOutput( data ) ) );
+			out.write( String.format( " %d %f%n", i+1, gen.getOutput( data ) ) );
 		}
 		out.write( ";" );
 		out.newLine( );
@@ -121,18 +125,19 @@ public class DataFileGenerator
 		out.write( String.format( "param x :=%n" ) );
 		for ( int i = 0 ; i < n ; i++ )
 		{
-			out.write( String.format( " %d", i ) ); 
+			out.write( String.format( " %d", i+1 ) ); 
 		}
+		out.newLine( );
 		for ( int i = 0 ; i < l ; i++ )
 		{
 			TrainingExample data = dataList.get( i );
 			double[] input = data.getInputs( );
 			
-			out.write( String.format( " %d", i ) );
+			out.write( String.format( " %d", i+1 ) );
 			
 			for ( int j = 0 ; j < n ; j++ )
 			{
-				out.write( String.format( " %f", input[j] ) ); 
+				out.write( String.format( " %.1f", input[j] ) ); 
 			}
 			
 			out.newLine( );
@@ -141,5 +146,10 @@ public class DataFileGenerator
 		out.newLine( );
 		
 		out.close( );
+	}
+	
+	public static void main( String[] args ) throws IOException
+	{
+		generateAllDataFiles( );
 	}
 }
