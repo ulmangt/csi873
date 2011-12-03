@@ -1,9 +1,13 @@
 package edu.gmu.classifier.svm.ampl;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -115,7 +119,7 @@ public class DataFileGenerator
 		out.write( "solve;" );
 		out.newLine( );
 
-		out.write( "display a;" );
+		out.write( "display a > tmp.out;" );
 		out.newLine( );
 		
 		out.close( );
@@ -177,8 +181,80 @@ public class DataFileGenerator
 		out.close( );
 	}
 	
+	public static List<Double> readAmplOutput( String file ) throws IOException
+	{
+		FileInputStream stream = new FileInputStream( file );
+		try
+		{
+			return readAmplOutput( stream );
+		}
+		finally
+		{
+			stream.close( );
+		}
+	}
+	
+	public static List<Double> readAmplOutput( InputStream stream ) throws IOException
+	{
+		List<Double> list = new ArrayList<Double>( );
+		
+		BufferedReader in = new BufferedReader( new InputStreamReader( stream ) );
+		String line = null;
+		boolean parseMode = false;
+		
+		while ( ( line = in.readLine( ) ) != null )
+		{
+			if ( parseMode )
+			{
+				String[] tokens = line.trim( ).split( "[\\s]+" );
+				
+				try
+				{
+				
+					for ( int i = 0 ; i < tokens.length / 2 ; i++ )
+					{
+						int index = Integer.parseInt( tokens[i*2] ) - 1;
+						double value = Double.parseDouble( tokens[i*2+1] );
+						
+						ensureLength( index, list );
+						
+						list.set( index, value );
+					}
+				
+				}
+				catch ( NumberFormatException e )
+				{
+					parseMode = false;
+				}
+			}
+			else if ( line.startsWith( "a [*] :=" ) )
+			{
+				parseMode = true;
+			}
+		}
+		
+		return list;
+	}
+	
+	private static void ensureLength( int index, List<Double> list )
+	{
+		if ( list.size( ) > index ) return;
+		
+		for ( int i = list.size( ) ; i <= index ; i++ )
+		{
+			list.add( i, 0.0 );
+		}
+	}
+	
 	public static void main( String[] args ) throws IOException
 	{
-		generateAllDataFiles( "/home/ulman/CSI873/midterm/data", "/home/ulman/CSI873/midterm/repository/final/ampl" );
+//		String inputDirectory = "/home/ulman/CSI873/midterm/data";
+//		String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
+//		generateAllDataFiles( inputDirectory, outputDirectory );
+		
+		String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
+		String temporaryOutput = String.format( "%s/%s", outputDirectory, "out.tmp" );;
+		List<Double> out = readAmplOutput( temporaryOutput );
+		System.out.println( out );
 	}
 }
