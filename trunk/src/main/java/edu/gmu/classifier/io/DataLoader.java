@@ -3,10 +3,12 @@ package edu.gmu.classifier.io;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +28,33 @@ public class DataLoader
 	// regular expressions for parsing file names
 	public static String filePatternString = "[\\S]*([\\d])\\.txt";
 	public static Pattern filePattern = Pattern.compile( filePatternString );
+	
+	public static List<TrainingExample> loadDirectory( String filePath ) throws IOException
+	{
+		File dataDirectory = new File( filePath );
+		
+		// list the training data files
+		String[] dataFiles = dataDirectory.list( new FilenameFilter( )
+		{
+			@Override
+			public boolean accept( File dir, String name )
+			{
+				return name.startsWith( "train" );
+			}
+		} );
+
+		// sort the trainingDataFiles
+		Arrays.sort( dataFiles );
+
+		// load all test data examples
+		List<TrainingExample> dataList = new ArrayList<TrainingExample>( );
+		for ( String fileName : dataFiles )
+		{
+			dataList.addAll( DataLoader.loadFile( new File( dataDirectory, fileName ) ) );
+		}
+		
+		return dataList;
+	}
 	
 	/**
 	 * @param filePath the file to load
