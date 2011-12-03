@@ -117,7 +117,7 @@ public class DataFileGenerator
 		for ( int i = 0 ; i < l ; i++ )
 		{
 			TrainingExample data = dataList.get( i );
-			out.write( String.format( " %d %f%n", i+1, gen.getOutput( data ) ) );
+			out.write( String.format( " %d %.1f%n", i+1, gen.getOutput( data ) ) );
 		}
 		out.write( ";" );
 		out.newLine( );
