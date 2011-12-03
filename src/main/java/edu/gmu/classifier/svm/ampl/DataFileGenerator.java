@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.gmu.classifier.io.DataLoader;
@@ -59,6 +60,22 @@ public class DataFileGenerator
 	{
 		List<TrainingExample> dataList = DataLoader.loadDirectory( inFileName );
 		outputDataFile( new FileOutputStream( outFileName ), dataList, new OneVersusAll( digit ) );
+	}
+	
+	public static void generateDataFile( String inFileName, String outFileName, int digit1, int digit2 ) throws IOException
+	{
+		List<TrainingExample> dataList = DataLoader.loadDirectory( inFileName );
+		
+		List<TrainingExample> filteredList = new ArrayList<TrainingExample>( dataList.size( ) );
+		for ( TrainingExample data : dataList )
+		{
+			if ( data.getDigit( ) == digit1 || data.getDigit( ) == digit2 )
+			{
+				filteredList.add( data );
+			}
+		}
+		
+		outputDataFile( new FileOutputStream( outFileName ), filteredList, new TwoClass( digit1, digit2 ) );
 	}
 	
 	public static void outputDataFile( OutputStream stream, List<TrainingExample> dataList, OutputGenerator gen ) throws IOException
