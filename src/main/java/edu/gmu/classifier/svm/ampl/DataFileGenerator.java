@@ -304,6 +304,30 @@ public class DataFileGenerator
 		return b;
 	}
 	
+	public static double[] calculate_y_predicted( List<TrainingExample> dataList, OutputGenerator out, Kernel kernel, double[] a, double b ) throws IOException
+	{
+		double[] y_predicted = new double[ a.length ];
+		
+		for ( int i = 0 ; i < a.length ; i++ )
+		{
+			TrainingExample x_i = dataList.get( i );
+			
+			double sum = 0.0;
+			for ( int j = 0 ; j < a.length ; j++ )
+			{
+				TrainingExample x_j = dataList.get( j );
+				double y_j = out.getOutput( x_j );
+				double a_j = a[j];
+				
+				sum += y_j * a_j * kernel.getValue( x_j.getInputs( ), x_i.getInputs( ) );
+			}
+			
+			y_predicted[i] = sum - b;
+		}
+		
+		return y_predicted;
+	}
+	
 	private static void ensureLength( int index, List<Double> list )
 	{
 		if ( list.size( ) > index ) return;
@@ -323,15 +347,47 @@ public class DataFileGenerator
 		List<TrainingExample> dataList = loadData( "/home/ulman/CSI873/midterm/data", 2, 5 );
 		String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
 		String temporaryOutput = String.format( "%s/%s", outputDirectory, "out.tmp" );
+		
+		double C = 100.0;
+		OutputGenerator out =new TwoClass( 2, 5 );
+		Kernel kernel = new Polynomial( 0.0156, 0.0, 3.0 );
+		
 		double[] a = read_a( temporaryOutput );
-		double[] b = calculate_b( dataList, new TwoClass( 2, 5 ), new Polynomial( 0.0156, 0.0, 3.0 ), 100, a );
+		double[] b = calculate_b( dataList, out, kernel, C, a );
+		
+		double count = 0.0;
+		double b_sum = 0.0;
 		
 		for ( int i = 0 ; i < a.length ; i++ )
 		{
-			if ( a[i] < 100 && a[i] > 0.001 )
+			if ( a[i] < C && a[i] > 0.001 )
 			{
 				System.out.printf( "%.4f %.12f%n", a[i], b[i] );
+				b_sum += b[i];
+				count += 1.0;
 			}
 		}
+		
+		double b_avg = b_sum / count;
+		
+		double[] y = calculate_y_predicted( dataList, out, kernel, a, b_avg );
+		
+		count = 0.0;
+		for ( int i = 0 ; i < a.length ; i++ )
+		{
+			double value = y[i];
+			double predicted = y[i] > 0 ? 1.0 : -1.0;
+			double actual = out.getOutput( dataList.get( i ) );
+			
+			if ( predicted == actual )
+			{
+				count += 1.0;
+			}
+			
+			System.out.printf( "Value %.4f Predicted %.1f Actual %.1f%n", value, predicted, actual );
+		}
+		
+		System.out.printf( "Error Rate: %.3f%n", 1.0 - ( count / a.length ) );
+		
 	}
 }
