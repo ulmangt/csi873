@@ -122,12 +122,12 @@ public class DataFileGenerator
 		out.write( ";" );
 		out.newLine( );
 		
-		out.write( String.format( "param x :=%n" ) );
+		out.write( String.format( "param x:" ) );
 		for ( int i = 0 ; i < n ; i++ )
 		{
 			out.write( String.format( " %d", i+1 ) ); 
 		}
-		out.newLine( );
+		out.write( String.format( " :=%n" ) );
 		for ( int i = 0 ; i < l ; i++ )
 		{
 			TrainingExample data = dataList.get( i );

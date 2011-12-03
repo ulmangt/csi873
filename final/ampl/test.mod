@@ -18,7 +18,7 @@ param delta;
 param y { 1..l };
 
 # input data
-param x { 1..n, 1..l } 
+param x { 1..n, 1..l };
 
 # dual problem variables and simple constraints
 var a {1..l} <= 0, >= C;
