@@ -13,6 +13,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gmu.classifier.database.UploadResultQuery;
+import edu.gmu.classifier.database.UploadRunQuery;
 import edu.gmu.classifier.io.DataLoader;
 import edu.gmu.classifier.io.TrainingExample;
 
@@ -347,8 +349,10 @@ public class DataFileGenerator
 		generateAllDataFiles( inputDirectory, outputDirectory );
 	}
 
-	public static void calculateErrorRate( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, OutputGenerator out, Kernel kernel, double[] a, double b )
+	public static int[] calculateErrorRate( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, OutputGenerator out, Kernel kernel, double[] a, double b )
 	{
+		int[] digit = new int[ dataListTest.size( ) ];
+		
 		double[] y = calculate_y_predicted( dataListTest, dataListTrain, out, kernel, a, b );
 
 		double count = 0.0;
@@ -358,6 +362,8 @@ public class DataFileGenerator
 			double predicted = y[i] > 0 ? 1.0 : -1.0;
 			double actual = out.getOutput( dataListTest.get( i ) );
 
+			digit[i] = predicted > 0 ? 2 : 5;
+			
 			if ( predicted == actual )
 			{
 				count += 1.0;
@@ -366,7 +372,47 @@ public class DataFileGenerator
 			System.out.printf( "Value %.4f Predicted %.1f Actual %.1f%n", value, predicted, actual );
 		}
 
-		System.out.printf( "Error Rate: %.3f%n", 1.0 - ( count / dataListTest.size( ) ) );
+		double errorRate = 1.0 - ( count / dataListTest.size( ) );
+		double errorInterval = 1.96 * Math.sqrt( errorRate * ( 1 - errorRate ) / dataListTest.size( ) );
+		
+		System.out.printf( "Error Rate: %.3f Train Interval: (%.3f, %.3f)%n", errorRate, errorRate - errorInterval, errorRate + errorInterval );
+		
+		return digit;
+	}
+	
+	public static void uploadResultsTest2_5( List<TrainingExample> list, int[] predicted )
+	{
+		String description = "SVM 2vs5 run α = 0.0156, β = 0, d = 3";
+		int first2id = 171257;
+		int first5id = 171380;
+		
+		UploadRunQuery uploadRunQuery = new UploadRunQuery( description, System.currentTimeMillis( ) );
+		uploadRunQuery.runQuery( );
+		int ixRunId = uploadRunQuery.getRunId( );
+		
+		int count2 = 0;
+		int count5 = 0;
+		
+		for ( int i = 0 ; i < list.size( ); i++ )
+		{
+			TrainingExample data = list.get( i );
+			String sClassification = String.valueOf( predicted[i] );
+			
+			int index;
+			if ( data.getDigit( ) == 2 )
+			{
+				index = first2id + count2;
+				count2 += 1;
+			}
+			else
+			{
+				index = first5id + count5;
+				count5 += 1;
+			}
+			
+			UploadResultQuery uploadResultQuery = new UploadResultQuery( index, ixRunId, sClassification );
+			uploadResultQuery.runQuery( );
+		}
 	}
 
 	public static void main( String[] args ) throws IOException
@@ -402,6 +448,8 @@ public class DataFileGenerator
 		calculateErrorRate( dataListTrain, dataListTrain, out, kernel, a, b_avg );
 		
 		System.out.println( "Error rate on Testing Data." );
-		calculateErrorRate( dataListTest, dataListTrain, out, kernel, a, b_avg );
+		int[] testPreditions = calculateErrorRate( dataListTest, dataListTrain, out, kernel, a, b_avg );
+		
+		uploadResultsTest2_5( dataListTest, testPreditions );
 	}
 }
