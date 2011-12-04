@@ -486,7 +486,7 @@ public class DataFileGenerator
 		System.out.println( "Error rate on Testing Data." );
 		int[] testPreditions = calculateErrorRate( dataListTest, dataListTrain, out, kernel, a, b_avg );
 		
-//		uploadResultsTest2_5( name, dataListTest, testPreditions );
+		uploadResultsTest2_5( name, dataListTest, testPreditions );
 	}
 
 	public static void main( String[] args ) throws IOException
