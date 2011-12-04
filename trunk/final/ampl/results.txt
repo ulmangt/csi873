@@ -5,3 +5,10 @@ Testing Error Rate: 0.098 Train Interval: (0.033, 0.162)
 2-5 Radial
 Training Error Rate: 0.027 Train Interval: (0.004, 0.050)
 Testing Error Rate: 0.110 Train Interval: (0.042, 0.177)
+
+All Polynomial
+Error rate on Training Data.
+Error Rate: 0.029 Train Interval: (0.018, 0.040)
+
+Error rate on Testing Data.
+Error Rate: 0.200 Train Interval: (0.161, 0.239)
