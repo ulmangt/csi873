@@ -342,13 +342,6 @@ public class DataFileGenerator
 		}
 	}
 
-	public static void generateAmplDataFiles( ) throws IOException
-	{
-		String inputDirectory = "/home/ulman/CSI873/midterm/data";
-		String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
-		generateAllDataFiles( inputDirectory, outputDirectory );
-	}
-
 	public static int[] calculateErrorRate( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, OutputGenerator out, Kernel kernel, double[] a, double b )
 	{
 		int[] digit = new int[ dataListTest.size( ) ];
@@ -414,8 +407,15 @@ public class DataFileGenerator
 			uploadResultQuery.runQuery( );
 		}
 	}
-
-	public static void main( String[] args ) throws IOException
+	
+	public static void generateAmplDataFiles( ) throws IOException
+	{
+		String inputDirectory = "/home/ulman/CSI873/midterm/data";
+		String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
+		generateAllDataFiles( inputDirectory, outputDirectory );
+	}
+	
+	public static void generateTestingResults( ) throws IOException
 	{
 		List<TrainingExample> dataListTrain = loadData( "/home/ulman/CSI873/midterm/data", false, 2, 5 );
 		List<TrainingExample> dataListTest = loadData( "/home/ulman/CSI873/midterm/data", true, 2, 5 );
@@ -451,5 +451,10 @@ public class DataFileGenerator
 		int[] testPreditions = calculateErrorRate( dataListTest, dataListTrain, out, kernel, a, b_avg );
 		
 		uploadResultsTest2_5( dataListTest, testPreditions );
+	}
+
+	public static void main( String[] args ) throws IOException
+	{
+
 	}
 }
