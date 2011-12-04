@@ -511,13 +511,17 @@ public class DataFileGenerator
 		uploadResultsTest2_5( name, dataListTest, testPreditions );
 	}
 	
-	public static class Pair
+	//////////////////////////////
+	///  Full 10 Digit Problem ///
+	//////////////////////////////
+	
+	public static class Model
 	{
 		double[] a;
 		double b;
 		OutputGenerator out;
 		
-		public Pair( double[] a, double b, OutputGenerator out )
+		public Model( double[] a, double b, OutputGenerator out )
 		{
 			this.a = a;
 			this.b = b;
@@ -532,11 +536,11 @@ public class DataFileGenerator
 		
 		Kernel kernel = new Polynomial( 0.0156, 0.0, 3.0 );
 		
-		Map<Integer,Pair> map = new HashMap<Integer,Pair>( );
+		Map<Integer,Model> map = new HashMap<Integer,Model>( );
 		for ( int i = 0 ; i < 10 ; i++ )
 		{
 			String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
-			String temporaryOutput = String.format( "%s/%s", outputDirectory, String.format( "out_%d.tmp", i ) );
+			String temporaryOutput = String.format( "%s/%s", outputDirectory, String.format( "out_%d.txt", i ) );
 			
 			double C = 100.0;
 			OutputGenerator out = new OneVersusAll( i );
@@ -559,7 +563,7 @@ public class DataFileGenerator
 			
 			double b_avg = b_sum / count;	
 			
-			map.put( i, new Pair( a, b_avg, out ) );
+			map.put( i, new Model( a, b_avg, out ) );
 		}
 		
 		System.out.println( "Error rate on Training Data." );
@@ -572,7 +576,7 @@ public class DataFileGenerator
 		uploadResultsAllTest( testPreditions );
 	}
 	
-	public static int[] calculateErrorRate( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, Kernel kernel, Map<Integer,Pair> map )
+	public static int[] calculateErrorRate( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, Kernel kernel, Map<Integer,Model> map )
 	{
 		int[] predicted_digit = calculate_y_predicted( dataListTest, dataListTrain, kernel, map );
 
@@ -595,7 +599,7 @@ public class DataFileGenerator
 		return predicted_digit;
 	}
 	
-	public static int[] calculate_y_predicted( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, Kernel kernel, Map<Integer,Pair> map )
+	public static int[] calculate_y_predicted( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, Kernel kernel, Map<Integer,Model> map )
 	{
 		int[] predicted_digit = new int[ dataListTest.size( ) ];
 
@@ -606,10 +610,10 @@ public class DataFileGenerator
 			int best_digit = -1;
 			double best_value = Double.NEGATIVE_INFINITY;
 			
-			for ( Entry<Integer,Pair> entry : map.entrySet( ) )
+			for ( Entry<Integer,Model> entry : map.entrySet( ) )
 			{
 				int digit = entry.getKey( );
-				Pair model = entry.getValue( );
+				Model model = entry.getValue( );
 				double[] a = model.a;
 				double b = model.b;
 				OutputGenerator out = model.out;
@@ -666,6 +670,6 @@ public class DataFileGenerator
 
 	public static void main( String[] args ) throws IOException
 	{
-		generateAmplDataFiles( );
+		generateTestingResultsAll( );
 	}
 }
