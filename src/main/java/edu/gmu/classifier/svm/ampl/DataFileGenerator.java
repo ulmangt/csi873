@@ -11,7 +11,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.gmu.classifier.database.UploadResultQuery;
 import edu.gmu.classifier.database.UploadRunQuery;
@@ -136,7 +138,7 @@ public class DataFileGenerator
 		outputDataFile( new FileOutputStream( outFile ), dataList, new OneVersusAll( digit ) );
 
 		File outCommandFile = new File( outDirectory, outFilePrefix + ".cmd" );
-		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ) );
+		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ), digit );
 	}
 
 	public static List<TrainingExample> loadData( String inFileName, boolean test, int digit1, int digit2 ) throws IOException
@@ -166,6 +168,26 @@ public class DataFileGenerator
 		File outCommandFile = new File( outDirectory, outFilePrefix + ".cmd" );
 		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ) );
 	}
+	
+	public static void outputCommandFile( OutputStream stream, String dataFileName, int digit ) throws IOException
+	{
+		BufferedWriter out = new BufferedWriter( new OutputStreamWriter( stream ) );
+
+		out.write( "reset;" );
+		out.newLine( );
+
+		out.write( "model classify_polynomial.mod;" );
+		out.newLine( );
+
+		out.write( String.format( "data %s;%n", dataFileName ) );
+
+		out.write( "solve;" );
+		out.newLine( );
+
+		out.write( String.format( "display a;%n", digit ) );
+
+		out.close( );
+	}
 
 	public static void outputCommandFile( OutputStream stream, String dataFileName ) throws IOException
 	{
@@ -174,7 +196,7 @@ public class DataFileGenerator
 		out.write( "reset;" );
 		out.newLine( );
 
-		out.write( "model classify_radial.mod;" );
+		out.write( "model classify_polynomial.mod;" );
 		out.newLine( );
 
 		out.write( String.format( "data %s;%n", dataFileName ) );
@@ -204,16 +226,14 @@ public class DataFileGenerator
 		out.write( String.format( "param C := %f;%n", 100.0 ) );
 
 		// Radial Kernel Parameters
-		out.write( String.format( "param gamma := %f;%n", 0.0521 ) );
+//		out.write( String.format( "param gamma := %f;%n", 0.0521 ) );
 		
 		// Polynomial Kernel Parameters
-		/*
 		out.write( String.format( "param alpha := %f;%n", 0.0156 ) );
 
 		out.write( String.format( "param beta := %f;%n", 0.0 ) );
 
 		out.write( String.format( "param delta := %f;%n", 3.0 ) );
-		*/
 
 		out.write( String.format( "param y :=%n" ) );
 		for ( int i = 0; i < l; i++ )
@@ -488,9 +508,44 @@ public class DataFileGenerator
 		
 		uploadResultsTest2_5( name, dataListTest, testPreditions );
 	}
+	
+	public static class Pair
+	{
+		double[] a;
+		double[] b;
+		
+		public Pair( double[] a, double[] b )
+		{
+			this.a = a;
+			this.b = b;
+		}
+	}
+	
+	public static void generateTestingResultsAll( ) throws IOException
+	{
+		List<TrainingExample> dataListTrain = DataLoader.loadDirectoryTrain( "/home/ulman/CSI873/midterm/data" );
+		List<TrainingExample> dataListTest = DataLoader.loadDirectoryTest( "/home/ulman/CSI873/midterm/data" );
+		
+		Kernel kernel = new Polynomial( 0.0156, 0.0, 3.0 );
+		
+		Map<Integer,Pair> map = new HashMap<Integer,Pair>( );
+		for ( int i = 0 ; i < 10 ; i++ )
+		{
+			String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
+			String temporaryOutput = String.format( "%s/%s", outputDirectory, String.format( "out_%d.tmp", i ) );
+			
+			double C = 100.0;
+			OutputGenerator out = new OneVersusAll( i );
+			
+			double[] a = read_a( temporaryOutput );
+			double[] b = calculate_b( dataListTrain, out, kernel, C, a );
+			
+			map.put( i, new Pair( a, b ) );
+		}
+	}
 
 	public static void main( String[] args ) throws IOException
 	{
-		generateTestingResultsRadial_25( );
+		generateAmplDataFiles( );
 	}
 }
