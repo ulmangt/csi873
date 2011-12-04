@@ -1,3 +1,5 @@
 2-5 /  α = 0.0156, β = 0, d = 3 
 Training Error Rate: 0.000 Train Interval: (0.000, 0.000)
 Testing Error Rate: 0.098 Train Interval: (0.033, 0.162)
+
+
