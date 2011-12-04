@@ -29,7 +29,17 @@ public class DataLoader
 	public static String filePatternString = "[\\S]*([\\d])\\.txt";
 	public static Pattern filePattern = Pattern.compile( filePatternString );
 	
-	public static List<TrainingExample> loadDirectory( String filePath ) throws IOException
+	public static List<TrainingExample> loadDirectoryTrain( String filePath ) throws IOException
+	{
+		return loadDirectory( filePath, "train" );
+	}
+	
+	public static List<TrainingExample> loadDirectoryTest( String filePath ) throws IOException
+	{
+		return loadDirectory( filePath, "test" );
+	}
+	
+	public static List<TrainingExample> loadDirectory( String filePath, final String prefix ) throws IOException
 	{
 		File dataDirectory = new File( filePath );
 		
@@ -39,14 +49,14 @@ public class DataLoader
 			@Override
 			public boolean accept( File dir, String name )
 			{
-				return name.startsWith( "train" );
+				return name.startsWith( prefix );
 			}
 		} );
 
 		// sort the trainingDataFiles
 		Arrays.sort( dataFiles );
 
-		// load all test data examples
+		// load all training data examples
 		List<TrainingExample> dataList = new ArrayList<TrainingExample>( );
 		for ( String fileName : dataFiles )
 		{
