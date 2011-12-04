@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import edu.gmu.classifier.database.ResultsUploader;
 import edu.gmu.classifier.database.UploadResultQuery;
 import edu.gmu.classifier.database.UploadRunQuery;
 import edu.gmu.classifier.io.DataLoader;
@@ -512,12 +514,14 @@ public class DataFileGenerator
 	public static class Pair
 	{
 		double[] a;
-		double[] b;
+		double b;
+		OutputGenerator out;
 		
-		public Pair( double[] a, double[] b )
+		public Pair( double[] a, double b, OutputGenerator out )
 		{
 			this.a = a;
 			this.b = b;
+			this.out = out;
 		}
 	}
 	
@@ -540,7 +544,123 @@ public class DataFileGenerator
 			double[] a = read_a( temporaryOutput );
 			double[] b = calculate_b( dataListTrain, out, kernel, C, a );
 			
-			map.put( i, new Pair( a, b ) );
+			double count = 0.0;
+			double b_sum = 0.0;
+			
+			for ( int j = 0 ; j < a.length ; j++ )
+			{
+				if ( a[j] < C && a[j] > 0.001 )
+				{
+					System.out.printf( "%.4f %.12f%n", a[j], b[j] );
+					b_sum += b[j];
+					count += 1.0;
+				}
+			}
+			
+			double b_avg = b_sum / count;	
+			
+			map.put( i, new Pair( a, b_avg, out ) );
+		}
+		
+		System.out.println( "Error rate on Training Data." );
+		int[] trainPreditions = calculateErrorRate( dataListTrain, dataListTrain, kernel, map );
+		
+		System.out.println( "Error rate on Testing Data." );
+		int[] testPreditions = calculateErrorRate( dataListTest, dataListTrain, kernel, map );
+		
+		uploadResultsAllTrain( trainPreditions );
+		uploadResultsAllTest( testPreditions );
+	}
+	
+	public static int[] calculateErrorRate( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, Kernel kernel, Map<Integer,Pair> map )
+	{
+		int[] predicted_digit = calculate_y_predicted( dataListTest, dataListTrain, kernel, map );
+
+		double count = 0.0;
+		for ( int i = 0; i < dataListTest.size( ); i++ )
+		{
+			TrainingExample data = dataListTest.get( i );
+			
+			if ( data.getDigit( ) == predicted_digit[i] )
+			{
+				count += 1.0;
+			}
+		}
+
+		double errorRate = 1.0 - ( count / dataListTest.size( ) );
+		double errorInterval = 1.96 * Math.sqrt( errorRate * ( 1 - errorRate ) / dataListTest.size( ) );
+		
+		System.out.printf( "Error Rate: %.3f Train Interval: (%.3f, %.3f)%n", errorRate, errorRate - errorInterval, errorRate + errorInterval );
+		
+		return predicted_digit;
+	}
+	
+	public static int[] calculate_y_predicted( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, Kernel kernel, Map<Integer,Pair> map )
+	{
+		int[] predicted_digit = new int[ dataListTest.size( ) ];
+
+		for ( int i = 0; i < dataListTest.size( ); i++ )
+		{
+			TrainingExample x_i = dataListTest.get( i );
+
+			int best_digit = -1;
+			double best_value = Double.NEGATIVE_INFINITY;
+			
+			for ( Entry<Integer,Pair> entry : map.entrySet( ) )
+			{
+				int digit = entry.getKey( );
+				Pair model = entry.getValue( );
+				double[] a = model.a;
+				double b = model.b;
+				OutputGenerator out = model.out;
+			
+				double sum = 0.0;
+				for ( int j = 0; j < a.length; j++ )
+				{
+					TrainingExample x_j = dataListTrain.get( j );
+					double y_j = out.getOutput( x_j );
+					double a_j = a[j];
+	
+					sum += y_j * a_j * kernel.getValue( x_j.getInputs( ), x_i.getInputs( ) );
+				}
+	
+				double value = sum - b;
+			
+				if ( value > best_value )
+				{
+					best_value = value;
+					best_digit = digit;
+				}
+			}
+			
+			predicted_digit[i] = best_digit;
+		}
+
+		return predicted_digit;
+	}
+	
+	public static void uploadResultsAllTest( int[] predicted_digit )
+	{
+		uploadResultsAll( "svm_testing_polynomial_all", ResultsUploader.IX_TEST_FIRST_INDEX, predicted_digit );
+	}
+	
+	public static void uploadResultsAllTrain( int[] predicted_digit )
+	{
+		uploadResultsAll( "svm_training_polynomial_all", ResultsUploader.IX_TRAIN_FIRST_INDEX, predicted_digit );
+	}
+	
+	public static void uploadResultsAll( String description, int firstDataId, int[] predicted_digit )
+	{
+		UploadRunQuery uploadRunQuery = new UploadRunQuery( description, System.currentTimeMillis( ) );
+		uploadRunQuery.runQuery( );
+		int ixRunId = uploadRunQuery.getRunId( );
+		
+		for ( int i = 0 ; i < predicted_digit.length; i++ )
+		{
+			String sClassification = String.valueOf( predicted_digit[i] );
+			
+			UploadResultQuery uploadResultQuery = new UploadResultQuery( firstDataId + i, ixRunId, sClassification );
+			uploadResultQuery.runQuery( );
 		}
 	}
 
