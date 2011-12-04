@@ -53,6 +53,28 @@ public class DataFileGenerator
 			return Math.pow( alpha * dot + beta, delta );
 		}
 	}
+	
+	public static class Radial implements Kernel
+	{
+		double gamma;
+
+		public Radial( double gamma )
+		{
+			this.gamma = gamma;
+		}
+
+		@Override
+		public double getValue( double[] x1, double[] x2 )
+		{
+			double norm = 0.0;
+			for ( int i = 0; i < x1.length; i++ )
+			{
+				norm += Math.pow( x1[i] - x2[i], 2.0 );
+			}
+
+			return Math.exp( -gamma * norm );
+		}
+	}
 
 	public static class OneVersusAll implements OutputGenerator
 	{
@@ -152,7 +174,7 @@ public class DataFileGenerator
 		out.write( "reset;" );
 		out.newLine( );
 
-		out.write( "model classify.mod;" );
+		out.write( "model classify_radial.mod;" );
 		out.newLine( );
 
 		out.write( String.format( "data %s;%n", dataFileName ) );
@@ -181,11 +203,17 @@ public class DataFileGenerator
 
 		out.write( String.format( "param C := %f;%n", 100.0 ) );
 
+		// Radial Kernel Parameters
+		out.write( String.format( "param gamma := %f;%n", 0.0521 ) );
+		
+		// Polynomial Kernel Parameters
+		/*
 		out.write( String.format( "param alpha := %f;%n", 0.0156 ) );
 
 		out.write( String.format( "param beta := %f;%n", 0.0 ) );
 
 		out.write( String.format( "param delta := %f;%n", 3.0 ) );
+		*/
 
 		out.write( String.format( "param y :=%n" ) );
 		for ( int i = 0; i < l; i++ )
@@ -373,9 +401,8 @@ public class DataFileGenerator
 		return digit;
 	}
 	
-	public static void uploadResultsTest2_5( List<TrainingExample> list, int[] predicted )
+	public static void uploadResultsTest2_5( String description, List<TrainingExample> list, int[] predicted )
 	{
-		String description = "SVM 2vs5 run α = 0.0156, β = 0, d = 3";
 		int first2id = 171257;
 		int first5id = 171380;
 		
@@ -415,7 +442,17 @@ public class DataFileGenerator
 		generateAllDataFiles( inputDirectory, outputDirectory );
 	}
 	
-	public static void generateTestingResults( ) throws IOException
+	public static void generateTestingResultsPolynomial_25( ) throws IOException
+	{
+		generateTestingResults( new Polynomial( 0.0156, 0.0, 3.0 ), "SVM 2vs5 run α = 0.0156, β = 0, d = 3" );
+	}
+	
+	public static void generateTestingResultsRadial_25( ) throws IOException
+	{
+		generateTestingResults( new Radial( 0.0521 ), "SVM 2vs5 radial" );
+	}
+	
+	public static void generateTestingResults( Kernel kernel, String name  ) throws IOException
 	{
 		List<TrainingExample> dataListTrain = loadData( "/home/ulman/CSI873/midterm/data", false, 2, 5 );
 		List<TrainingExample> dataListTest = loadData( "/home/ulman/CSI873/midterm/data", true, 2, 5 );
@@ -423,8 +460,7 @@ public class DataFileGenerator
 		String temporaryOutput = String.format( "%s/%s", outputDirectory, "out.tmp" );
 		
 		double C = 100.0;
-		OutputGenerator out =new TwoClass( 2, 5 );
-		Kernel kernel = new Polynomial( 0.0156, 0.0, 3.0 );
+		OutputGenerator out = new TwoClass( 2, 5 );
 		
 		double[] a = read_a( temporaryOutput );
 		double[] b = calculate_b( dataListTrain, out, kernel, C, a );
@@ -450,11 +486,11 @@ public class DataFileGenerator
 		System.out.println( "Error rate on Testing Data." );
 		int[] testPreditions = calculateErrorRate( dataListTest, dataListTrain, out, kernel, a, b_avg );
 		
-		uploadResultsTest2_5( dataListTest, testPreditions );
+//		uploadResultsTest2_5( name, dataListTest, testPreditions );
 	}
 
 	public static void main( String[] args ) throws IOException
 	{
-
+		generateTestingResultsRadial_25( );
 	}
 }
