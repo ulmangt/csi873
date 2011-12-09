@@ -3,7 +3,10 @@ package edu.gmu.classifier.knearest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import com.google.common.collect.Ordering;
 import com.google.common.collect.TreeMultimap;
@@ -19,20 +22,110 @@ public class KNearest
 		List<TrainingExample> dataListTrain = DataLoader.loadDirectoryTrain( "/home/ulman/CSI873/midterm/data" );
 		List<TrainingExample> dataListTest = DataLoader.loadDirectoryTest( "/home/ulman/CSI873/midterm/data" );
 		
-		TreeMultimap<Integer,TrainingExample> map = getDistancesFrom( dataListTest.get( 0 ), dataListTrain );
-		Collection<TrainingExample> k = pickLowestK( map, 5 );
-		System.out.println( k );
+		runKNNClassifier( dataListTrain, dataListTest );
+	}
+	
+	public static interface WeightCalculator
+	{
+		public double getWeight( double distance );
+	}
+	
+	public static void runKNNClassifier( List<TrainingExample> dataListTrain, List<TrainingExample> dataListTest )
+	{
+		Map<TrainingExample,TreeMultimap<Integer,TrainingExample>> outerMap = new HashMap<TrainingExample,TreeMultimap<Integer,TrainingExample>>( );
+		
+		for ( TrainingExample test : dataListTest )
+		{
+			TreeMultimap<Integer,TrainingExample> map = getDistancesFrom( test, dataListTrain );
+			outerMap.put( test, map );
+		}
+		
+		WeightCalculator uniformWeight = new WeightCalculator( )
+		{
+			@Override
+			public double getWeight( double distance )
+			{
+				return 1.0;
+			}
+		};
+		
+		calculateErrorRate( outerMap, dataListTest, uniformWeight );
+		
+		WeightCalculator decayWeight = new WeightCalculator( )
+		{
+			@Override
+			public double getWeight( double distance )
+			{
+				return 1.0 / ( distance * distance + 1.0 );
+			}
+		};
+		
+		calculateErrorRate( outerMap, dataListTest, decayWeight );
+	}
+	
+	public static void calculateErrorRate( Map<TrainingExample,TreeMultimap<Integer,TrainingExample>> outerMap,
+			                               List<TrainingExample> dataListTest, WeightCalculator weightCalc )
+	{
+		for ( int k = 1 ; k <= 7 ; k++ )
+		{
+			int correct = 0;
+			for ( TrainingExample test : dataListTest )
+			{
+				int predicted_digit = pickDigit( pickLowestK( outerMap.get( test ), k ), weightCalc );
+				if ( predicted_digit == test.getDigit( ) ) correct++;
+			}
+			
+			double errorRate = 1.0 - ( (double) correct / (double) dataListTest.size( ) );
+			double errorInterval = 1.96 * Math.sqrt( errorRate * ( 1 - errorRate ) / dataListTest.size( ) );
+			
+			System.out.printf( "K: %d Error Rate: %.3f Train Interval: (%.3f, %.3f)%n", k, errorRate, errorRate - errorInterval, errorRate + errorInterval );
+		}
+	}
+	
+	public static int pickDigit( Collection<Entry<Integer,TrainingExample>> list, WeightCalculator weightCalc )
+	{
+		double[] digitCounts = new double[10];
+		
+		for ( Entry<Integer,TrainingExample> entry : list )
+		{
+			TrainingExample example = entry.getValue( );
+			Integer distance = entry.getKey( );
+			
+			digitCounts[example.getDigit( )] += weightCalc.getWeight( distance );
+		}
+		
+		return getLargestIndex( digitCounts );
+	}
+	
+	//returns the index of the largest entry in the array
+	public static int getLargestIndex( double[] array )
+	{
+		double max = 0;
+		int index = 0;
+		
+		for ( int i = 0 ; i < array.length ; i++ )
+		{
+			double data = array[i];
+			
+			if ( data > max )
+			{
+				max = data;
+				index = i;
+			}
+		}
+		
+		return index;
 	}
 	
 	// given a sorted map containing the distances from a test example to all training examples, choose the k lowest
-	public static Collection<TrainingExample> pickLowestK( TreeMultimap<Integer,TrainingExample> map, int k )
+	public static Collection<Entry<Integer,TrainingExample>> pickLowestK( TreeMultimap<Integer,TrainingExample> map, int k )
 	{
-		Collection<TrainingExample> list = new ArrayList<TrainingExample>( k );
+		Collection<Entry<Integer,TrainingExample>> list = new ArrayList<Entry<Integer,TrainingExample>>( k );
 		int count = 0;
 		
-		for( TrainingExample example : map.values( ) )
+		for( Entry<Integer,TrainingExample> example : map.entries( ) )
 		{
-			if ( count == k ) break;
+			if ( count++ == k ) break;
 			
 			list.add( example );
 		}
