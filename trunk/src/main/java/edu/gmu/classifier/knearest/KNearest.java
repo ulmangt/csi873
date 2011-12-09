@@ -53,7 +53,7 @@ public class KNearest
 			outerMap.put( test, map );
 		}
 		
-		int maxk = 200;
+		int maxk = 7;
 		
 		// create jfreechart dataset for plotting purposes
 		DefaultXYDataset dataset = new DefaultXYDataset( );
@@ -134,7 +134,7 @@ public class KNearest
 		double errorRate = 1.0 - ( (double) correct / (double) dataListTest.size( ) );
 		double errorInterval = 1.96 * Math.sqrt( errorRate * ( 1 - errorRate ) / dataListTest.size( ) );
 		
-		System.out.printf( "K: %d Error Rate: %.3f Train Interval: (%.3f, %.3f)%n", k, errorRate, errorRate - errorInterval, errorRate + errorInterval );
+		System.out.printf( "K: %d Error Rate: %.3f Train Interval: (%.3f, %.3f) -- %.3f & %.3f & %.3f %n", k, errorRate, errorRate - errorInterval, errorRate + errorInterval,  errorRate, errorRate - errorInterval, errorRate + errorInterval );
 		
 		return errorRate;
 	}
