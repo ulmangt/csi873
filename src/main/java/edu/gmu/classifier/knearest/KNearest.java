@@ -8,6 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.swing.JFrame;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.DefaultXYDataset;
+
 import com.google.common.collect.Ordering;
 import com.google.common.collect.TreeMultimap;
 
@@ -22,7 +30,11 @@ public class KNearest
 		List<TrainingExample> dataListTrain = DataLoader.loadDirectoryTrain( "/home/ulman/CSI873/midterm/data" );
 		List<TrainingExample> dataListTest = DataLoader.loadDirectoryTest( "/home/ulman/CSI873/midterm/data" );
 		
+		System.out.println( "Testing Data" );
 		runKNNClassifier( dataListTrain, dataListTest );
+		
+		System.out.println( "Training Data" );
+		runKNNClassifier( dataListTrain, dataListTrain );
 	}
 	
 	public static interface WeightCalculator
@@ -32,14 +44,23 @@ public class KNearest
 	
 	public static void runKNNClassifier( List<TrainingExample> dataListTrain, List<TrainingExample> dataListTest )
 	{
+		// calculate the distance from each testing example to each training example and store
+		// them in an ordered set, making it efficient to retrieve the k closest
 		Map<TrainingExample,TreeMultimap<Integer,TrainingExample>> outerMap = new HashMap<TrainingExample,TreeMultimap<Integer,TrainingExample>>( );
-		
 		for ( TrainingExample test : dataListTest )
 		{
 			TreeMultimap<Integer,TrainingExample> map = getDistancesFrom( test, dataListTrain );
 			outerMap.put( test, map );
 		}
 		
+		int maxk = 200;
+		
+		// create jfreechart dataset for plotting purposes
+		DefaultXYDataset dataset = new DefaultXYDataset( );
+		double[][] seriesData = new double[2][maxk];
+		double[][] seriesData2 = new double[2][maxk];
+		
+		// create a weight calculator which returns uniform weights regardless of distance
 		WeightCalculator uniformWeight = new WeightCalculator( )
 		{
 			@Override
@@ -49,8 +70,17 @@ public class KNearest
 			}
 		};
 		
-		calculateErrorRate( outerMap, dataListTest, uniformWeight );
+		System.out.println( "Uniform Weight" );
 		
+		for ( int k = 1 ; k <= maxk ; k++ )
+		{
+			double error = calculateErrorRate( outerMap, dataListTest, uniformWeight, k );
+			
+			seriesData[0][k-1] = k;
+			seriesData[1][k-1] = error;
+		}
+		
+		// create a weight calculator which returns weights that decay with distance
 		WeightCalculator decayWeight = new WeightCalculator( )
 		{
 			@Override
@@ -60,28 +90,57 @@ public class KNearest
 			}
 		};
 		
-		calculateErrorRate( outerMap, dataListTest, decayWeight );
-	}
-	
-	public static void calculateErrorRate( Map<TrainingExample,TreeMultimap<Integer,TrainingExample>> outerMap,
-			                               List<TrainingExample> dataListTest, WeightCalculator weightCalc )
-	{
-		for ( int k = 1 ; k <= 7 ; k++ )
+		System.out.println( "Decaying Weight" );
+		
+		for ( int k = 1 ; k <= maxk ; k++ )
 		{
-			int correct = 0;
-			for ( TrainingExample test : dataListTest )
-			{
-				int predicted_digit = pickDigit( pickLowestK( outerMap.get( test ), k ), weightCalc );
-				if ( predicted_digit == test.getDigit( ) ) correct++;
-			}
+			double error = calculateErrorRate( outerMap, dataListTest, decayWeight, k );
 			
-			double errorRate = 1.0 - ( (double) correct / (double) dataListTest.size( ) );
-			double errorInterval = 1.96 * Math.sqrt( errorRate * ( 1 - errorRate ) / dataListTest.size( ) );
-			
-			System.out.printf( "K: %d Error Rate: %.3f Train Interval: (%.3f, %.3f)%n", k, errorRate, errorRate - errorInterval, errorRate + errorInterval );
+			seriesData2[0][k-1] = k;
+			seriesData2[1][k-1] = error;
 		}
+		
+		calculateErrorRate( outerMap, dataListTest, decayWeight, dataListTest.size( ) );
+		
+		dataset.addSeries( "Unweighted Error", seriesData );
+		dataset.addSeries( "Weighted Error", seriesData2 );
+		JFreeChart chart2 = ChartFactory.createXYLineChart( String.format( "KNN Error Rate (Uniform)" ), "K", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
+		ChartPanel chartPanel2 = new ChartPanel( chart2 );
+		JFrame frame2 = new JFrame( );
+		frame2.setSize( 1000, 1000 );
+		frame2.add( chartPanel2 );
+		frame2.setVisible( true );
+		
+//		dataset.addSeries( "Error", seriesData2 );
+//		JFreeChart chart2 = ChartFactory.createXYLineChart( String.format( "KNN Error Rate (Uniform)" ), "K", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
+//		ChartPanel chartPanel2 = new ChartPanel( chart2 );
+//		JFrame frame2 = new JFrame( );
+//		frame2.setSize( 1000, 1000 );
+//		frame2.add( chartPanel2 );
+//		frame2.setVisible( true );
 	}
 	
+	// calculate and print the error rate for the given k
+	public static double calculateErrorRate( Map<TrainingExample,TreeMultimap<Integer,TrainingExample>> outerMap,
+			                               List<TrainingExample> dataListTest, WeightCalculator weightCalc, int k )
+	{
+		int correct = 0;
+		for ( TrainingExample test : dataListTest )
+		{
+			int predicted_digit = pickDigit( pickLowestK( outerMap.get( test ), k ), weightCalc );
+			if ( predicted_digit == test.getDigit( ) ) correct++;
+		}
+		
+		double errorRate = 1.0 - ( (double) correct / (double) dataListTest.size( ) );
+		double errorInterval = 1.96 * Math.sqrt( errorRate * ( 1 - errorRate ) / dataListTest.size( ) );
+		
+		System.out.printf( "K: %d Error Rate: %.3f Train Interval: (%.3f, %.3f)%n", k, errorRate, errorRate - errorInterval, errorRate + errorInterval );
+		
+		return errorRate;
+	}
+	
+	// given a weighting scheme and a set of nearby training examples, use a simple weighted
+	// voting scheme to classify the sample in question
 	public static int pickDigit( Collection<Entry<Integer,TrainingExample>> list, WeightCalculator weightCalc )
 	{
 		double[] digitCounts = new double[10];
