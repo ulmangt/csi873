@@ -16,6 +16,43 @@
 
 \section{Results}\label{Results}
 
+\begin{table}
+\caption{Digit 2 vs 5 Error}
+\begin{center}
+\begin{tabular}{llcc}
+\toprule
+Data Set & Error & \multicolumn{2}{c}{95\% Confidence Interval} \\
+\cmidrule(r){3-4}
+& & Lower Bound & Upper Bound \\
+\midrule
+Polynomial Training & 0.000 & 0.000 & 0.000 \\
+Polynomial Testing & 0.098 & 0.033 & 0.162 \\
+Radial Training & 0.027 & 0.004 & 0.050 \\
+Radial Testing & 0.110 & 0.042 & 0.177 \\
+\bottomrule
+\end{tabular}
+\label{error1}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{All Digits Error}
+\begin{center}
+\begin{tabular}{llcc}
+\toprule
+Data Set & Error & \multicolumn{2}{c}{95\% Confidence Interval} \\
+\cmidrule(r){3-4}
+& & Lower Bound & Upper Bound \\
+\midrule
+Polynomial Training & 0.029 & 0.018 & 0.040 \\
+Polynomial Testing & 0.200 & 0.161 & 0.239 \\
+\bottomrule
+\end{tabular}
+\label{error2}
+\end{center}
+\end{table}
+
+
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{images/poly_all_confusion_test.png}
