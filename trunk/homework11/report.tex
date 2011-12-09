@@ -17,10 +17,20 @@
 
 \section{Results}\label{Results}
 
-A testing error rate of \(0.388\) and a training error rate of \(0.322\) was achieved by the Naive Bayes classifier with 95\% confidence intervals given by Table \ref{error}. On a digit-by-digit basis, error was relatively uniform among the digits, with ``4'' and ``5'' being significant exceptions (see Figure \ref{trainconfusion} for the training data confusion matrix and Figure \ref{testconfusion} for the testing data confusion matrix). In the case of ``5'' misclassification were spread over a number of digits. In the case of ``4'' almost all the misclassification were misclassifying ``4'' as ``9'' (see Figures \ref{4_9_missclass_training} and \ref{4_9_missclass_testing}).
+The minimum testing error rate for k-nearest neighbors with uniform weights was \(0.241\) and occurred with \(k=4\). The minimum testing error rate for k-nearest neighbors with weights decaying by distance according to Equation \ref{decay} was \(0.217\) and occurred with \(k=7\).
 
-Java (version 1.6.0\_27) was used to implement the Naive Bayes classifier. As with the midterm project, the code is available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi873/}. Compiling and running the code requires the Java build tool Maven (\url{http://maven.apache.org/}). Only the small amount of new code necessary to implement the Naive Bayes classifier is attached to this report.
+\begin{equation}\label{decay}
+w_i = \frac{1}{d \left( x_q , x_i \right)^2 + \epsilon } , \epsilon = 1
+\end{equation}
 
+The trend for larger k for both the uniform and decaying weight runs is shown on Figure \ref{plot1}. It indicates that the error rate of \(0.217\) obtained by the decaying weight knn classifier with \(k=7\) is actually the best performing for all \(k\) for this handwriting classification problem. Even including all training samples weighted by distance does not improve the error rate. In fact, with an error rate of \(0.410\) it is a significantly worse performer than the runs with small \(k\) values.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{KNNError.png}
+\caption{Missclassification Error by K}
+\label{plot1}
+\end{figure}
 
 \begin{table}
 \caption{Uniform Weight Error}
@@ -40,7 +50,7 @@ K & Error & \multicolumn{2}{c}{95\% Confidence Interval} \\
 7 & 0.268 & 0.225 & 0.311 \\
 \bottomrule
 \end{tabular}
-\label{error}
+\label{error1}
 \end{center}
 \end{table}
 
@@ -63,7 +73,7 @@ K & Error & \multicolumn{2}{c}{95\% Confidence Interval} \\
 410 & 0.410 & 0.362 & 0.457 \\
 \bottomrule
 \end{tabular}
-\label{error}
+\label{error2}
 \end{center}
 \end{table}
 
