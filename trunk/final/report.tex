@@ -202,6 +202,33 @@ Polynomial Testing & 0.200 & 0.161 & 0.239 \\
 \label{poly10trainconfusion}
 \end{figure}
 
+\section{Parameterization}\label{Parameterization}
+
+The \(\alpha_i\) upper bound parameter \(C\) was initially set at 100. Table \ref{svmcount} gives the number of support vectors (with non-zero and non-C \(\alpha_i\) value) for each of the 10 SVM optimization problems solved for the 10 digit case. Out of 930 input vectors, only about 10\% to 20\% are chosen as support vectors by the solver. This relatively low number of support vectors indicates that the choice of \(C\) as 100 was reasonable.
+
+\begin{table}
+\caption{Number of Support Vectors Out Of 930}
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Digit & Support Vector Count \\
+\midrule
+0 & 150 \\
+1 & 121 \\
+2 & 174 \\
+3 & 189 \\
+4 & 145 \\
+5 & 216 \\
+6 & 170 \\
+7 & 147 \\
+8 & 187 \\
+9 & 155 \\
+\bottomrule
+\end{tabular}
+\label{svmcount}
+\end{center}
+\end{table}
+
 \section{Comparison}\label{Comparison}
 
 Figure \ref{error3} provides an error rate comparison between the four major classification methods which were applied to the handwriting data set. Weighted K-Nearest Neighbors with \(k=7\) came close to the performance achieved by the polynomial kernel support vector machine (with \(0.217\) error versus \(0.200\) for the support vector machine). Naive Bayes and Neural Networks trailed with \(0.388\) and \(0.463\) misclassification error respectively.
