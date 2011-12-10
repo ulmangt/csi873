@@ -17,9 +17,9 @@
 
 \section{Implementation}\label{Implementation}
 
-The support vector machine constrained polynomial optimization problem was modeled and solved using AMPL (\url{www.ampl.com/}). Computations were performed using the LOQO solver (\url{www.princeton.edu/~rvdb/loqo/LOQO.html}) on the NEOS server (\url{www.neos-server.org/neos/solvers/}). Once the solution to the dual problem was obtained, the \(\alpha\) values were imported into Java to make the final classification.
+The support vector machine constrained optimization problem was modeled and solved using AMPL (\url{www.ampl.com/}). Computations were performed using the LOQO solver (\url{www.princeton.edu/~rvdb/loqo/LOQO.html}) on the NEOS server (\url{www.neos-server.org/neos/solvers/}). Once the solution to the dual problem was obtained, the \(\alpha\) values were imported into Java.
 
-Java (version 1.6.0\_27) was used to implement the neural network and training algorithm. The code is available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi873/}. Compiling and running the code requires the Java build tool Maven (\url{http://maven.apache.org/}).
+Java (version 1.6.0\_27) was used to make the final classification. The code is available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi873/}. Compiling and running the code requires the Java build tool Maven (\url{http://maven.apache.org/}).
 
 \section{Model}\label{Model}
 
@@ -107,7 +107,7 @@ Radial Testing & 0.110 & 0.042 & 0.177 \\
 \end{center}
 \end{table}
 
-Figures \ref{poly2testconfusion} and \ref{radial2testconfusion} show the confusion matrices for the polynomial and radial kernels respectively. Figures \ref{radial5correcttest} and \ref{radial2correcttest} display images for the correctly classified training data samples for the polynomial and radial kernels applied to the ''2`` versus ''5`` classification problem. Figures \ref{poly2errortest} and \ref{radial2errortest} display the incorrectly classified ''2`` digits for the polynomial and radial kernels. Figures \ref{poly5errortest} and \ref{radial5errortest} display the incorrectly classified ''5`` digits for the polynomial and radial kernels.
+Figures \ref{poly2testconfusion} and \ref{radial2testconfusion} show the confusion matrices for the polynomial and radial kernels respectively. Figures \ref{radial5correcttest}, \ref{radial2correcttest}, \ref{poly5correcttest}, and \ref{poly2correcttest} display images for the correctly classified training data samples for the polynomial and radial kernels applied to the ''2`` versus ''5`` classification problem. Figures \ref{poly2errortest} and \ref{radial2errortest} display the incorrectly classified ''2`` digits for the polynomial and radial kernels. Figures \ref{poly5errortest} and \ref{radial5errortest} display the incorrectly classified ''5`` digits for the polynomial and radial kernels.
 
 \begin{figure}
 \centering
@@ -139,6 +139,20 @@ Figures \ref{poly2testconfusion} and \ref{radial2testconfusion} show the confusi
 
 \begin{figure}
 \centering
+\includegraphics[width=0.9\textwidth]{images/test2_5_correct5s_a0156.png}
+\caption{Polynomial Kernel Correctly Classified 5 Digits}
+\label{poly5correcttest}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{images/test2_5_correct2s_a0156.png}
+\caption{Polynomial Kernel Correctly Classified 2 Digits}
+\label{poly2correcttest}
+\end{figure}
+
+\begin{figure}
+\centering
 \includegraphics[width=0.9\textwidth]{images/test2_5_correct2_class5_a0156.png}
 \caption{Polynomial Kernel 2 Missclassified as 5}
 \label{poly2errortest}
@@ -165,7 +179,7 @@ Figures \ref{poly2testconfusion} and \ref{radial2testconfusion} show the confusi
 \label{radial5errortest}
 \end{figure}
 
-Based on these experiments, the polynomial kernel was chosen to be used for the full problem. Actually both methods performed quite well and their 95\% confidence intervals have significant overlap. So it is unclear which method is actually superior for this handwriting problem.
+Based on these experiments, the polynomial kernel was chosen to be used for the full problem. However, both methods performed quite well and their 95\% confidence intervals have significant overlap. So it is unclear which method is actually superior for this handwriting problem.
 
 \section{All Digit Results}\label{ResultsAll}
 
@@ -251,6 +265,12 @@ Neural Network & 0.463 &  0.415 & 0.512  \\
 \label{error3}
 \end{center}
 \end{table}
+
+\section{Appendix}\label{Appendix}
+
+The appendix to this report contains a number of supporting documents. The Java source code used to read the AMPL results, perform the classification, and compute statistics is included first. The code is also available at \url{http://code.google.com/p/csi873/source/browse/trunk/src/main/java/edu/gmu/classifier/svm/ampl/DataFileGenerator.java}.
+
+Following the Java code are the AMPL model files (both with the polynomial and radial kernels) and the AMPL data file for the ''2`` versus ''5`` classification problem (the data file for the full problem is omitted due to length). However, all AMPL model, data, and NEOS output files are also available at \url{http://code.google.com/p/csi873/source/browse/#svn\%2Ftrunk\%2Ffinal\%2Fampl}.
 
 \begin{thebibliography}{9}
 
