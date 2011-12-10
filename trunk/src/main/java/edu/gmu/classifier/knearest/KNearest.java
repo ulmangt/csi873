@@ -110,14 +110,6 @@ public class KNearest
 		frame2.setSize( 1000, 1000 );
 		frame2.add( chartPanel2 );
 		frame2.setVisible( true );
-		
-//		dataset.addSeries( "Error", seriesData2 );
-//		JFreeChart chart2 = ChartFactory.createXYLineChart( String.format( "KNN Error Rate (Uniform)" ), "K", "Error", dataset, PlotOrientation.VERTICAL, true, false, false );
-//		ChartPanel chartPanel2 = new ChartPanel( chart2 );
-//		JFrame frame2 = new JFrame( );
-//		frame2.setSize( 1000, 1000 );
-//		frame2.add( chartPanel2 );
-//		frame2.setVisible( true );
 	}
 	
 	// calculate and print the error rate for the given k
@@ -134,7 +126,7 @@ public class KNearest
 		double errorRate = 1.0 - ( (double) correct / (double) dataListTest.size( ) );
 		double errorInterval = 1.96 * Math.sqrt( errorRate * ( 1 - errorRate ) / dataListTest.size( ) );
 		
-		System.out.printf( "K: %d Error Rate: %.3f Train Interval: (%.3f, %.3f) -- %.3f & %.3f & %.3f %n", k, errorRate, errorRate - errorInterval, errorRate + errorInterval,  errorRate, errorRate - errorInterval, errorRate + errorInterval );
+		System.out.printf( "K: %d Error Rate: %.3f Train Interval: (%.3f, %.3f)%n", k, errorRate, errorRate - errorInterval, errorRate + errorInterval );
 		
 		return errorRate;
 	}
