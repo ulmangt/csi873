@@ -107,7 +107,7 @@ Radial Testing & 0.110 & 0.042 & 0.177 \\
 \end{center}
 \end{table}
 
-Figures \ref{poly2testconfusion} and \ref{radial2testconfusion} show the confusion matrices for the polynomial and radial kernels respectively.
+Figures \ref{poly2testconfusion} and \ref{radial2testconfusion} show the confusion matrices for the polynomial and radial kernels respectively. Figures \ref{radial5correcttest} and \ref{radial2correcttest} display images for the correctly classified training data samples for the polynomial and radial kernels applied to the ''2`` versus ''5`` classification problem. Figures \ref{poly2errortest} and \ref{radial2errortest} display the incorrectly classified ''2`` digits for the polynomial and radial kernels. Figures \ref{poly5errortest} and \ref{radial5errortest} display the incorrectly classified ''5`` digits for the polynomial and radial kernels.
 
 \begin{figure}
 \centering
@@ -123,8 +123,6 @@ Figures \ref{poly2testconfusion} and \ref{radial2testconfusion} show the confusi
 \label{radial2testconfusion}
 \end{figure}
 
-Figures \ref{radial2correcttest} and \ref{radial5correcttest} display images for the correctly classified training data samples for the polynomial and radial kernels applied to the ''2`` versus ''5`` classification problem.
-
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{images/test2_5_correct5_radial.png}
@@ -138,8 +136,6 @@ Figures \ref{radial2correcttest} and \ref{radial5correcttest} display images for
 \caption{Radial Kernel Correctly Classified 2 Digits}
 \label{radial2correcttest}
 \end{figure}
-
-Figures \ref{poly2errortest} and \ref{radial2errortest} display the incorrectly classified ''2`` digits for the polynomial and radial kernels.
 
 \begin{figure}
 \centering
@@ -155,8 +151,6 @@ Figures \ref{poly2errortest} and \ref{radial2errortest} display the incorrectly 
 \label{radial2errortest}
 \end{figure}
 
-Figures \ref{poly5errortest} and \ref{radial5errortest} display the incorrectly classified ''5`` digits for the polynomial and radial kernels.
-
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{images/test2_5_correct5_class2_a0156.png}
@@ -171,7 +165,11 @@ Figures \ref{poly5errortest} and \ref{radial5errortest} display the incorrectly 
 \label{radial5errortest}
 \end{figure}
 
+Based on these experiments, the polynomial kernel was chosen to be used for the full problem. Actually both methods performed quite well and their 95\% confidence intervals have significant overlap. So it is unclear which method is actually superior for this handwriting problem.
+
 \section{All Digit Results}\label{ResultsAll}
+
+A misclassification error (on the full ten digit testing data set) of \(0.200\) was achieved with the polynomial kernel. The full results are summarized in Table \ref{error2}. Figures \ref{poly10testconfusion} and \ref{poly10trainconfusion} provide confusion matricies for the testing and training data sets.
 
 \begin{table}
 \caption{All Digits Error}
@@ -190,6 +188,23 @@ Polynomial Testing & 0.200 & 0.161 & 0.239 \\
 \end{center}
 \end{table}
 
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{images/poly_all_confusion_test.png}
+\caption{Polynomial Kernel 10 Digit Test Error Confusion Matrix}
+\label{poly10testconfusion}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{images/poly_all_confusion_training.png}
+\caption{Polynomial Kernel 10 Digit Training Error Confusion Matrix}
+\label{poly10trainconfusion}
+\end{figure}
+
+\section{Comparison}\label{Comparison}
+
+Figure \ref{error3}
 
 \begin{table}
 \caption{Missclassification Error Overview}
@@ -210,20 +225,6 @@ Neural Network & 0.463 &  0.415 & 0.512  \\
 \end{center}
 \end{table}
 
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{images/poly_all_confusion_test.png}
-\caption{Polynomial Kernel 10 Digit Test Error Confusion Matrix}
-\label{poly10testconfusion}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{images/poly_all_confusion_training.png}
-\caption{Polynomial Kernel 10 Digit Training Error Confusion Matrix}
-\label{poly10trainconfusion}
-\end{figure}
 
 
 
