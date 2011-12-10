@@ -15,13 +15,24 @@
 \date{December 2011}
 \maketitle
 
-\section{Model}\label{Model}
+\section{Implementation}\label{Implementation}
 
 The support vector machine constrained polynomial optimization problem was modeled and solved using AMPL (\url{www.ampl.com/}). Computations were performed using the LOQO solver (\url{www.princeton.edu/~rvdb/loqo/LOQO.html}) on the NEOS server (\url{www.neos-server.org/neos/solvers/}). Once the solution to the dual problem was obtained, the \(\alpha\) values were imported into Java to make the final classification.
 
 Java (version 1.6.0\_27) was used to implement the neural network and training algorithm. The code is available as a Subversion repository on Google Code at \url{http://code.google.com/p/csi873/}. Compiling and running the code requires the Java build tool Maven (\url{http://maven.apache.org/}).
 
-\hline
+\section{Model}\label{Model}
+
+The following AMPL model was used to solve the dual SVM problem in Equation \ref{svm} with a polynomial kernel.
+
+\begin{equation}\label{svm}
+\begin{split}
+\max_\alpha \sum_{i=1}^l \alpha_i - 0.5 \sum_{i,j}^l \alpha_i \alpha_j y_i y_j K \left( x_i , x_j \right) \\
+s.t. \\
+\sum_{i=1}^l \alpha_i y_i = 0 \\
+0 \ge \alpha_i \ge C , i = 1,2,...,l
+\end{split}
+\end{equation}
 
 \begin{verbatim}
 
@@ -60,7 +71,18 @@ option solver loqo;
 
 \end{verbatim}
 
-\hline
+The model used for the radial basis kernel was almost identical except for the objective (and some different parameters):
+
+\begin{verbatim}
+
+# parameters for radial basis function kernel
+param gamma;
+
+maximize obj: sum { i in 1..l } a[i] - 0.5 *
+              sum { i in 1..l, j in 1..l } a[i] * a[j] * y[i] * y[j] *
+              exp( -gamma * ( sum { k in i..n } ( x[i,k] - x[j,k] )^2 ) );
+
+\end{verbatim}
 
 \section{Two Digit Results}\label{Results2}
 
