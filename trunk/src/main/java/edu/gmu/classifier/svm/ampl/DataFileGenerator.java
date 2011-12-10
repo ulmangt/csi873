@@ -24,16 +24,24 @@ import edu.gmu.classifier.io.TrainingExample;
 
 public class DataFileGenerator
 {
+	// a functor interface which defines a function for calculating the
+	// y (output) value for a given training example
+	// this function should always return either 1 or -1
 	public interface OutputGenerator
 	{
 		public double getOutput( TrainingExample data );
 	}
 
+	// a functor interface which defines a function that takes
+	// two input vectors (two 64 length vectors containing 0 or 1
+	// in each element representing a handwriting sample) and outputs
+	// a scalar value.
 	public interface Kernel
 	{
 		public double getValue( double[] x1, double[] x2 );
 	}
 
+	// the polynomial kernel
 	public static class Polynomial implements Kernel
 	{
 		double alpha, beta, delta;
@@ -58,6 +66,7 @@ public class DataFileGenerator
 		}
 	}
 	
+	// the radial basis kernel
 	public static class Radial implements Kernel
 	{
 		double gamma;
@@ -80,6 +89,9 @@ public class DataFileGenerator
 		}
 	}
 
+	// The output generator for one digit versus all others.
+	// If the TrainingExample is an instance of the digit 
+	// the result is 1.0 otherwise it is -1.0.
 	public static class OneVersusAll implements OutputGenerator
 	{
 		protected int digit;
@@ -96,6 +108,10 @@ public class DataFileGenerator
 		}
 	};
 
+	// The output generator for the two class (one digit versus
+	// one other digit) problem.
+	// If the TrainingExample is an instance of digit1 the
+	// result is a 1.0 otherwise it is -1.0.
 	public static class TwoClass implements OutputGenerator
 	{
 		protected int digit1;
@@ -121,6 +137,9 @@ public class DataFileGenerator
 		}
 	};
 
+	// a routine for generating AMPL data files from the provided training example data files
+	// this generates 11 data files (ten for the 10 digit classification problem and one for
+	// the 2 versus 5 classification problem).
 	public static void generateAllDataFiles( String inDirectoryString, String outDirectoryString ) throws IOException
 	{
 		generateDataFile( inDirectoryString, outDirectoryString, "classify_2-5", 2, 5 );
@@ -131,6 +150,8 @@ public class DataFileGenerator
 		}
 	}
 
+	// a helper routine which generates a single AMPL data file using
+	// data from all the digits and classifying the given digit against all others
 	public static void generateDataFile( String inFileName, String outDirectoryName, String outFilePrefix, int digit ) throws IOException
 	{
 		List<TrainingExample> dataList = DataLoader.loadDirectoryTrain( inFileName );
@@ -138,11 +159,20 @@ public class DataFileGenerator
 		File outDirectory = new File( outDirectoryName );
 		File outFile = new File( outDirectory, outFilePrefix + ".dat" );
 		outputDataFile( new FileOutputStream( outFile ), dataList, new OneVersusAll( digit ) );
+	}
+	
+	// a helper routine which generates a single AMPL data file using
+	// data from only the two provided digits
+	public static void generateDataFile( String inFileName, String outDirectoryName, String outFilePrefix, int digit1, int digit2 ) throws IOException
+	{
+		List<TrainingExample> dataList = loadData( inFileName, false, digit1, digit2 );
 
-		File outCommandFile = new File( outDirectory, outFilePrefix + ".cmd" );
-		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ), digit );
+		File outDirectory = new File( outDirectoryName );
+		File outFile = new File( outDirectory, outFilePrefix + ".dat" );
+		outputDataFile( new FileOutputStream( outFile ), dataList, new TwoClass( digit1, digit2 ) );
 	}
 
+	// loads the training examples corresponding to the two given digits from either the test or training data set
 	public static List<TrainingExample> loadData( String inFileName, boolean test, int digit1, int digit2 ) throws IOException
 	{
 		List<TrainingExample> dataList = test ? DataLoader.loadDirectoryTest( inFileName ) : DataLoader.loadDirectoryTrain( inFileName );
@@ -159,59 +189,7 @@ public class DataFileGenerator
 		return filteredList;
 	}
 
-	public static void generateDataFile( String inFileName, String outDirectoryName, String outFilePrefix, int digit1, int digit2 ) throws IOException
-	{
-		List<TrainingExample> dataList = loadData( inFileName, false, digit1, digit2 );
-
-		File outDirectory = new File( outDirectoryName );
-		File outFile = new File( outDirectory, outFilePrefix + ".dat" );
-		outputDataFile( new FileOutputStream( outFile ), dataList, new TwoClass( digit1, digit2 ) );
-
-		File outCommandFile = new File( outDirectory, outFilePrefix + ".cmd" );
-		outputCommandFile( new FileOutputStream( outCommandFile ), outFile.getName( ) );
-	}
-	
-	public static void outputCommandFile( OutputStream stream, String dataFileName, int digit ) throws IOException
-	{
-		BufferedWriter out = new BufferedWriter( new OutputStreamWriter( stream ) );
-
-		out.write( "reset;" );
-		out.newLine( );
-
-		out.write( "model classify_polynomial.mod;" );
-		out.newLine( );
-
-		out.write( String.format( "data %s;%n", dataFileName ) );
-
-		out.write( "solve;" );
-		out.newLine( );
-
-		out.write( String.format( "display a;%n", digit ) );
-
-		out.close( );
-	}
-
-	public static void outputCommandFile( OutputStream stream, String dataFileName ) throws IOException
-	{
-		BufferedWriter out = new BufferedWriter( new OutputStreamWriter( stream ) );
-
-		out.write( "reset;" );
-		out.newLine( );
-
-		out.write( "model classify_polynomial.mod;" );
-		out.newLine( );
-
-		out.write( String.format( "data %s;%n", dataFileName ) );
-
-		out.write( "solve;" );
-		out.newLine( );
-
-		out.write( "display a > tmp.out;" );
-		out.newLine( );
-
-		out.close( );
-	}
-
+	// generates an AMLP data file for the given dataList and output generator
 	public static void outputDataFile( OutputStream stream, List<TrainingExample> dataList, OutputGenerator gen ) throws IOException
 	{
 		BufferedWriter out = new BufferedWriter( new OutputStreamWriter( stream ) );
@@ -228,7 +206,7 @@ public class DataFileGenerator
 		out.write( String.format( "param C := %f;%n", 100.0 ) );
 
 		// Radial Kernel Parameters
-//		out.write( String.format( "param gamma := %f;%n", 0.0521 ) );
+		//out.write( String.format( "param gamma := %f;%n", 0.0521 ) );
 		
 		// Polynomial Kernel Parameters
 		out.write( String.format( "param alpha := %f;%n", 0.0156 ) );
@@ -272,6 +250,7 @@ public class DataFileGenerator
 		out.close( );
 	}
 
+	// reads a NEOS AMPL output file and returns the calculated alpha values
 	public static double[] read_a( String file ) throws IOException
 	{
 		FileInputStream stream = new FileInputStream( file );
@@ -285,6 +264,7 @@ public class DataFileGenerator
 		}
 	}
 
+	// reads a NEOS AMPL output file and returns the calculated alpha values
 	public static double[] read_a( InputStream stream ) throws IOException
 	{
 		List<Double> list = new ArrayList<Double>( );
@@ -358,14 +338,28 @@ public class DataFileGenerator
 		return b;
 	}
 
+	/**
+	 * Makes a classification decision for the 2 versus 5 case based on the AMPL solution.
+	 * 
+	 * @param dataListTest a list of data samples of classify
+	 * @param dataListTrain the training data list used to train the svm classifier
+	 * @param out a generator for calculating expected output values from the training data
+	 * @param kernel the kernel used in the AMPL model to calculate the alpha vector
+	 * @param a the alpha vector generated via AMPL
+	 * @param b the beta value calculated from the AMPL solution
+	 * @return a vector containing the predicted y values for each testing example
+	 */
 	public static double[] calculate_y_predicted( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, OutputGenerator out, Kernel kernel, double[] a, double b )
 	{
 		double[] y_predicted = new double[ dataListTest.size( ) ];
 
+		// iterate over the training examples
 		for ( int i = 0; i < dataListTest.size( ); i++ )
 		{
 			TrainingExample x_i = dataListTest.get( i );
 
+			// apply the formula from the svm slides to compute a y_predicted value
+			// based on the alpha vector (solution to the dual problem)
 			double sum = 0.0;
 			for ( int j = 0; j < a.length; j++ )
 			{
@@ -382,6 +376,7 @@ public class DataFileGenerator
 		return y_predicted;
 	}
 
+	// ensures that the length of the provided list is at least large enough to contain index
 	private static void ensureLength( int index, List<Double> list )
 	{
 		if ( list.size( ) > index ) return;
@@ -392,6 +387,7 @@ public class DataFileGenerator
 		}
 	}
 
+	// uses calculate_y_predicted( ) to classify each testing example and compute an error rate
 	public static int[] calculateErrorRate( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, OutputGenerator out, Kernel kernel, double[] a, double b )
 	{
 		int[] digit = new int[ dataListTest.size( ) ];
@@ -423,6 +419,9 @@ public class DataFileGenerator
 		return digit;
 	}
 	
+	// a database helper method for uploading results in the SQL data format
+	// required by the CSI710 handwriting sample viewer (used for generating
+	// confusion matrices and handwriting sample visualizations)
 	public static void uploadResultsTest2_5( String description, List<TrainingExample> list, int[] predicted )
 	{
 		int first2id = 171257;
@@ -457,13 +456,14 @@ public class DataFileGenerator
 		}
 	}
 	
+	// helper method for generating AMPL model and data files
 	public static void generateAmplDataFiles( ) throws IOException
 	{
 		String inputDirectory = "/home/ulman/CSI873/midterm/data";
 		String outputDirectory = "/home/ulman/CSI873/midterm/repository/final/ampl";
 		generateAllDataFiles( inputDirectory, outputDirectory );
 	}
-	
+
 	public static void generateTestingResultsPolynomial_25( ) throws IOException
 	{
 		generateTestingResults( new Polynomial( 0.0156, 0.0, 3.0 ), "SVM 2vs5 run α = 0.0156, β = 0, d = 3" );
@@ -473,7 +473,8 @@ public class DataFileGenerator
 	{
 		generateTestingResults( new Radial( 0.0521 ), "SVM 2vs5 radial" );
 	}
-	
+
+	// runs two digit 2-5 classification problem and calculates and displays results
 	public static void generateTestingResults( Kernel kernel, String name  ) throws IOException
 	{
 		List<TrainingExample> dataListTrain = loadData( "/home/ulman/CSI873/midterm/data", false, 2, 5 );
@@ -515,6 +516,8 @@ public class DataFileGenerator
 	///  Full 10 Digit Problem ///
 	//////////////////////////////
 	
+	// a helper data structure for storing the alpha output values from AMPL
+	// along with the calculated b value and an OutputGenerator
 	public static class Model
 	{
 		double[] a;
@@ -529,6 +532,7 @@ public class DataFileGenerator
 		}
 	}
 	
+	// runs ten digit classification problem and calculates and displays results
 	public static void generateTestingResultsAll( ) throws IOException
 	{
 		List<TrainingExample> dataListTrain = DataLoader.loadDirectoryTrain( "/home/ulman/CSI873/midterm/data" );
@@ -576,6 +580,7 @@ public class DataFileGenerator
 		uploadResultsAllTest( testPreditions );
 	}
 	
+	// uses calculate_y_predicted( ) to classify each testing example and compute an error rate
 	public static int[] calculateErrorRate( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, Kernel kernel, Map<Integer,Model> map )
 	{
 		int[] predicted_digit = calculate_y_predicted( dataListTest, dataListTrain, kernel, map );
@@ -599,6 +604,17 @@ public class DataFileGenerator
 		return predicted_digit;
 	}
 	
+	/**
+	 * Makes a classification decision for the 10 digit classification problem based on the solutions
+	 * to the ten individual AMPL problems.
+	 * 
+	 * @param dataListTest a list of data samples of classify
+	 * @param dataListTrain the training data list used to train the svm classifier
+	 * @param out a generator for calculating expected output values from the training data
+	 * @param kernel the kernel used in the AMPL model to calculate the alpha vector
+	 * @param map the alpha and beta values generated via AMPL for each of the ten separate SVMs constructed (one for each digit)
+	 * @return a vector containing the predicted y values for each testing example
+	 */
 	public static int[] calculate_y_predicted( List<TrainingExample> dataListTest, List<TrainingExample> dataListTrain, Kernel kernel, Map<Integer,Model> map )
 	{
 		int[] predicted_digit = new int[ dataListTest.size( ) ];
