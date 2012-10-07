@@ -88,6 +88,21 @@ public class DataFileGenerator
             return Math.exp( -gamma * norm );
         }
     }
+    
+    public static class DotProduct implements Kernel
+    {
+        @Override
+        public double getValue( double[] x1, double[] x2 )
+        {
+            double sum = 0.0;
+            for ( int i = 0 ; i < x1.length ; i++ )
+            {
+                sum += x1[i] * x2[i];
+            }
+            
+            return sum;
+        }
+    }
 
     // The output generator for one digit versus all others.
     // If the TrainingExample is an instance of the digit 
@@ -476,6 +491,11 @@ public class DataFileGenerator
         generateTestingResults( new Radial( 0.0521 ), "SVM 3vs6 radial" );
     }
     
+    public static void generateTestingResultsDual36( ) throws IOException
+    {
+        generateTestingResults( new DotProduct(), "SVM 3vs6 dual dot product" );
+    }
+    
     // runs two digit 2-5 classification problem and calculates and displays results
     public static void generateTestingResults( Kernel kernel, String name ) throws IOException
     {
@@ -497,7 +517,7 @@ public class DataFileGenerator
         {
             if ( a[i] < C && a[i] > 0.001 )
             {
-                System.out.printf( "%.4f %.12f%n", a[i], b[i] );
+                System.out.printf( "%d %.4f %.12f%n", i, a[i], b[i] );
                 b_sum += b[i];
                 count += 1.0;
             }
@@ -561,7 +581,7 @@ public class DataFileGenerator
             {
                 if ( a[j] < C && a[j] > 0.001 )
                 {
-                    System.out.printf( "%.4f %.12f%n", a[j], b[j] );
+                    System.out.printf( "%d %.4f %.12f%n", j, a[j], b[j] );
                     b_sum += b[j];
                     count += 1.0;
                 }
@@ -696,8 +716,8 @@ public class DataFileGenerator
     /*
     public static void main( String[] args ) throws IOException
     {
-        String inputDirectory = "/home/ulman/workspace/csi747/midterm/3-6";
-        String outputDirectory = "/home/ulman/workspace/csi747/midterm/3-6";
+        String inputDirectory = "/home/ulman/workspace/csi747/midterm";
+        String outputDirectory = "/home/ulman/workspace/csi747/midterm";
         
         generateDataFile( inputDirectory, outputDirectory, "classify_3-6", 3, 6 );
     }
@@ -779,6 +799,6 @@ public class DataFileGenerator
    
     public static void main( String[] args ) throws IOException
     {
-        generateTestingResultsPrimal( );
+        generateTestingResultsDual36( );
     }
 }
